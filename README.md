@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Nodatix - Landing Page B2B
 
-## Getting Started
+Repositorio oficial de la Landing Page de **Nodatix**, diseñada para proyectar autoridad técnica, agendar llamadas de diagnóstico y convertir prospectos B2B.
 
-First, run the development server:
+## 📌 Descripción General
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+El proyecto está construido bajo una arquitectura moderna, escalable y optimizada para SEO. El diseño sigue un enfoque "Dark Mode" minimalista y tecnológico, pensado para un público de CEOs, CTOs y Gerentes de Operaciones.
+
+## 🛠️ Stack Tecnológico
+
+- **Framework:** [Next.js](https://nextjs.org/) (App Router)
+- **Lenguaje:** TypeScript (Strict Mode)
+- **Estilos:** Tailwind CSS v4
+- **Iconografía:** Lucide React
+- **Despliegue (Planeado):** Vercel
+
+## 🏗️ Estructura del Proyecto
+
+La arquitectura del proyecto sigue las mejores prácticas de Next.js App Router, aislando componentes visuales de la lógica de enrutamiento:
+
+```text
+nodatix-landing/
+├── app/
+│   ├── layout.tsx         # Layout maestro (Navbar, Footer, SEO global)
+│   ├── page.tsx           # Ensamblaje de las secciones de la Landing
+│   └── globals.css        # Configuración de Tailwind v4 y variables CSS (Tokens)
+├── components/
+│   ├── layout/            # Componentes estructurales
+│   │   └── Footer.tsx
+│   ├── sections/          # Bloques visuales principales de la Landing
+│   │   ├── HeroSection.tsx
+│   │   ├── ServicesSection.tsx
+│   │   ├── ProcessSection.tsx
+│   │   ├── TechStackSection.tsx
+│   │   └── ContactCTASection.tsx
+│   └── Navbar.tsx         # Navegación principal
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
