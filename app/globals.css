@@ -161,6 +161,20 @@
   }
 }
 
+@keyframes whatsappRing {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+
+  60% {
+    transform: scale(1.55);
+    opacity: 0;
+  }
+}
+
 /* ── Base Styles ────────────────────────────────────────────────── */
 @layer base {
 
@@ -576,6 +590,23 @@
     .section-padding {
       padding-block: 8rem;
     }
+  }
+
+  /* ── WhatsApp Floating Button ───────────────────────────────── */
+  .whatsapp-btn {
+    transition: box-shadow 0.3s var(--ease-smooth), transform 0.3s var(--ease-smooth);
+  }
+
+  .whatsapp-btn:hover {
+    box-shadow:
+      0 0 0 2px rgba(0, 195, 100, 0.35),
+      0 8px 32px -8px rgba(0, 195, 100, 0.55),
+      0 4px 16px rgba(0, 0, 0, 0.7) !important;
+    transform: scale(1.1) translateY(-2px);
+  }
+
+  .whatsapp-ring {
+    animation: whatsappRing 2.8s ease-out infinite;
   }
 
   /* ── Glow Dot ────────────────────────────────────────────────── */

@@ -6,6 +6,7 @@ import "./globals.css";
 // For example, if Navbar is in 'app/components/Navbar', use:
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import WhatsAppButton from "./components/WhatsAppButton";
 // If it's in 'components/Navbar' at the project root, use:
 // import Navbar from "@/components/Navbar";
 
@@ -93,6 +94,7 @@ export default function RootLayout({
         */}
         <main className="pt-[72px]">{children}</main>
         <Footer />
+        <WhatsAppButton />
       </body>
     </html>
   );
