@@ -110,7 +110,7 @@ export default function Navbar() {
               className={[
                 "block w-5 h-px rounded-full bg-[var(--color-text-primary)]",
                 "transition-all duration-300 origin-center",
-                menuOpen ? "translate-y-[6px] rotate-45" : "",
+                menuOpen ? "translate-y-[6px] rotate-45" : "translate-y-0 rotate-0",
               ].join(" ")}
             />
             {/* middle bar */}
@@ -118,7 +118,7 @@ export default function Navbar() {
               className={[
                 "block w-5 h-px rounded-full bg-[var(--color-text-primary)]",
                 "transition-all duration-300",
-                menuOpen ? "opacity-0 scale-x-0" : "",
+                menuOpen ? "opacity-0 scale-x-0" : "opacity-100 scale-x-100",
               ].join(" ")}
             />
             {/* bottom bar */}
@@ -126,7 +126,7 @@ export default function Navbar() {
               className={[
                 "block w-5 h-px rounded-full bg-[var(--color-text-primary)]",
                 "transition-all duration-300 origin-center",
-                menuOpen ? "-translate-y-[6px] -rotate-45" : "",
+                menuOpen ? "-translate-y-[6px] -rotate-45" : "translate-y-0 rotate-0",
               ].join(" ")}
             />
           </button>

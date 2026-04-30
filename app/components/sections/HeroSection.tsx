@@ -41,7 +41,7 @@ export default function HeroSection() {
       </div>
 
       {/* ── Content ───────────────────────────────────────────── */}
-      <div className="section-container w-full flex flex-col items-center text-center gap-6 py-20 sm:py-28 md:gap-8 md:py-40">
+      <div className="section-container w-full flex flex-col items-center text-center gap-6 pt-20 pb-28 sm:py-28 md:gap-8 md:py-40">
         {/* eyebrow badge */}
         <div
           className="badge badge-blue animate-fade-up"
