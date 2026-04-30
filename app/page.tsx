@@ -4,6 +4,7 @@ import ProblemSection from "./components/sections/ProblemSection";
 import ServicesSection from "./components/sections/ServicesSection";
 import ProcessSection from "./components/sections/ProcessSection";
 import TechStackSection from "./components/sections/TechStackSection";
+import TrustSection from "./components/sections/TrustSection";
 import ContactCTASection from "./components/sections/ContactCTASection";
 
 const pageTitle = "Nodatix | Desarrollo de Software a Medida y Sistemas B2B";
@@ -41,6 +42,7 @@ export default function Home() {
       <ServicesSection />
       <ProcessSection />
       <TechStackSection />
+      <TrustSection />
       <ContactCTASection />
     </>
   );
