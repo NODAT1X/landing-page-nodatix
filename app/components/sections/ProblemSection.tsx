@@ -112,7 +112,7 @@ export default function ProblemSection() {
                 <div
                   key={point.title}
                   role="listitem"
-                  className="flex items-start gap-4 rounded-xl p-4 transition-all duration-500 ease-out bg-white/5 backdrop-blur-sm border border-white/10 hover:-translate-y-1.5 hover:shadow-[0_12px_40px_-8px_rgba(0,123,255,0.15)]"
+                  className="flex items-start gap-4 rounded-xl p-4 transition-all duration-500 ease-out bg-white/5 backdrop-blur-md border border-white/[0.08] border-t-white/20 hover:-translate-y-1.5 hover:shadow-[0_12px_40px_-8px_rgba(0,123,255,0.15)]"
                 >
                   {/* icon node */}
                   <div
@@ -157,11 +157,7 @@ export default function ProblemSection() {
 
             {/* differentiator callout */}
             <blockquote
-              className="relative rounded-xl p-5"
-              style={{
-                background: "var(--color-surface)",
-                border: "1px solid var(--color-border)",
-              }}
+              className="relative rounded-xl p-5 bg-white/5 backdrop-blur-md border border-white/[0.08] border-t-white/20"
             >
               {/* cyan left-bar accent */}
               <div

@@ -110,11 +110,20 @@ const SERVICES: Service[] = [
   },
 ];
 
+interface ServiceCardProps extends Service {
+  featured?: boolean;
+}
+
 /* ── Single card ──────────────────────────────────────────────── */
-function ServiceCard({ icon, title, description, tags, accent }: Service) {
+function ServiceCard({ icon, title, description, tags, accent, featured }: ServiceCardProps) {
   return (
     <article
-      className="service-card group relative flex flex-col gap-4 rounded-xl p-5 md:gap-5 md:rounded-2xl md:p-7 bg-white/5 backdrop-blur-sm border border-white/10 border-t-white/20 transition-all duration-500 ease-out hover:-translate-y-1.5"
+      className={[
+        "service-card group relative flex flex-col rounded-xl p-5 bg-white/5 backdrop-blur-md border border-white/[0.08] border-t-white/20 transition-all duration-500 ease-out hover:-translate-y-1.5",
+        featured
+          ? "gap-5 md:col-span-2 md:row-span-2 md:h-full md:gap-6 md:rounded-2xl md:p-8 lg:p-10"
+          : "gap-4 md:gap-5 md:rounded-2xl md:p-7",
+      ].join(" ")}
       style={{ "--card-accent": accent.color } as React.CSSProperties}
     >
       {/* per-card accent top-border reveal on hover */}
@@ -135,7 +144,7 @@ function ServiceCard({ icon, title, description, tags, accent }: Service) {
 
       {/* icon — uses per-card accent color */}
       <div
-        className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-colors duration-300"
+        className={`rounded-xl flex items-center justify-center shrink-0 transition-colors duration-300 ${featured ? "w-10 h-10 md:w-12 md:h-12" : "w-10 h-10"}`}
         style={{
           color: accent.color,
           background: accent.muted,
@@ -147,10 +156,10 @@ function ServiceCard({ icon, title, description, tags, accent }: Service) {
 
       {/* copy */}
       <div className="flex flex-col gap-2.5">
-        <h3 className="font-clash text-base font-semibold leading-tight tracking-tight text-[var(--color-text-primary)]">
+        <h3 className={`font-clash font-semibold leading-tight tracking-tight text-[var(--color-text-primary)] ${featured ? "text-base md:text-lg" : "text-base"}`}>
           {title}
         </h3>
-        <p className="text-sm leading-relaxed text-[var(--color-text-secondary)]">
+        <p className={`leading-relaxed text-[var(--color-text-secondary)] ${featured ? "text-sm md:text-base" : "text-sm"}`}>
           {description}
         </p>
       </div>
@@ -206,8 +215,8 @@ export default function ServicesSection() {
 
         {/* grid */}
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-          {SERVICES.map((service) => (
-            <ServiceCard key={service.title} {...service} />
+          {SERVICES.map((service, i) => (
+            <ServiceCard key={service.title} {...service} featured={i === 0} />
           ))}
         </div>
 
