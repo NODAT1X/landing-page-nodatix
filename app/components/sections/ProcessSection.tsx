@@ -112,7 +112,7 @@ function StepCard({ step, isLast }: { step: Step; isLast: boolean }) {
 
         {/* title */}
         <h3
-          className="text-[1.05rem] font-semibold leading-snug tracking-tight"
+          className="font-clash text-[1.05rem] font-semibold leading-tight tracking-tight"
           style={{ color: "#F8F9FA" }}
         >
           {step.title}
@@ -167,7 +167,7 @@ export default function ProcessSection() {
 
           <h2
             id="process-heading"
-            className="text-[clamp(1.75rem,3.5vw,2.6rem)] font-bold leading-tight tracking-tight"
+            className="font-clash text-[clamp(1.75rem,3.5vw,2.6rem)] font-bold leading-tight tracking-tight"
             style={{ color: "#F8F9FA" }}
           >
             Un proceso{" "}

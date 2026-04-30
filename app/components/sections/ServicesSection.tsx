@@ -153,7 +153,7 @@ function ServiceCard({ icon, title, description, tags, accent }: Service) {
 
       {/* copy */}
       <div className="flex flex-col gap-2.5">
-        <h3 className="text-base font-semibold tracking-tight text-[var(--color-text-primary)]">
+        <h3 className="font-clash text-base font-semibold leading-tight tracking-tight text-[var(--color-text-primary)]">
           {title}
         </h3>
         <p className="text-sm leading-relaxed text-[var(--color-text-secondary)]">
@@ -198,7 +198,7 @@ export default function ServicesSection() {
 
           <h2
             id="services-heading"
-            className="text-[clamp(1.75rem,3.5vw,2.6rem)] font-bold leading-tight tracking-tight text-[var(--color-text-primary)]"
+            className="font-clash text-[clamp(1.75rem,3.5vw,2.6rem)] font-bold leading-tight tracking-tight text-[var(--color-text-primary)]"
           >
             Soluciones enfocadas en{" "}
             <span className="text-tech-gradient">tu operación</span>

@@ -54,12 +54,12 @@ export default function HeroSection() {
         {/* H1 */}
         <h1
           id="hero-heading"
-          className="animate-fade-up max-w-[18ch] text-[clamp(2.4rem,5.5vw,4.25rem)] font-extrabold leading-[1.08] tracking-[-0.03em] text-[#F8F9FA]"
+          className="font-clash animate-fade-up max-w-[18ch] text-[clamp(2.4rem,5.5vw,4.25rem)] font-extrabold leading-none tracking-tight text-[#F8F9FA]"
           style={{ animationDelay: "80ms" }}
         >
-          Construimos software{" "}
-          <span className="text-tech-gradient">a medida</span> que simplifica y
-          escala tu negocio.
+          CONSTRUIMOS SOFTWARE{" "}
+          <span className="text-tech-gradient">A MEDIDA</span> QUE SIMPLIFICA Y
+          ESCALA TU NEGOCIO.
         </h1>
 
         {/* H2 / subtitle */}

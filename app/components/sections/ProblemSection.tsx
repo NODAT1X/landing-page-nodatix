@@ -98,7 +98,7 @@ export default function ProblemSection() {
             {/* H2 — hook */}
             <h2
               id="problem-heading"
-              className="text-[clamp(1.9rem,3.8vw,3rem)] font-bold leading-tight tracking-tight text-[var(--color-text-primary)]"
+              className="font-clash text-[clamp(1.9rem,3.8vw,3rem)] font-bold leading-tight tracking-tight text-[var(--color-text-primary)]"
             >
               ¿Demasiado tiempo en{" "}
               <span className="text-tech-gradient">
