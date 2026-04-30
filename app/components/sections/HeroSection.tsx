@@ -22,6 +22,11 @@ export default function HeroSection() {
         {/* cyan glow — bottom-center */}
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] h-[300px] rounded-full bg-[#00F5FF] opacity-[0.04] blur-[100px]" />
 
+        {/* cyan accent orb — left, heading zone */}
+        <div className="absolute top-[20%] left-[5%] w-[380px] h-[320px] rounded-full bg-[var(--color-cyan)] opacity-10 blur-3xl" />
+        {/* violet accent orb — right, heading zone */}
+        <div className="absolute top-[15%] right-[5%] w-[340px] h-[380px] rounded-full bg-[var(--color-violet)] opacity-10 blur-3xl" />
+
         {/* fine grid pattern */}
         <div
           className="absolute inset-0 opacity-[0.025]"

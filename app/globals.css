@@ -201,6 +201,12 @@
 
   body {
     background-color: var(--color-background);
+    background-image: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.055) 1px,
+      transparent 1px
+    );
+    background-size: 28px 28px;
     color: var(--color-text-primary);
     font-family: var(--font-sans);
     line-height: 1.6;
