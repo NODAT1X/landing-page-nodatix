@@ -154,9 +154,8 @@ export default function Footer() {
                 className="glow-dot shrink-0 transition-transform duration-300 group-hover:scale-125"
                 aria-hidden="true"
               />
-              <span className="text-[1.1rem] font-bold tracking-tight leading-none">
-                <span className="text-tech-gradient">Noda</span>
-                <span className="text-[var(--color-text-primary)]">tix</span>
+              <span className="text-[1.1rem] font-bold tracking-tight leading-none text-[var(--color-text-primary)]">
+                Nodatix
               </span>
             </Link>
 

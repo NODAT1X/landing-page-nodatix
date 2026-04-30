@@ -54,7 +54,7 @@ export default function HeroSection() {
         {/* H1 */}
         <h1
           id="hero-heading"
-          className="animate-fade-up max-w-[18ch] text-[clamp(2.4rem,5.5vw,4.25rem)] font-bold leading-[1.08] tracking-[-0.03em] text-[#F8F9FA]"
+          className="animate-fade-up max-w-[18ch] text-[clamp(2.4rem,5.5vw,4.25rem)] font-extrabold leading-[1.08] tracking-[-0.03em] text-[#F8F9FA]"
           style={{ animationDelay: "80ms" }}
         >
           Construimos software{" "}
@@ -100,7 +100,7 @@ export default function HeroSection() {
 
         {/* ── Abstract SaaS mockup ──────────────────────────── */}
         <div
-          className="animate-fade-up w-full mt-6"
+          className="animate-fade-up w-full mt-10 md:mt-14"
           style={{ animationDelay: "380ms" }}
           aria-hidden="true"
         >
@@ -356,6 +356,28 @@ export default function HeroSection() {
               background:
                 "linear-gradient(90deg, #007BFF22 0%, #8A2BE222 50%, #00F5FF22 100%)",
             }}
+          />
+        </div>
+      </div>
+
+      {/* ── Scroll indicator ──────────────────────────────────────
+          Mouse-capsule with animated cyan dot.
+          Absolute so it never disrupts the centred content flow.
+          Hidden below 640px to avoid crowding on small screens.
+      ─────────────────────────────────────────────────────────── */}
+      <div
+        aria-hidden="true"
+        className="hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 opacity-35 pointer-events-none select-none"
+      >
+        {/* mouse body */}
+        <div
+          className="w-[18px] h-[28px] rounded-full flex items-start justify-center pt-[5px]"
+          style={{ border: "1.5px solid rgba(255,255,255,0.25)" }}
+        >
+          {/* scroll wheel — bounces gently in brand cyan */}
+          <div
+            className="w-[3px] h-[7px] rounded-full bg-[var(--color-cyan)] animate-bounce"
+            style={{ animationDuration: "1.8s" }}
           />
         </div>
       </div>
