@@ -87,19 +87,6 @@ function StepCard({ step, isLast }: { step: Step; isLast: boolean }) {
         >
           <Icon size={17} strokeWidth={1.7} aria-hidden="true" />
         </div>
-
-        {/* desktop horizontal connector */}
-        {!isLast && (
-          <div
-            aria-hidden="true"
-            className="hidden lg:block absolute left-10 top-1/2 -translate-y-1/2 h-px"
-            style={{
-              width: "calc(100% + 1rem + 40px)", // spans gap between cards
-              background:
-                "linear-gradient(90deg, rgba(0,123,255,0.35) 0%, rgba(0,123,255,0.06) 100%)",
-            }}
-          />
-        )}
       </div>
 
       {/* ── Text content ──────────────────────────────────────── */}
@@ -187,7 +174,19 @@ export default function ProcessSection() {
 
         {/* ── Steps ─────────────────────────────────────────────── */}
         {/* Mobile/tablet: vertical timeline | Desktop: 4-column grid */}
-        <div className="grid grid-cols-1 gap-0 lg:grid-cols-4 lg:gap-8">
+        <div className="relative grid grid-cols-1 gap-0 lg:grid-cols-4 lg:gap-8">
+          {/* Desktop connector rail — single element behind all icons.
+              top-5 (20px) = vertical center of h-10 icons.
+              left-5/right-5 trim to icon centers so the line starts and
+              ends at each endpoint icon rather than running edge-to-edge. */}
+          <div
+            aria-hidden="true"
+            className="hidden lg:block absolute top-5 left-5 right-5 h-px pointer-events-none"
+            style={{
+              background:
+                "linear-gradient(90deg, rgba(0,123,255,0.35) 20%, rgba(0,123,255,0.12) 60%, rgba(0,123,255,0.06) 100%)",
+            }}
+          />
           {STEPS.map((step, i) => (
             <StepCard
               key={step.number}

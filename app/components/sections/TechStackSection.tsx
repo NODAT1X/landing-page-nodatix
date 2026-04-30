@@ -389,57 +389,6 @@ export default function TechStackSection() {
           <div className="divider-glow-line" aria-hidden="true" />
         </div>
       </div>
-
-      {/* ── Scoped keyframes & animation classes ──────────────── */}
-      <style>{`
-        .marquee-wrapper {
-          overflow: hidden;
-          width: 100%;
-        }
-
-        /* enough width so the duplicate creates a seamless loop */
-        .marquee-track {
-          width: max-content;
-          will-change: transform;
-        }
-
-        @keyframes marquee {
-          0%   { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-
-        @keyframes marquee-reverse {
-          0%   { transform: translateX(-50%); }
-          100% { transform: translateX(0); }
-        }
-
-        .animate-marquee {
-          animation: marquee 28s linear infinite;
-        }
-
-        .animate-marquee-reverse {
-          animation: marquee-reverse 32s linear infinite;
-        }
-
-        /* pause on hover for the entire section */
-        #tecnologias:hover .animate-marquee,
-        #tecnologias:hover .animate-marquee-reverse {
-          animation-play-state: paused;
-        }
-
-        /* respect user preference */
-        @media (prefers-reduced-motion: reduce) {
-          .animate-marquee,
-          .animate-marquee-reverse {
-            animation: none !important;
-          }
-          .marquee-track {
-            flex-wrap: wrap;
-            width: 100%;
-            justify-content: center;
-          }
-        }
-      `}</style>
     </section>
   );
 }

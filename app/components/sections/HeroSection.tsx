@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 
 /* ─────────────────────────────────────────────────────────────────
@@ -46,7 +44,7 @@ export default function HeroSection() {
       <div className="section-container w-full flex flex-col items-center text-center gap-6 py-20 sm:py-28 md:gap-8 md:py-40">
         {/* eyebrow badge */}
         <div
-          className="badge-blue animate-fade-up"
+          className="badge badge-blue animate-fade-up"
           style={{ animationDelay: "0ms" }}
         >
           <span className="glow-dot w-1.5 h-1.5" aria-hidden="true" />
@@ -69,8 +67,8 @@ export default function HeroSection() {
           className="animate-fade-up max-w-[52ch] text-[clamp(1rem,1.8vw,1.2rem)] leading-relaxed text-[var(--color-text-secondary)]"
           style={{ animationDelay: "160ms" }}
         >
-          Convertimos tus procesos manuales en sistemas digitales centralizados,
-          rápidos y listos para crecer.
+          Convertimos tus procesos manuales y herramientas desconectadas en
+          sistemas digitales centralizados, rápidos y listos para crecer.
         </p>
 
         {/* CTAs */}
@@ -85,7 +83,7 @@ export default function HeroSection() {
             Agendar una llamada
           </Link>
           <Link
-            href="#cotizar"
+            href="#contacto"
             className="btn-secondary w-full sm:w-auto text-sm px-6 py-3"
           >
             Cotizar mi proyecto

@@ -141,6 +141,26 @@
   }
 }
 
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
 /* ── Base Styles ────────────────────────────────────────────────── */
 @layer base {
 
@@ -364,6 +384,45 @@
 
   .animate-float {
     animation: var(--animate-float);
+  }
+
+  /* ── Marquee ────────────────────────────────────────────────── */
+  .marquee-wrapper {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .marquee-track {
+    width: max-content;
+    will-change: transform;
+  }
+
+  .animate-marquee {
+    animation: marquee 28s linear infinite;
+  }
+
+  .animate-marquee-reverse {
+    animation: marquee-reverse 32s linear infinite;
+  }
+
+  /* pause entire section on hover */
+  #tecnologias:hover .animate-marquee,
+  #tecnologias:hover .animate-marquee-reverse {
+    animation-play-state: paused;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+
+    .animate-marquee,
+    .animate-marquee-reverse {
+      animation: none !important;
+    }
+
+    .marquee-track {
+      flex-wrap: wrap;
+      width: 100%;
+      justify-content: center;
+    }
   }
 }
 
