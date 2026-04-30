@@ -205,6 +205,7 @@ export default function TrustSection() {
   return (
     <section
       id="confianza"
+      aria-labelledby="trust-heading"
       className="relative overflow-hidden bg-[#0A0C0D] px-6 py-24 text-white sm:px-8 lg:px-12"
     >
       <div className="mx-auto max-w-7xl">
@@ -216,7 +217,10 @@ export default function TrustSection() {
                 Caso representativo
               </span>
 
-              <h2 className="mt-5 max-w-2xl text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+              <h2
+                id="trust-heading"
+                className="mt-5 max-w-2xl text-3xl font-semibold tracking-tight text-white sm:text-4xl"
+              >
                 Software diseñado para operaciones reales, no solo para verse
                 bien.
               </h2>
