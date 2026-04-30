@@ -312,7 +312,7 @@ export default function TechStackSection() {
       <div className="flex flex-col gap-10 md:gap-12">
         {/* header — constrained */}
         <div className="section-container flex flex-col gap-4 max-w-[42ch]">
-          <div className="badge-violet w-fit">
+          <div className="badge badge-violet w-fit">
             <span className="glow-dot w-1.5 h-1.5" aria-hidden="true" />
             Stack tecnológico
           </div>

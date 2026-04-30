@@ -235,6 +235,12 @@
     letter-spacing: -0.02em;
   }
 
+  /* Display font applied to page-level headings only */
+  h1,
+  h2 {
+    font-family: var(--font-display), var(--font-sans);
+  }
+
   @media (prefers-reduced-motion: reduce) {
 
     *,
@@ -503,6 +509,19 @@
   .card-hover:hover {
     border-color: #007BFF4D;
     box-shadow: 0 8px 32px -8px #007BFF20;
+    transform: translateY(-2px);
+  }
+
+  /* ── Service card — per-card accent via --card-accent CSS var ── */
+  .service-card {
+    transition: border-color 0.3s var(--ease-smooth),
+      box-shadow 0.3s var(--ease-smooth),
+      transform 0.3s var(--ease-smooth);
+  }
+
+  .service-card:hover {
+    border-color: color-mix(in srgb, var(--card-accent, #007BFF) 30%, transparent);
+    box-shadow: 0 8px 32px -8px color-mix(in srgb, var(--card-accent, #007BFF) 18%, transparent);
     transform: translateY(-2px);
   }
 

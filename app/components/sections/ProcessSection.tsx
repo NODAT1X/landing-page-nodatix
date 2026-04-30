@@ -91,13 +91,24 @@ function StepCard({ step, isLast }: { step: Step; isLast: boolean }) {
 
       {/* ── Text content ──────────────────────────────────────── */}
       <div className="min-w-0 flex flex-col gap-3 pb-10 lg:pb-0">
-        {/* step number */}
-        <span
-          className="text-[11px] font-mono font-medium tracking-[0.12em] uppercase"
-          style={{ color: "var(--color-primary-blue)" }}
-        >
-          Paso {step.number}
-        </span>
+        {/* step number — prominent with display font */}
+        <div className="flex flex-col gap-0.5">
+          <span
+            className="text-[10px] font-mono tracking-[0.14em] uppercase"
+            style={{ color: "var(--color-text-disabled)" }}
+          >
+            Paso
+          </span>
+          <span
+            className="text-[2rem] font-extrabold leading-none tracking-tight"
+            style={{
+              color: "var(--color-primary-blue)",
+              fontFamily: "var(--font-display, var(--font-sans))",
+            }}
+          >
+            {step.number}
+          </span>
+        </div>
 
         {/* title */}
         <h3
@@ -149,7 +160,7 @@ export default function ProcessSection() {
       <div className="section-container flex flex-col gap-10 md:gap-14">
         {/* ── Header ────────────────────────────────────────────── */}
         <div className="flex flex-col gap-4 max-w-[42ch]">
-          <div className="badge-blue w-fit">
+          <div className="badge badge-blue w-fit">
             <span className="glow-dot w-1.5 h-1.5" aria-hidden="true" />
             Nuestra metodología
           </div>
@@ -178,13 +189,15 @@ export default function ProcessSection() {
           {/* Desktop connector rail — single element behind all icons.
               top-5 (20px) = vertical center of h-10 icons.
               left-5/right-5 trim to icon centers so the line starts and
-              ends at each endpoint icon rather than running edge-to-edge. */}
+              ends at each endpoint icon rather than running edge-to-edge.
+              Blue→Cyan gradient echoes the brand glow-line token. */}
           <div
             aria-hidden="true"
-            className="hidden lg:block absolute top-5 left-5 right-5 h-px pointer-events-none"
+            className="hidden lg:block absolute top-5 left-5 right-5 h-[1.5px] pointer-events-none"
             style={{
               background:
-                "linear-gradient(90deg, rgba(0,123,255,0.35) 20%, rgba(0,123,255,0.12) 60%, rgba(0,123,255,0.06) 100%)",
+                "linear-gradient(90deg, rgba(0,123,255,0.65) 0%, rgba(0,245,255,0.45) 50%, rgba(0,123,255,0.2) 100%)",
+              boxShadow: "0 0 8px 0 rgba(0,123,255,0.25)",
             }}
           />
           {STEPS.map((step, i) => (

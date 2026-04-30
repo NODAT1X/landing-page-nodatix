@@ -5,11 +5,19 @@ import type { ReactNode } from "react";
    CSS Grid · Minimal dark cards · Cyan border-top hover
 ───────────────────────────────────────────────────────────────── */
 
+interface ServiceAccent {
+  color: string /* solid hex — icon text, top-line, hover border */;
+  muted: string /* translucent bg for icon container */;
+  border: string /* translucent border for icon container */;
+  glow: string /* translucent top-bloom gradient color */;
+}
+
 interface Service {
   icon: ReactNode;
   title: string;
   description: string;
   tags: string[];
+  accent: ServiceAccent;
 }
 
 const SERVICES: Service[] = [
@@ -36,6 +44,12 @@ const SERVICES: Service[] = [
     description:
       "Plataformas web e internas diseñadas para escalar con tu operación. Arquitectura sólida, UX enfocada en productividad.",
     tags: ["Web Apps", "Portales internos", "Escalabilidad"],
+    accent: {
+      color: "#007BFF",
+      muted: "rgba(0,123,255,0.08)",
+      border: "rgba(0,123,255,0.18)",
+      glow: "rgba(0,123,255,0.05)",
+    },
   },
   {
     icon: (
@@ -60,6 +74,12 @@ const SERVICES: Service[] = [
     description:
       "Centraliza clientes, ventas y seguimientos en un solo sistema adaptado a tu ciclo comercial. Sin funciones que no necesitas.",
     tags: ["Pipeline", "Seguimiento", "Reportes"],
+    accent: {
+      color: "#8A2BE2",
+      muted: "rgba(138,43,226,0.08)",
+      border: "rgba(138,43,226,0.18)",
+      glow: "rgba(138,43,226,0.05)",
+    },
   },
   {
     icon: (
@@ -81,41 +101,51 @@ const SERVICES: Service[] = [
     description:
       "Flujos digitales que reemplazan tareas manuales repetitivas. Menos fricción operativa, más tiempo para decisiones estratégicas.",
     tags: ["Integraciones", "Workflows", "Eficiencia"],
+    accent: {
+      color: "#00F5FF",
+      muted: "rgba(0,245,255,0.07)",
+      border: "rgba(0,245,255,0.14)",
+      glow: "rgba(0,245,255,0.05)",
+    },
   },
 ];
 
 /* ── Single card ──────────────────────────────────────────────── */
-function ServiceCard({ icon, title, description, tags }: Service) {
+function ServiceCard({ icon, title, description, tags, accent }: Service) {
   return (
     <article
-      className="service-card group relative flex flex-col gap-4 rounded-xl p-5 transition-all duration-300 md:gap-5 md:rounded-2xl md:p-7"
-      style={{
-        background: "var(--color-surface)",
-        border: "1px solid var(--color-border)",
-      }}
+      className="service-card group relative flex flex-col gap-4 rounded-xl p-5 md:gap-5 md:rounded-2xl md:p-7"
+      style={
+        {
+          background: "var(--color-surface)",
+          border: "1px solid var(--color-border)",
+          "--card-accent": accent.color,
+        } as React.CSSProperties
+      }
     >
-      {/* cyan top-border reveal on hover */}
+      {/* per-card accent top-border reveal on hover */}
       <span
         aria-hidden="true"
-        className="absolute inset-x-0 top-0 h-[2px] rounded-t-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-glow-line"
+        className="absolute inset-x-0 top-0 h-[2px] rounded-t-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        style={{ background: accent.color }}
       />
 
-      {/* subtle top-glow bloom */}
+      {/* per-card top-glow bloom */}
       <span
         aria-hidden="true"
         className="absolute inset-x-0 top-0 h-24 rounded-t-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
         style={{
-          background:
-            "linear-gradient(180deg, rgba(0,245,255,0.05) 0%, transparent 100%)",
+          background: `linear-gradient(180deg, ${accent.glow} 0%, transparent 100%)`,
         }}
       />
 
-      {/* icon */}
+      {/* icon — uses per-card accent color */}
       <div
-        className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 text-[var(--color-cyan)] transition-colors duration-300"
+        className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-colors duration-300"
         style={{
-          background: "var(--color-cyan-muted)",
-          border: "1px solid rgba(0,245,255,0.12)",
+          color: accent.color,
+          background: accent.muted,
+          border: `1px solid ${accent.border}`,
         }}
       >
         {icon}
@@ -161,7 +191,7 @@ export default function ServicesSection() {
       <div className="section-container flex flex-col gap-10 md:gap-14">
         {/* header */}
         <div className="flex flex-col gap-4 max-w-[42ch]">
-          <div className="badge-cyan w-fit">
+          <div className="badge badge-cyan w-fit">
             <span className="glow-dot w-1.5 h-1.5" aria-hidden="true" />
             Qué construimos
           </div>
