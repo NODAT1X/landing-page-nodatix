@@ -63,7 +63,7 @@ function StepCard({ step, isLast }: { step: Step; isLast: boolean }) {
   const Icon = step.icon;
 
   return (
-    <div className="relative flex gap-4 md:gap-5 lg:flex-col lg:gap-6">
+    <div className="relative flex gap-4 md:gap-5 lg:flex-col lg:gap-6 transition-all duration-500 ease-out hover:-translate-y-1.5 hover:shadow-[0_12px_40px_-8px_rgba(0,123,255,0.15)]">
       {/* ── Timeline connector (mobile/tablet only) ────────────── */}
       {!isLast && (
         <div

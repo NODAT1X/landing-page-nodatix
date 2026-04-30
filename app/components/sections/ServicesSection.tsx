@@ -114,7 +114,7 @@ const SERVICES: Service[] = [
 function ServiceCard({ icon, title, description, tags, accent }: Service) {
   return (
     <article
-      className="service-card group relative flex flex-col gap-4 rounded-xl p-5 md:gap-5 md:rounded-2xl md:p-7 bg-white/5 backdrop-blur-sm border border-white/10 border-t-white/20"
+      className="service-card group relative flex flex-col gap-4 rounded-xl p-5 md:gap-5 md:rounded-2xl md:p-7 bg-white/5 backdrop-blur-sm border border-white/10 border-t-white/20 transition-all duration-500 ease-out hover:-translate-y-1.5"
       style={{ "--card-accent": accent.color } as React.CSSProperties}
     >
       {/* per-card accent top-border reveal on hover */}

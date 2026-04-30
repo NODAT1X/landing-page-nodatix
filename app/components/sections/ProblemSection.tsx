@@ -112,7 +112,7 @@ export default function ProblemSection() {
                 <div
                   key={point.title}
                   role="listitem"
-                  className="flex items-start gap-4 rounded-xl p-4 transition-colors duration-300 bg-white/5 backdrop-blur-sm border border-white/10"
+                  className="flex items-start gap-4 rounded-xl p-4 transition-all duration-500 ease-out bg-white/5 backdrop-blur-sm border border-white/10 hover:-translate-y-1.5 hover:shadow-[0_12px_40px_-8px_rgba(0,123,255,0.15)]"
                 >
                   {/* icon node */}
                   <div
