@@ -100,11 +100,8 @@ function StepCard({ step, isLast }: { step: Step; isLast: boolean }) {
             Paso
           </span>
           <span
-            className="text-[2rem] font-extrabold leading-none tracking-tight"
-            style={{
-              color: "var(--color-primary-blue)",
-              fontFamily: "var(--font-display, var(--font-sans))",
-            }}
+            className="text-[2rem] font-extrabold leading-none tracking-tight text-white/20"
+            style={{ fontFamily: "var(--font-display, var(--font-sans))" }}
           >
             {step.number}
           </span>

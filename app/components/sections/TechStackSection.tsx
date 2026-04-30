@@ -289,7 +289,7 @@ function TechPill({ tech }: { tech: Tech }) {
       title={tech.name}
     >
       {/* icon */}
-      <span className="tech-icon w-6 h-6 shrink-0 text-[#3A3A45] transition-colors duration-300 group-hover:text-[var(--hover-color)]">
+      <span className="tech-icon w-6 h-6 shrink-0 text-white/35 transition-colors duration-300 group-hover:text-[var(--hover-color)]">
         {tech.svg}
       </span>
       {/* name */}
