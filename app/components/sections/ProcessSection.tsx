@@ -1,5 +1,6 @@
 import { Search, FileText, Code2, Rocket } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { FadeUp } from "../ui/FadeUp";
 
 /* ─────────────────────────────────────────────────────────────────
    ProcessSection — Nodatix
@@ -91,7 +92,7 @@ function StepCard({ step, isLast }: { step: Step; isLast: boolean }) {
 
       {/* ── Text content ──────────────────────────────────────── */}
       <div className="min-w-0 flex flex-col gap-3 pb-10 lg:pb-0">
-        {/* step number — prominent with display font */}
+        {/* step number */}
         <div className="flex flex-col gap-0.5">
           <span
             className="text-[10px] font-mono tracking-[0.14em] uppercase"
@@ -156,38 +157,36 @@ export default function ProcessSection() {
     >
       <div className="section-container flex flex-col gap-10 md:gap-14">
         {/* ── Header ────────────────────────────────────────────── */}
-        <div className="flex flex-col gap-4 max-w-[42ch]">
-          <div className="badge badge-blue w-fit">
-            <span className="glow-dot w-1.5 h-1.5" aria-hidden="true" />
-            Nuestra metodología
+        <FadeUp>
+          <div className="flex flex-col gap-4 max-w-[42ch]">
+            <div className="badge badge-blue w-fit">
+              <span className="glow-dot w-1.5 h-1.5" aria-hidden="true" />
+              Nuestra metodología
+            </div>
+
+            <h2
+              id="process-heading"
+              className="font-clash text-[clamp(1.75rem,3.5vw,2.6rem)] font-bold leading-tight tracking-tight"
+              style={{ color: "#F8F9FA" }}
+            >
+              Un proceso{" "}
+              <span className="text-tech-gradient">claro y predecible</span>
+            </h2>
+
+            <p
+              className="text-sm leading-relaxed max-w-[52ch]"
+              style={{ color: "#A0A0A0" }}
+            >
+              Cada proyecto sigue cuatro fases bien definidas. Sin metodologías
+              opacas: sabes exactamente en qué etapa estamos y qué viene
+              después.
+            </p>
           </div>
-
-          <h2
-            id="process-heading"
-            className="font-clash text-[clamp(1.75rem,3.5vw,2.6rem)] font-bold leading-tight tracking-tight"
-            style={{ color: "#F8F9FA" }}
-          >
-            Un proceso{" "}
-            <span className="text-tech-gradient">claro y predecible</span>
-          </h2>
-
-          <p
-            className="text-sm leading-relaxed max-w-[52ch]"
-            style={{ color: "#A0A0A0" }}
-          >
-            Cada proyecto sigue cuatro fases bien definidas. Sin metodologías
-            opacas: sabes exactamente en qué etapa estamos y qué viene después.
-          </p>
-        </div>
+        </FadeUp>
 
         {/* ── Steps ─────────────────────────────────────────────── */}
-        {/* Mobile/tablet: vertical timeline | Desktop: 4-column grid */}
         <div className="relative grid grid-cols-1 gap-0 lg:grid-cols-4 lg:gap-8">
-          {/* Desktop connector rail — single element behind all icons.
-              top-5 (20px) = vertical center of h-10 icons.
-              left-5/right-5 trim to icon centers so the line starts and
-              ends at each endpoint icon rather than running edge-to-edge.
-              Blue→Cyan gradient echoes the brand glow-line token. */}
+          {/* Desktop connector rail */}
           <div
             aria-hidden="true"
             className="hidden lg:block absolute top-5 left-5 right-5 h-[1.5px] pointer-events-none"
@@ -198,37 +197,37 @@ export default function ProcessSection() {
             }}
           />
           {STEPS.map((step, i) => (
-            <StepCard
-              key={step.number}
-              step={step}
-              isLast={i === STEPS.length - 1}
-            />
+            <FadeUp key={step.number} delay={i * 120}>
+              <StepCard step={step} isLast={i === STEPS.length - 1} />
+            </FadeUp>
           ))}
         </div>
 
         {/* ── Bottom CTA strip ──────────────────────────────────── */}
-        <div
-          className="flex flex-col items-stretch justify-between gap-4 rounded-2xl px-5 py-5 sm:flex-row sm:items-center md:px-7"
-          style={{
-            background: "rgba(0,123,255,0.05)",
-            border: "1px solid rgba(0,123,255,0.12)",
-          }}
-        >
-          <div className="min-w-0 flex flex-col gap-1">
-            <p className="text-sm font-medium" style={{ color: "#F8F9FA" }}>
-              ¿Listo para empezar tu diagnóstico?
-            </p>
-            <p className="text-xs" style={{ color: "#A0A0A0" }}>
-              Primera sesión sin costo · 45 minutos · Sin compromiso
-            </p>
-          </div>
-          <a
-            href="#contacto"
-            className="btn-primary w-full shrink-0 text-sm px-5 py-2.5 sm:w-auto"
+        <FadeUp delay={STEPS.length * 120 + 60}>
+          <div
+            className="flex flex-col items-stretch justify-between gap-4 rounded-2xl px-5 py-5 sm:flex-row sm:items-center md:px-7"
+            style={{
+              background: "rgba(0,123,255,0.05)",
+              border: "1px solid rgba(0,123,255,0.12)",
+            }}
           >
-            Agendar diagnóstico
-          </a>
-        </div>
+            <div className="min-w-0 flex flex-col gap-1">
+              <p className="text-sm font-medium" style={{ color: "#F8F9FA" }}>
+                ¿Listo para empezar tu diagnóstico?
+              </p>
+              <p className="text-xs" style={{ color: "#A0A0A0" }}>
+                Primera sesión sin costo · 45 minutos · Sin compromiso
+              </p>
+            </div>
+            <a
+              href="#contacto"
+              className="btn-primary w-full shrink-0 text-sm px-5 py-2.5 sm:w-auto"
+            >
+              Agendar diagnóstico
+            </a>
+          </div>
+        </FadeUp>
 
         <div className="divider-glow-line" aria-hidden="true" />
       </div>

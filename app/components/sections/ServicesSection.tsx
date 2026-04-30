@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { FadeUp } from "../ui/FadeUp";
 
 /* ─────────────────────────────────────────────────────────────────
    ServicesSection — Nodatix
@@ -121,7 +122,7 @@ function ServiceCard({ icon, title, description, tags, accent, featured }: Servi
       className={[
         "service-card group relative flex flex-col rounded-xl p-5 bg-white/5 backdrop-blur-md border border-white/[0.08] border-t-white/20 transition-all duration-500 ease-out hover:-translate-y-1.5",
         featured
-          ? "gap-5 md:col-span-2 md:row-span-2 md:h-full md:gap-6 md:rounded-2xl md:p-8 lg:p-10"
+          ? "gap-5 md:h-full md:gap-6 md:rounded-2xl md:p-8 lg:p-10"
           : "gap-4 md:gap-5 md:rounded-2xl md:p-7",
       ].join(" ")}
       style={{ "--card-accent": accent.color } as React.CSSProperties}
@@ -193,7 +194,7 @@ export default function ServicesSection() {
     >
       <div className="section-container flex flex-col gap-10 md:gap-14">
         {/* header */}
-        <div className="flex flex-col items-center gap-4 max-w-2xl mx-auto text-center">
+        <FadeUp className="flex flex-col items-center gap-4 max-w-2xl mx-auto text-center">
           <div className="badge badge-cyan w-fit">
             <span className="glow-dot w-1.5 h-1.5" aria-hidden="true" />
             Qué construimos
@@ -211,12 +212,18 @@ export default function ServicesSection() {
             No vendemos software genérico. Cada entrega está diseñada para
             resolver un problema real dentro de tu negocio.
           </p>
-        </div>
+        </FadeUp>
 
-        {/* grid */}
+        {/* Bento grid — featured card carries col/row span on the FadeUp wrapper */}
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
           {SERVICES.map((service, i) => (
-            <ServiceCard key={service.title} {...service} featured={i === 0} />
+            <FadeUp
+              key={service.title}
+              delay={i * 120}
+              className={i === 0 ? "md:col-span-2 md:row-span-2" : ""}
+            >
+              <ServiceCard {...service} featured={i === 0} />
+            </FadeUp>
           ))}
         </div>
 

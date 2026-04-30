@@ -480,9 +480,9 @@
   }
 
   .btn-primary:hover {
-    opacity: 0.9;
-    transform: scale(1.02);
-    box-shadow: 0 0 24px 0 #007BFF50;
+    opacity: 0.88;
+    transform: scale(1.02) translateY(-1px);
+    box-shadow: 0 0 32px 4px #007BFF55, 0 8px 20px -4px #007BFF30;
   }
 
   .btn-primary:active {
