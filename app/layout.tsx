@@ -5,6 +5,7 @@ import "./globals.css";
 // Update the import path below to the actual location of Navbar
 // For example, if Navbar is in 'app/components/Navbar', use:
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 // If it's in 'components/Navbar' at the project root, use:
 // import Navbar from "@/components/Navbar";
 
@@ -83,6 +84,7 @@ export default function RootLayout({
           Adjust the value if you change --navbar-height.
         */}
         <main className="pt-[72px]">{children}</main>
+        <Footer />
       </body>
     </html>
   );
