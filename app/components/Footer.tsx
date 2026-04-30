@@ -250,7 +250,7 @@ export default function Footer() {
 
         {/* ── Bottom bar ──────────────────────────────────────────── */}
         <div
-          className="flex flex-col items-center justify-between gap-3 border-t py-6 sm:flex-row"
+          className="flex flex-col items-center justify-between gap-3 border-t pt-6 pb-24 sm:py-6 sm:flex-row"
           style={{ borderColor: "var(--color-border)" }}
         >
           <p className="text-xs text-[var(--color-text-disabled)]">

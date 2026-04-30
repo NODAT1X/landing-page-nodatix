@@ -184,7 +184,7 @@ export default function ServicesSection() {
     >
       <div className="section-container flex flex-col gap-10 md:gap-14">
         {/* header */}
-        <div className="flex flex-col gap-4 max-w-[42ch]">
+        <div className="flex flex-col items-center gap-4 max-w-2xl mx-auto text-center">
           <div className="badge badge-cyan w-fit">
             <span className="glow-dot w-1.5 h-1.5" aria-hidden="true" />
             Qué construimos

@@ -213,7 +213,7 @@ export default function ContactCTASection() {
                 {/* Submit — imponente */}
                 <button
                   type="submit"
-                  className="btn-primary mt-1 w-full py-4 text-sm font-semibold tracking-wide"
+                  className="btn-primary mt-1 w-full py-4 text-sm font-semibold tracking-wide hover:scale-105"
                   style={{
                     boxShadow:
                       "0 4px 28px -6px rgba(0,123,255,0.7), 0 2px 8px rgba(0,0,0,0.5)",
