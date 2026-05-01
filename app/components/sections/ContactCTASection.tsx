@@ -172,7 +172,7 @@ export default function ContactCTASection() {
               <div className="flex flex-col gap-4">
                 <h2
                   id="contact-cta-heading"
-                  className="text-[clamp(1.9rem,3.5vw,3.1rem)] font-bold leading-tight tracking-tight text-[#F8F9FA]"
+                  className="font-clash text-[clamp(1.9rem,3.5vw,3.1rem)] font-bold leading-tight tracking-tight text-[#F8F9FA]"
                 >
                   Convierte tu proceso en{" "}
                   <span className="text-tech-gradient">un sistema real</span>
@@ -243,7 +243,7 @@ export default function ContactCTASection() {
             Consulta inicial
           </span>
 
-          <h2 className="text-[clamp(1.7rem,7vw,2.4rem)] font-bold leading-tight tracking-tight text-[#F8F9FA]">
+          <h2 className="font-clash text-[clamp(1.7rem,7vw,2.4rem)] font-bold leading-tight tracking-tight text-[#F8F9FA]">
             Convierte tu proceso en{" "}
             <span className="text-tech-gradient">un sistema real</span>
           </h2>

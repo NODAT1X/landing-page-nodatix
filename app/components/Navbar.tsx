@@ -66,7 +66,7 @@ export default function Navbar() {
               className="glow-dot shrink-0 transition-transform duration-300 group-hover:scale-125"
               aria-hidden="true"
             />
-            <span className="text-[1.2rem] font-bold tracking-tight leading-none text-(--color-text-primary)">
+            <span className="font-clash text-[1.2rem] font-bold tracking-tight leading-none text-(--color-text-primary)">
               Nodatix
             </span>
           </Link>

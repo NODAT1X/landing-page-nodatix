@@ -10,7 +10,7 @@ import Link from "next/link";
 export default function HeroSection() {
   return (
     <section
-      className="relative isolate min-h-[100svh] bg-black flex flex-col items-center justify-center overflow-hidden"
+      className="relative isolate min-h-dvh bg-black flex flex-col items-center justify-center overflow-hidden"
       aria-labelledby="hero-heading"
     >
       {/* ── Mesh gradient layer ───────────────────────────────── */}
@@ -40,8 +40,8 @@ export default function HeroSection() {
         />
 
         {/* edge fades — pure black so sections below blend cleanly */}
-        <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-black to-transparent" />
-        <div className="absolute bottom-0 inset-x-0 h-48 bg-gradient-to-t from-black to-transparent" />
+        <div className="absolute top-0 inset-x-0 h-40 bg-linear-to-b from-black to-transparent" />
+        <div className="absolute bottom-0 inset-x-0 h-48 bg-linear-to-t from-black to-transparent" />
       </div>
 
       {/* ── Content ───────────────────────────────────────────── */}
@@ -72,7 +72,7 @@ export default function HeroSection() {
 
           {/* subtitle */}
           <p
-            className="animate-fade-up max-w-[48ch] text-[clamp(1rem,1.8vw,1.15rem)] leading-relaxed text-[var(--color-text-secondary)]"
+            className="animate-fade-up max-w-[48ch] text-[clamp(1rem,1.8vw,1.15rem)] leading-relaxed text-(--color-text-secondary)"
             style={{ animationDelay: "160ms" }}
           >
             Convertimos tus procesos manuales y herramientas desconectadas en
@@ -100,7 +100,7 @@ export default function HeroSection() {
 
           {/* social proof */}
           <p
-            className="animate-fade-up text-xs text-[var(--color-text-disabled)] tracking-wide"
+            className="animate-fade-up text-xs text-(--color-text-disabled) tracking-wide"
             style={{ animationDelay: "300ms" }}
           >
             Sin compromisos · Respuesta en menos de 24 h
@@ -143,7 +143,7 @@ export default function HeroSection() {
           style={{ border: "1.5px solid rgba(255,255,255,0.25)" }}
         >
           <div
-            className="w-[3px] h-[7px] rounded-full bg-[var(--color-cyan)] animate-bounce"
+            className="w-[3px] h-[7px] rounded-full bg-(--color-cyan) animate-bounce"
             style={{ animationDuration: "1.8s" }}
           />
         </div>
