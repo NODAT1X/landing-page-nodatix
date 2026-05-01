@@ -14,7 +14,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
+    const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -31,34 +31,49 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={[
-          "fixed top-0 inset-x-0 z-50",
-          "backdrop-blur-md border-b border-white/[0.05]",
-          "transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]",
-          scrolled
-            ? "py-3 bg-black/80 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.6)]"
-            : "py-5 bg-black/60",
-        ].join(" ")}
+        className="fixed top-0 inset-x-0 z-50 flex justify-center px-4 sm:px-6 pt-4"
+        style={{ animation: "navbar-enter 0.7s cubic-bezier(0.22,1,0.36,1) both" }}
       >
-        <div className="section-container flex items-center justify-between">
+        {/* Floating pill container */}
+        <div
+          className={[
+            "relative",
+            "flex items-center justify-between gap-3 sm:gap-4",
+            "w-full max-w-[280px] sm:max-w-[880px] px-4 sm:px-5 py-2.5 rounded-2xl",
+            "transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]",
+            scrolled
+              ? [
+                  "bg-[rgba(10,10,16,0.92)]",
+                  "backdrop-blur-2xl",
+                  "border border-white/10",
+                  "shadow-[0_8px_40px_-4px_rgba(0,0,0,0.75),0_0_0_0.5px_rgba(138,43,226,0.15),inset_0_1px_0_rgba(255,255,255,0.05)]",
+                ].join(" ")
+              : [
+                  "bg-[rgba(18,18,26,0.62)]",
+                  "backdrop-blur-xl",
+                  "border border-white/7",
+                  "shadow-[0_4px_24px_-4px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.03)]",
+                ].join(" "),
+          ].join(" ")}
+        >
           {/* ── Logo ─────────────────────────────────────────── */}
           <Link
             href="/"
-            className="group relative flex items-center gap-2.5 select-none"
+            className="group relative flex items-center gap-2 select-none shrink-0"
             aria-label="Nodatix — inicio"
           >
             <span
               className="glow-dot shrink-0 transition-transform duration-300 group-hover:scale-125"
               aria-hidden="true"
             />
-            <span className="font-clash text-[1.35rem] font-normal tracking-tight leading-none text-[var(--color-text-primary)]">
+            <span className="text-[1.2rem] font-bold tracking-tight leading-none text-(--color-text-primary)">
               Nodatix
             </span>
           </Link>
 
           {/* ── Desktop nav ──────────────────────────────────── */}
           <nav
-            className="hidden md:flex items-center gap-1"
+            className="hidden md:flex items-center gap-0.5"
             aria-label="Navegación principal"
           >
             {NAV_LINKS.map(({ label, href }) => (
@@ -66,12 +81,11 @@ export default function Navbar() {
                 key={href}
                 href={href}
                 className={[
-                  "relative px-4 py-2 text-sm font-semibold rounded-lg",
-                  "text-[var(--color-text-secondary)]",
+                  "relative px-3.5 py-1.5 text-sm font-medium rounded-lg",
+                  "text-(--color-text-secondary)",
                   "transition-colors duration-200",
-                  "hover:text-[var(--color-cyan)]",
-                  "hover:bg-white/[0.04]",
-                  "after:absolute after:inset-x-4 after:bottom-1.5 after:h-px",
+                  "hover:text-(--color-text-primary) hover:bg-white/5",
+                  "after:absolute after:inset-x-3.5 after:bottom-1 after:h-px",
                   "after:bg-glow-line after:scale-x-0 after:origin-left",
                   "after:transition-transform after:duration-300",
                   "hover:after:scale-x-100",
@@ -83,20 +97,23 @@ export default function Navbar() {
           </nav>
 
           {/* ── Desktop CTA ──────────────────────────────────── */}
-          <div className="hidden md:flex items-center">
-            <Link href="#contacto" className="btn-primary text-sm px-5 py-2.5">
+          <div className="hidden md:flex items-center shrink-0">
+            <Link href="#contacto" className="btn-primary text-sm px-5 py-2">
               Agendar llamada
             </Link>
           </div>
 
           {/* ── Hamburger (mobile) ───────────────────────────── */}
           <button
+            type="button"
             className={[
-              "md:hidden relative w-9 h-9 flex flex-col items-center justify-center gap-[5px]",
-              "rounded-lg transition-colors duration-200",
-              "hover:bg-white/[0.06] focus-visible:outline focus-visible:outline-2",
-              "focus-visible:outline-[var(--color-primary-blue)]",
+              "md:hidden relative flex flex-col items-center justify-center gap-[5px]",
+              "w-11 h-11 rounded-lg transition-colors duration-200",
+              "hover:bg-white/6",
+              "focus-visible:outline focus-visible:outline-2",
+              "focus-visible:outline-(--color-primary-blue)",
             ].join(" ")}
+            style={{ touchAction: "manipulation" }}
             onClick={() => setMenuOpen((v) => !v)}
             aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
             aria-expanded={menuOpen}
@@ -104,106 +121,103 @@ export default function Navbar() {
           >
             <span
               className={[
-                "block w-5 h-px rounded-full bg-[var(--color-text-primary)]",
+                "block w-5 h-px rounded-full bg-(--color-text-primary)",
                 "transition-all duration-300 origin-center",
-                menuOpen ? "translate-y-[6px] rotate-45" : "translate-y-0 rotate-0",
+                menuOpen ? "translate-y-1.5 rotate-45" : "translate-y-0 rotate-0",
               ].join(" ")}
             />
             <span
               className={[
-                "block w-5 h-px rounded-full bg-[var(--color-text-primary)]",
+                "block w-5 h-px rounded-full bg-(--color-text-primary)",
                 "transition-all duration-300",
                 menuOpen ? "opacity-0 scale-x-0" : "opacity-100 scale-x-100",
               ].join(" ")}
             />
             <span
               className={[
-                "block w-5 h-px rounded-full bg-[var(--color-text-primary)]",
+                "block w-5 h-px rounded-full bg-(--color-text-primary)",
                 "transition-all duration-300 origin-center",
-                menuOpen ? "-translate-y-[6px] -rotate-45" : "translate-y-0 rotate-0",
+                menuOpen ? "-translate-y-1.5 -rotate-45" : "translate-y-0 rotate-0",
               ].join(" ")}
             />
           </button>
+
+          {/* ── Mobile dropdown menu ─────────────────────────── */}
+          <div
+            id="mobile-menu"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Menú de navegación"
+            className={[
+              "md:hidden absolute top-full left-0 right-0 mt-2",
+              "rounded-2xl overflow-hidden",
+              "bg-[rgba(10,10,16,0.96)] backdrop-blur-2xl",
+              "border border-white/9",
+              "shadow-[0_12px_40px_-4px_rgba(0,0,0,0.8),inset_0_1px_0_rgba(255,255,255,0.05)]",
+              "transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]",
+              menuOpen
+                ? "opacity-100 translate-y-0 pointer-events-auto"
+                : "opacity-0 -translate-y-3 pointer-events-none",
+            ].join(" ")}
+          >
+            <nav className="flex flex-col p-3 gap-1" aria-label="Menú móvil">
+              {NAV_LINKS.map(({ label, href }, i) => (
+                <Link
+                  key={href}
+                  href={href}
+                  onClick={closeMenu}
+                  style={{
+                    transitionDelay: menuOpen ? `${i * 50}ms` : "0ms",
+                  }}
+                  className={[
+                    "group flex items-center justify-between",
+                    "px-4 py-3 rounded-xl text-sm font-medium",
+                    "text-(--color-text-secondary)",
+                    "hover:text-(--color-text-primary) hover:bg-white/5",
+                    "border border-transparent hover:border-white/6",
+                    "transition-all duration-200",
+                  ].join(" ")}
+                >
+                  {label}
+                  <svg
+                    className="w-4 h-4 opacity-30 -translate-x-1 group-hover:opacity-70 group-hover:translate-x-0 transition-all duration-200"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </Link>
+              ))}
+
+              <div className="divider-glow-line my-2" aria-hidden="true" />
+
+              <Link
+                href="#contacto"
+                onClick={closeMenu}
+                className="btn-primary w-full text-center text-sm py-2.5"
+              >
+                Agendar llamada
+              </Link>
+            </nav>
+          </div>
         </div>
       </header>
 
-      {/* ── Mobile menu overlay ────────────────────────────────── */}
-      <div
-        id="mobile-menu"
-        role="dialog"
-        aria-modal="true"
-        aria-label="Menú de navegación"
-        className={[
-          "fixed inset-0 z-40 md:hidden",
-          "transition-opacity duration-300",
-          menuOpen
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none",
-        ].join(" ")}
-      >
-        {/* backdrop */}
+      {/* Mobile backdrop — only mounted when menu is open */}
+      {menuOpen && (
         <div
-          className="absolute inset-0 bg-[rgba(18,18,18,0.85)] backdrop-blur-xl"
+          className="fixed inset-0 z-40 md:hidden bg-black/40 backdrop-blur-sm"
           onClick={closeMenu}
           aria-hidden="true"
         />
-
-        {/* panel */}
-        <nav
-          className={[
-            "absolute top-0 inset-x-0",
-            "bg-[var(--color-surface)] border-b border-white/[0.07]",
-            "px-6 pt-24 pb-8 flex flex-col gap-1",
-            "transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]",
-            menuOpen ? "translate-y-0" : "-translate-y-4",
-          ].join(" ")}
-          aria-label="Menú móvil"
-        >
-          {NAV_LINKS.map(({ label, href }, i) => (
-            <Link
-              key={href}
-              href={href}
-              onClick={closeMenu}
-              style={{ animationDelay: `${i * 60}ms` }}
-              className={[
-                "group flex items-center justify-between",
-                "px-4 py-3.5 rounded-xl text-base font-semibold",
-                "text-[var(--color-text-secondary)]",
-                "hover:text-[var(--color-cyan)] hover:bg-white/[0.05]",
-                "border border-transparent hover:border-white/[0.06]",
-                "transition-all duration-200",
-                menuOpen ? "animate-fade-up" : "",
-              ].join(" ")}
-            >
-              {label}
-              <svg
-                className="w-4 h-4 opacity-30 -translate-x-1 group-hover:opacity-70 group-hover:translate-x-0 transition-all duration-200"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </Link>
-          ))}
-
-          <div className="divider-glow-line my-3" aria-hidden="true" />
-
-          <Link
-            href="#contacto"
-            onClick={closeMenu}
-            className="btn-primary w-full text-center text-sm py-3 mt-1"
-          >
-            Agendar llamada
-          </Link>
-        </nav>
-      </div>
+      )}
     </>
   );
 }
