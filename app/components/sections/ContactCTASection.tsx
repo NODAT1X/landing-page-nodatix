@@ -1,11 +1,114 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 type FormState = { name: string; email: string; details: string };
 
+const inputCls = [
+  "w-full rounded-lg border border-white/10 bg-[#060810] px-4 py-3 text-sm",
+  "text-(--color-text-primary) placeholder-(--color-text-disabled) outline-none",
+  "transition-all duration-200",
+  "focus:border-white/[0.22] focus:bg-[#060810] focus:shadow-[0_0_0_2px_rgba(255,255,255,0.04)]",
+].join(" ");
+
+const labelCls =
+  "text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-(--color-text-secondary)";
+
+function FormBody({
+  idPrefix,
+  form,
+  onChange,
+  onSubmit,
+}: {
+  idPrefix: string;
+  form: FormState;
+  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onSubmit: (e: React.FormEvent) => void;
+}) {
+  return (
+    <form onSubmit={onSubmit} noValidate className="flex flex-col gap-5">
+      <div className="flex flex-col gap-2">
+        <label htmlFor={`${idPrefix}-name`} className={labelCls}>
+          Nombre
+        </label>
+        <input
+          id={`${idPrefix}-name`}
+          name="name"
+          type="text"
+          autoComplete="name"
+          required
+          value={form.name}
+          onChange={onChange}
+          placeholder="Tu nombre completo"
+          className={inputCls}
+        />
+      </div>
+
+      <div className="flex flex-col gap-2">
+        <label htmlFor={`${idPrefix}-email`} className={labelCls}>
+          Correo Corporativo
+        </label>
+        <input
+          id={`${idPrefix}-email`}
+          name="email"
+          type="email"
+          autoComplete="email"
+          required
+          value={form.email}
+          onChange={onChange}
+          placeholder="tu@empresa.com"
+          className={inputCls}
+        />
+      </div>
+
+      <div className="flex flex-col gap-2">
+        <label htmlFor={`${idPrefix}-details`} className={labelCls}>
+          Detalles del Proyecto
+        </label>
+        <textarea
+          id={`${idPrefix}-details`}
+          name="details"
+          rows={4}
+          required
+          value={form.details}
+          onChange={onChange}
+          placeholder="¿Qué procesos quieres digitalizar o automatizar? Describe brevemente tu operación actual."
+          className={`${inputCls} resize-none`}
+        />
+      </div>
+
+      <button
+        type="submit"
+        className="btn-primary mt-1 w-full py-3.5 text-sm font-semibold tracking-wide"
+        style={{
+          boxShadow: "0 2px 12px rgba(0,0,0,0.5)",
+        }}
+      >
+        Enviar solicitud
+        <svg
+          viewBox="0 0 16 16"
+          className="h-4 w-4"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.75"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M3 8h10M9 4l4 4-4 4" />
+        </svg>
+      </button>
+
+      <p className="text-center text-[0.7rem] text-(--color-text-disabled)">
+        Sin spam. Respuesta en menos de 24 h.
+      </p>
+    </form>
+  );
+}
+
 export default function ContactCTASection() {
   const [form, setForm] = useState<FormState>({ name: "", email: "", details: "" });
+  const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -16,6 +119,13 @@ export default function ContactCTASection() {
     // TODO: connect backend / form service
   };
 
+  useEffect(() => {
+    document.body.style.overflow = isSheetOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isSheetOpen]);
+
   return (
     <section
       id="contacto"
@@ -23,71 +133,40 @@ export default function ContactCTASection() {
       className="relative overflow-hidden py-24 md:py-32"
       style={{ background: "#0C0C10" }}
     >
-      {/* ── Ambient backdrop glows ───────────────────────────────── */}
+      {/* ── Subtle vignette only — no color glow ────────────────────── */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10"
         style={{
           background:
-            "radial-gradient(ellipse 90% 70% at 50% 55%, #007BFF1A 0%, #8A2BE212 45%, transparent 75%)",
-        }}
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -left-32 -top-32 -z-10 h-[28rem] w-[28rem] rounded-full"
-        style={{
-          background: "radial-gradient(circle, #007BFF2A 0%, transparent 70%)",
-          filter: "blur(72px)",
-        }}
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -bottom-20 right-0 -z-10 h-80 w-80 rounded-full"
-        style={{
-          background: "radial-gradient(circle, #8A2BE228 0%, transparent 70%)",
-          filter: "blur(64px)",
+            "radial-gradient(ellipse 80% 60% at 50% 100%, rgba(255,255,255,0.02) 0%, transparent 70%)",
         }}
       />
 
       <div className="section-container">
-        {/* ── Card ─────────────────────────────────────────────────── */}
+        <div className="divider-glow-line mb-16 md:mb-20" aria-hidden="true" />
+
+        {/* ── DESKTOP: Two-column card ─────────────────────────────── */}
         <div
-          className="relative isolate overflow-hidden rounded-2xl border border-white/[0.10] px-6 py-12 md:px-14 md:py-16"
+          className="relative isolate hidden overflow-hidden rounded-2xl border border-white/[0.11] px-6 py-12 md:block md:px-14 md:py-16"
           style={{
-            background: "linear-gradient(145deg, #141420CC 0%, #18182ACC 100%)",
-            backdropFilter: "blur(24px)",
+            background: "#13151C",
             boxShadow:
-              "0 0 0 1px rgba(255,255,255,0.05) inset, 0 40px 120px -32px rgba(0,123,255,0.45), 0 8px 40px -16px rgba(138,43,226,0.25)",
+              "0 0 0 1px rgba(255,255,255,0.05) inset, 0 8px 48px rgba(0,0,0,0.65)",
           }}
         >
-          {/* Inner gradient wash */}
+          {/* Top hairline */}
           <div
             aria-hidden="true"
-            className="bg-tech-gradient absolute inset-0 -z-10 opacity-[0.14]"
-          />
-          {/* Top accent line */}
-          <div
-            aria-hidden="true"
-            className="bg-tech-gradient absolute inset-x-8 top-0 h-px opacity-100 md:inset-x-14"
-          />
-          {/* Corner glow top-left */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -left-16 -top-16 -z-10 h-56 w-56 rounded-full"
-            style={{
-              background: "radial-gradient(circle, #007BFF30 0%, transparent 70%)",
-              filter: "blur(40px)",
-            }}
+            className="absolute inset-x-0 top-0 h-px bg-white/[0.10]"
           />
 
-          {/* ── Two-column grid ──────────────────────────────────────── */}
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-20">
 
-            {/* ── LEFT: Copy ───────────────────────────────────────── */}
+            {/* LEFT: Copy */}
             <div className="flex flex-col gap-7">
-              <span className="badge badge-cyan self-start">
-                <span className="glow-dot w-1.5 h-1.5" aria-hidden="true" />
-                Agenda tu diagnóstico
+              <span className="self-start inline-flex items-center rounded-full border border-white/10 bg-white/[0.05] px-3 py-1 text-xs font-medium text-(--color-text-secondary)">
+                Consulta inicial
               </span>
 
               <div className="flex flex-col gap-4">
@@ -95,28 +174,30 @@ export default function ContactCTASection() {
                   id="contact-cta-heading"
                   className="text-[clamp(1.9rem,3.5vw,3.1rem)] font-bold leading-tight tracking-tight text-[#F8F9FA]"
                 >
-                  ¿Listo para escalar tu{" "}
-                  <span className="text-tech-gradient">operación?</span>
+                  Convierte tu proceso en{" "}
+                  <span className="text-tech-gradient">un sistema real</span>
                 </h2>
-                <p className="max-w-[48ch] text-sm leading-relaxed text-[var(--color-text-secondary)] md:text-base">
-                  Convierte tus procesos críticos en una plataforma robusta,
-                  clara y lista para crecer. Sin demos genéricas — solo
-                  soluciones construidas para tu negocio.
+                <p className="max-w-[48ch] text-sm leading-relaxed text-(--color-text-secondary) md:text-base">
+                  Muchas empresas operan con hojas de cálculo, herramientas
+                  separadas y procesos manuales. Diseñamos sistemas que
+                  centralizan, automatizan y escalan su operación.
                 </p>
               </div>
 
-              {/* Trust micro-signals */}
-              <ul className="flex flex-col gap-3" aria-label="Ventajas del diagnóstico">
+              <ul className="flex flex-col gap-3" aria-label="Qué resolvemos">
                 {[
-                  "Diagnóstico inicial sin costo",
-                  "Propuesta en menos de 48 h",
-                  "Sin contratos de permanencia",
+                  "Centralización de datos y procesos",
+                  "Automatización de tareas manuales",
+                  "Dashboards para control operativo",
                 ].map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-sm text-[var(--color-text-secondary)]">
+                  <li
+                    key={item}
+                    className="flex items-center gap-3 text-sm text-(--color-text-secondary)"
+                  >
                     <span
                       aria-hidden="true"
                       className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full"
-                      style={{ background: "rgba(0,123,255,0.15)" }}
+                      style={{ background: "rgba(255,255,255,0.06)" }}
                     >
                       <svg
                         viewBox="0 0 12 12"
@@ -137,109 +218,149 @@ export default function ContactCTASection() {
               </ul>
             </div>
 
-            {/* ── RIGHT: Inline Form ───────────────────────────────── */}
+            {/* RIGHT: Form */}
             <div
-              className="rounded-xl border border-white/[0.08] p-6 md:p-8"
+              className="rounded-xl border border-white/7 p-6 md:p-8"
               style={{
-                background: "rgba(10, 10, 16, 0.65)",
-                backdropFilter: "blur(16px)",
-                boxShadow: "inset 0 1px 0 rgba(255,255,255,0.05)",
+                background: "#080A0F",
+                boxShadow:
+                  "inset 0 0 0 1px rgba(255,255,255,0.07)",
               }}
             >
-              <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-5">
-
-                {/* Name */}
-                <div className="flex flex-col gap-2">
-                  <label
-                    htmlFor="cta-name"
-                    className="text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-[var(--color-text-secondary)]"
-                  >
-                    Nombre
-                  </label>
-                  <input
-                    id="cta-name"
-                    name="name"
-                    type="text"
-                    autoComplete="name"
-                    required
-                    value={form.name}
-                    onChange={handleChange}
-                    placeholder="Tu nombre completo"
-                    className="w-full rounded-lg border border-white/[0.08] bg-white/[0.04] px-4 py-3 text-sm text-[var(--color-text-primary)] placeholder-[var(--color-text-disabled)] outline-none transition-all duration-200 focus:border-[#007BFF55] focus:bg-[#007BFF09] focus:shadow-[0_0_0_3px_rgba(0,123,255,0.12)]"
-                  />
-                </div>
-
-                {/* Corporate email */}
-                <div className="flex flex-col gap-2">
-                  <label
-                    htmlFor="cta-email"
-                    className="text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-[var(--color-text-secondary)]"
-                  >
-                    Correo Corporativo
-                  </label>
-                  <input
-                    id="cta-email"
-                    name="email"
-                    type="email"
-                    autoComplete="email"
-                    required
-                    value={form.email}
-                    onChange={handleChange}
-                    placeholder="tu@empresa.com"
-                    className="w-full rounded-lg border border-white/[0.08] bg-white/[0.04] px-4 py-3 text-sm text-[var(--color-text-primary)] placeholder-[var(--color-text-disabled)] outline-none transition-all duration-200 focus:border-[#007BFF55] focus:bg-[#007BFF09] focus:shadow-[0_0_0_3px_rgba(0,123,255,0.12)]"
-                  />
-                </div>
-
-                {/* Project details */}
-                <div className="flex flex-col gap-2">
-                  <label
-                    htmlFor="cta-details"
-                    className="text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-[var(--color-text-secondary)]"
-                  >
-                    Detalles del Proyecto
-                  </label>
-                  <textarea
-                    id="cta-details"
-                    name="details"
-                    rows={4}
-                    required
-                    value={form.details}
-                    onChange={handleChange}
-                    placeholder="Cuéntanos brevemente sobre tu negocio y qué quieres construir…"
-                    className="w-full resize-none rounded-lg border border-white/[0.08] bg-white/[0.04] px-4 py-3 text-sm text-[var(--color-text-primary)] placeholder-[var(--color-text-disabled)] outline-none transition-all duration-200 focus:border-[#007BFF55] focus:bg-[#007BFF09] focus:shadow-[0_0_0_3px_rgba(0,123,255,0.12)]"
-                  />
-                </div>
-
-                {/* Submit — imponente */}
-                <button
-                  type="submit"
-                  className="btn-primary mt-1 w-full py-4 text-sm font-semibold tracking-wide hover:scale-105"
-                  style={{
-                    boxShadow:
-                      "0 4px 28px -6px rgba(0,123,255,0.7), 0 2px 8px rgba(0,0,0,0.5)",
-                  }}
-                >
-                  Solicitar diagnóstico gratuito
-                  <svg
-                    viewBox="0 0 16 16"
-                    className="h-4 w-4"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.75"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden="true"
-                  >
-                    <path d="M3 8h10M9 4l4 4-4 4" />
-                  </svg>
-                </button>
-
-                <p className="text-center text-[0.7rem] text-[var(--color-text-disabled)]">
-                  Sin spam. Respondemos en menos de 24 h.
-                </p>
-              </form>
+              <FormBody
+                idPrefix="cta"
+                form={form}
+                onChange={handleChange}
+                onSubmit={handleSubmit}
+              />
             </div>
           </div>
+        </div>
+
+        {/* ── MOBILE: Compact CTA ──────────────────────────────────── */}
+        <div className="flex flex-col items-center gap-6 text-center md:hidden">
+          <span className="inline-flex items-center rounded-full border border-white/10 bg-white/[0.05] px-3 py-1 text-xs font-medium text-(--color-text-secondary)">
+            Consulta inicial
+          </span>
+
+          <h2 className="text-[clamp(1.7rem,7vw,2.4rem)] font-bold leading-tight tracking-tight text-[#F8F9FA]">
+            Convierte tu proceso en{" "}
+            <span className="text-tech-gradient">un sistema real</span>
+          </h2>
+
+          <p className="max-w-[36ch] text-sm leading-relaxed text-(--color-text-secondary)">
+            Muchas empresas operan con hojas de cálculo y herramientas
+            separadas. Diseñamos el sistema que centraliza tu operación.
+          </p>
+
+          <button
+            type="button"
+            onClick={() => setIsSheetOpen(true)}
+            className="btn-primary w-full max-w-xs py-4 text-sm font-semibold tracking-wide"
+            style={{
+              boxShadow:
+                "0 4px 14px -4px rgba(0,123,255,0.25), 0 2px 8px rgba(0,0,0,0.4)",
+            }}
+          >
+            Cuéntanos tu proyecto
+            <svg
+              viewBox="0 0 16 16"
+              className="h-4 w-4"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.75"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M3 8h10M9 4l4 4-4 4" />
+            </svg>
+          </button>
+
+          <p className="text-[0.7rem] text-(--color-text-disabled)">
+            Te respondemos a instante
+          </p>
+        </div>
+      </div>
+
+      {/* ── MOBILE BOTTOM SHEET ──────────────────────────────────────── */}
+
+      {/* Backdrop */}
+      <div
+        className={[
+          "fixed inset-0 z-60 md:hidden",
+          "bg-black/55 backdrop-blur-[2px]",
+          "transition-opacity duration-300",
+          isSheetOpen
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none",
+        ].join(" ")}
+        onClick={() => setIsSheetOpen(false)}
+        aria-hidden="true"
+      />
+
+      {/* Sheet */}
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-label="Formulario de diagnóstico"
+        className={[
+          "fixed bottom-0 left-0 right-0 z-61 md:hidden",
+          "max-h-[88vh] overflow-y-auto overscroll-contain",
+          "rounded-t-2xl border-t border-x border-white/10",
+          "transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]",
+          isSheetOpen ? "translate-y-0" : "translate-y-full",
+        ].join(" ")}
+        style={{
+          background: "linear-gradient(180deg, #161622 0%, #111118 100%)",
+          boxShadow: "0 -8px 40px -4px rgba(0,0,0,0.75)",
+        }}
+      >
+        {/* Sheet header */}
+        <div
+          className="sticky top-0 z-10 flex items-start justify-between gap-4 px-6 pb-4 pt-5"
+          style={{
+            background:
+              "linear-gradient(180deg, #161622 80%, transparent 100%)",
+          }}
+        >
+          <div className="flex flex-col gap-1">
+            <h3 className="text-base font-semibold text-(--color-text-primary)">
+              Cuéntanos tu proyecto
+            </h3>
+            <p className="text-xs text-(--color-text-secondary)">
+              Describe tu operación y te enviamos una propuesta concreta.
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={() => setIsSheetOpen(false)}
+            aria-label="Cerrar formulario"
+            className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-(--color-text-secondary) transition-colors duration-200 hover:bg-white/6 hover:text-(--color-text-primary)"
+          >
+            <svg
+              viewBox="0 0 16 16"
+              className="h-4 w-4"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.75"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M3 3l10 10M13 3 3 13" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Sheet form */}
+        <div className="px-6 pb-8">
+          <FormBody
+            idPrefix="sheet"
+            form={form}
+            onChange={handleChange}
+            onSubmit={handleSubmit}
+          />
         </div>
       </div>
     </section>

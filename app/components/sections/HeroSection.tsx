@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function HeroSection() {
   return (
     <section
-      className="relative isolate min-h-[100svh] flex flex-col items-center justify-center overflow-hidden"
+      className="relative isolate min-h-dvh flex flex-col items-center justify-center overflow-hidden"
       aria-labelledby="hero-heading"
     >
       {/* ── Ambient background glows ──────────────────────────── */}
@@ -23,9 +23,9 @@ export default function HeroSection() {
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] h-[300px] rounded-full bg-[#00F5FF] opacity-[0.04] blur-[100px]" />
 
         {/* cyan accent orb — left, heading zone */}
-        <div className="absolute top-[20%] left-[5%] w-[380px] h-[320px] rounded-full bg-[var(--color-cyan)] opacity-10 blur-3xl" />
+        <div className="absolute top-[20%] left-[5%] w-[380px] h-[320px] rounded-full bg-(--color-cyan) opacity-10 blur-3xl" />
         {/* violet accent orb — right, heading zone */}
-        <div className="absolute top-[15%] right-[5%] w-[340px] h-[380px] rounded-full bg-[var(--color-violet)] opacity-10 blur-3xl" />
+        <div className="absolute top-[15%] right-[5%] w-[340px] h-[380px] rounded-full bg-(--color-violet) opacity-10 blur-3xl" />
 
         {/* fine grid pattern */}
         <div
@@ -40,9 +40,9 @@ export default function HeroSection() {
         />
 
         {/* top gradient fade */}
-        <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-[#121212] to-transparent" />
+        <div className="absolute top-0 inset-x-0 h-40 bg-linear-to-b from-[#121212] to-transparent" />
         {/* bottom gradient fade */}
-        <div className="absolute bottom-0 inset-x-0 h-48 bg-gradient-to-t from-[#121212] to-transparent" />
+        <div className="absolute bottom-0 inset-x-0 h-48 bg-linear-to-t from-[#121212] to-transparent" />
       </div>
 
       {/* ── Content ───────────────────────────────────────────── */}
@@ -69,7 +69,7 @@ export default function HeroSection() {
 
         {/* H2 / subtitle */}
         <p
-          className="animate-fade-up max-w-[52ch] text-[clamp(1rem,1.8vw,1.2rem)] leading-relaxed text-[var(--color-text-secondary)]"
+          className="animate-fade-up max-w-[52ch] text-[clamp(1rem,1.8vw,1.2rem)] leading-relaxed text-(--color-text-secondary)"
           style={{ animationDelay: "160ms" }}
         >
           Convertimos tus procesos manuales y herramientas desconectadas en
@@ -97,7 +97,7 @@ export default function HeroSection() {
 
         {/* social proof strip */}
         <p
-          className="animate-fade-up text-xs text-[var(--color-text-disabled)] tracking-wide"
+          className="animate-fade-up text-xs text-(--color-text-disabled) tracking-wide"
           style={{ animationDelay: "300ms" }}
         >
           Sin compromisos · Respuesta en menos de 24 h
@@ -119,7 +119,7 @@ export default function HeroSection() {
               <div className="ml-4 flex-1 flex justify-center">
                 <div className="flex items-center gap-2 px-3 py-1 rounded-md bg-white/[0.04] border border-white/[0.06] w-44">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#00C48C]" />
-                  <span className="text-[10px] text-[var(--color-text-disabled)] font-mono tracking-wider truncate">
+                  <span className="text-[10px] text-(--color-text-disabled) font-mono tracking-wider truncate">
                     app.nodatix.io
                   </span>
                 </div>
@@ -148,8 +148,8 @@ export default function HeroSection() {
                     key={i}
                     className={`flex items-center gap-2 px-2 py-1.5 rounded-md ${active ? "bg-[#007BFF14] border border-[#007BFF20]" : ""}`}
                   >
-                    <div className={`w-2.5 h-2.5 rounded-sm ${active ? "bg-[var(--color-primary-blue)] opacity-70" : "bg-white/[0.08]"}`} />
-                    <div className={`h-1.5 ${w} rounded-full ${active ? "bg-[var(--color-primary-blue)] opacity-50" : "bg-white/[0.08]"}`} />
+                    <div className={`w-2.5 h-2.5 rounded-sm ${active ? "bg-(--color-primary-blue) opacity-70" : "bg-white/[0.08]"}`} />
+                    <div className={`h-1.5 ${w} rounded-full ${active ? "bg-(--color-primary-blue) opacity-50" : "bg-white/[0.08]"}`} />
                   </div>
                 ))}
                 <div className="flex-1" />
@@ -180,9 +180,9 @@ export default function HeroSection() {
                 {/* KPI cards */}
                 <div className="grid grid-cols-3 gap-3">
                   {[
-                    { color: "bg-[var(--color-primary-blue)]", val: "w-14", label: "w-10" },
-                    { color: "bg-[var(--color-violet)]",       val: "w-12", label: "w-8"  },
-                    { color: "bg-[var(--color-cyan)]",         val: "w-16", label: "w-12" },
+                    { color: "bg-(--color-primary-blue)", val: "w-14", label: "w-10" },
+                    { color: "bg-(--color-violet)",       val: "w-12", label: "w-8"  },
+                    { color: "bg-(--color-cyan)",         val: "w-16", label: "w-12" },
                   ].map(({ color, val, label }, i) => (
                     <div
                       key={i}
@@ -249,7 +249,7 @@ export default function HeroSection() {
         >
           {/* scroll wheel — bounces gently in brand cyan */}
           <div
-            className="w-[3px] h-[7px] rounded-full bg-[var(--color-cyan)] animate-bounce"
+            className="w-[3px] h-[7px] rounded-full bg-(--color-cyan) animate-bounce"
             style={{ animationDuration: "1.8s" }}
           />
         </div>
