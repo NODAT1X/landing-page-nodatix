@@ -1,14 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Syne } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
-// Update the import path if Navbar is in a different location, e.g.:
-// Update the import path below to the actual location of Navbar
-// For example, if Navbar is in 'app/components/Navbar', use:
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
-// If it's in 'components/Navbar' at the project root, use:
-// import Navbar from "@/components/Navbar";
 
 /* ── Fonts ──────────────────────────────────────────────────────── */
 const geistSans = Geist({
@@ -28,6 +24,34 @@ const syne = Syne({
   variable: "--font-display",
   subsets: ["latin"],
   weight: ["700", "800"],
+  display: "swap",
+});
+
+/* Clash Display — geometric premium display font (B2B headings) */
+const clashDisplay = localFont({
+  src: [
+    {
+      path: "../public/fonts/ClashDisplay-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/ClashDisplay-Medium.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/ClashDisplay-Semibold.woff2",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/ClashDisplay-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-clash",
   display: "swap",
 });
 
@@ -84,7 +108,7 @@ export default function RootLayout({
   return (
     <html lang="es" className="dark" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${syne.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${syne.variable} ${clashDisplay.variable} antialiased`}
       >
         <Navbar />
 

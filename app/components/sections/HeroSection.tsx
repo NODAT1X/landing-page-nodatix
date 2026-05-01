@@ -62,7 +62,7 @@ export default function HeroSection() {
           {/* H1 */}
           <h1
             id="hero-heading"
-            className="font-clash animate-fade-up text-[clamp(2.6rem,5vw,4.5rem)] font-light leading-[1.06] tracking-tight text-[#F8F9FA]"
+            className="font-clash animate-fade-up text-[clamp(2.6rem,5vw,4.5rem)] font-semibold leading-[1.06] tracking-tight text-[#F8F9FA]"
             style={{ animationDelay: "80ms" }}
           >
             Construimos Software{" "}
@@ -113,22 +113,16 @@ export default function HeroSection() {
           style={{ animationDelay: "200ms" }}
           aria-hidden="true"
         >
-          {/* cyan aura — simulates light from cubos bouncing on the wall */}
-          <div className="absolute inset-[5%] rounded-full bg-[#00F5FF] opacity-[0.20] blur-[90px] pointer-events-none" />
+          {/* cyan accent — moved to bottom-right corner, off the laptop chassis */}
+          <div className="absolute bottom-[5%] right-[5%] w-[100px] h-[100px] rounded-full bg-[#00F5FF] opacity-[0.08] blur-[55px] pointer-events-none" />   
 
-          {/*
-            contrast-125 + brightness-90: crushes near-black pixels to
-            true black (#000), making mix-blend-screen fully transparent
-            at the image edges — no gray box artifact.
-            maskImage: soft radial vignette blends the image into the bg.
-          */}
           <Image
-            src="/images/cubos-hero.png"
+            src="/images/laptop.png"
             alt=""
             width={600}
             height={600}
             priority
-            className="relative w-full max-w-[480px] lg:max-w-[540px] h-auto object-contain mix-blend-screen animate-float contrast-125 brightness-90"
+            className="relative w-full max-w-[530px] lg:max-w-[600px] h-auto object-contain mix-blend-screen animate-float contrast-125 brightness-110 saturate-110"
             style={{
               WebkitMaskImage:
                 "radial-gradient(ellipse 85% 85% at 50% 50%, black 50%, transparent 100%)",
