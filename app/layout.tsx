@@ -112,11 +112,7 @@ export default function RootLayout({
       >
         <Navbar />
 
-        {/*
-          pt-[72px] compensates for the sticky navbar height.
-          Adjust the value if you change --navbar-height.
-        */}
-        <main className="pt-20">{children}</main>
+        <main>{children}</main>
         <Footer />
         <WhatsAppButton />
       </body>

@@ -29,10 +29,20 @@ function LinkedInIcon() {
   );
 }
 
-function XIcon() {
+function FacebookIcon() {
   return (
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+    </svg>
+  );
+}
+
+function InstagramIcon() {
+  return (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
     </svg>
   );
 }
@@ -106,8 +116,12 @@ function SocialRow({ className }: { className?: string }) {
       <SocialLink href="https://linkedin.com/company/nodatix" label="LinkedIn de Nodatix">
         <LinkedInIcon />
       </SocialLink>
-      <SocialLink href="https://x.com/nodatix" label="X de Nodatix">
-        <XIcon />
+      <SocialLink href="https://www.facebook.com/share/1DwYrUaL8p/" label="Facebook de Nodatix">
+        <FacebookIcon />
+      </SocialLink>
+      {/* Instagram URL pendiente — reemplaza href="#" con la URL real */}
+      <SocialLink href="#" label="Instagram de Nodatix">
+        <InstagramIcon />
       </SocialLink>
     </div>
   );
@@ -189,18 +203,18 @@ export default function Footer() {
             <ul className="flex flex-col gap-3 items-center sm:items-start">
               <li>
                 <a
-                  href="mailto:hola@nodatix.com"
+                  href="mailto:contact.nodatix@gmail.com"
                   className={`${linkClass} flex items-center gap-2`}
                 >
                   <span className="text-(--color-text-disabled) shrink-0" aria-hidden="true">
                     <MailIcon />
                   </span>
-                  hola@nodatix.com
+                  contact.nodatix@gmail.com
                 </a>
               </li>
               <li>
                 <a
-                  href="https://wa.me/521XXXXXXXXXX"
+                  href="https://wa.me/+52 1 55 2935 7876"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`${linkClass} flex items-center gap-2`}
@@ -208,7 +222,7 @@ export default function Footer() {
                   <span className="text-(--color-text-disabled) shrink-0" aria-hidden="true">
                     <WhatsAppIcon />
                   </span>
-                  WhatsApp Business
+                  +52 1 5529357876
                 </a>
               </li>
             </ul>

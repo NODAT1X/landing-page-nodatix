@@ -79,7 +79,7 @@ function FormBody({
 
       <button
         type="submit"
-        className="btn-primary mt-1 w-full py-3.5 text-sm font-semibold tracking-wide"
+        className="btn-primary btn-light text-sm font-semibold tracking-wide"
         style={{
           boxShadow: "0 2px 12px rgba(0,0,0,0.5)",
         }}
@@ -256,10 +256,9 @@ export default function ContactCTASection() {
           <button
             type="button"
             onClick={() => setIsSheetOpen(true)}
-            className="btn-primary w-full max-w-xs py-4 text-sm font-semibold tracking-wide"
+            className="btn-primary btn-light w-full max-w-xs py-4 text-sm font-semibold tracking-wide"
             style={{
-              boxShadow:
-                "0 4px 14px -4px rgba(0,123,255,0.25), 0 2px 8px rgba(0,0,0,0.4)",
+              boxShadow: "0 2px 8px rgba(0,0,0,0.4)",
             }}
           >
             Cuéntanos tu proyecto

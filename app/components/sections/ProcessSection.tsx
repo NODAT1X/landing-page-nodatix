@@ -227,7 +227,7 @@ export default function ProcessSection() {
             </div>
             <a
               href="#contacto"
-              className="btn-primary w-full shrink-0 text-sm px-5 py-2.5 sm:w-auto"
+              className="btn-primary btn-light text-sm px-5 py-2.5 sm:w-auto"
             >
               Agendar diagnóstico
             </a>

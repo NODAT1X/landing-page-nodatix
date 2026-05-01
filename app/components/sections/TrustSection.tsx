@@ -10,9 +10,11 @@ interface Founder {
   initials: string;
   role: string;
   description: string;
+  linkedIn?: string; // Set when LinkedIn URLs are available
+  imageSrc?: string; // Set when photos are ready; replaces initials avatar
 }
 
-/* Update initials and roles with real team data when available */
+/* Update initials, roles, linkedIn and imageSrc with real team data when available */
 const FOUNDERS: Founder[] = [
   {
     initials: "J.S.",
@@ -61,7 +63,7 @@ const CHECKINS = [
 function GymDashboardMockup() {
   return (
     <div
-      className="relative overflow-hidden rounded-xl"
+      className="relative overflow-hidden rounded-xl transition-transform duration-500 hover:-translate-y-1"
       style={{
         background:
           "linear-gradient(160deg, #1E1E24 0%, #17171D 60%, #121218 100%)",
@@ -70,33 +72,33 @@ function GymDashboardMockup() {
           "0 0 0 1px rgba(255,255,255,0.03), 0 24px 60px -12px rgba(0,0,0,0.65), 0 0 40px -15px rgba(0,123,255,0.10)",
       }}
     >
-      {/* App chrome */}
+      {/* Browser chrome */}
       <div
-        className="flex items-center gap-3 border-b border-white/[0.06] px-4 py-2.5"
-        style={{ background: "rgba(255,255,255,0.015)" }}
+        className="flex items-center gap-2 border-b border-white/[0.06] px-4 py-2"
+        style={{ background: "rgba(255,255,255,0.02)" }}
       >
-        <div className="flex shrink-0 gap-1.5">
-          <span className="h-2 w-2 rounded-full bg-[#FF5F56] opacity-55" />
-          <span className="h-2 w-2 rounded-full bg-[#FEBC2E] opacity-55" />
-          <span className="h-2 w-2 rounded-full bg-[#28C840] opacity-55" />
+        {/* macOS traffic lights */}
+        <div className="flex shrink-0 gap-1.5 mr-1">
+          <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F56] opacity-60" />
+          <span className="h-2.5 w-2.5 rounded-full bg-[#FEBC2E] opacity-60" />
+          <span className="h-2.5 w-2.5 rounded-full bg-[#28C840] opacity-60" />
         </div>
 
-        <div className="mr-2 flex items-center gap-1.5">
-          <div
-            className="h-3.5 w-3.5 rounded-sm"
-            style={{
-              background: "linear-gradient(135deg, #007BFF 0%, #8A2BE2 100%)",
-            }}
-          />
-          <span className="text-xs font-semibold text-white/60">Nodatix</span>
+        {/* URL bar */}
+        <div className="mx-3 flex flex-1 max-w-[220px] items-center gap-1.5 rounded-md border border-white/[0.06] bg-white/[0.04] px-3 py-1">
+          <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#00C48C]" />
+          <span className="truncate font-mono text-[10px] text-white/40">
+            app.nodatix.io/dashboard
+          </span>
         </div>
 
-        <div className="ml-auto flex gap-3 text-xs font-semibold text-white/40">
-          <span className="rounded border border-white/10 bg-white/5 px-2 py-1">
+        {/* Tab labels */}
+        <div className="ml-auto hidden gap-2 text-[11px] font-medium text-white/40 sm:flex">
+          <span className="rounded border border-white/10 bg-white/[0.05] px-2 py-0.5 text-white/60">
             Dashboard
           </span>
-          <span className="px-2 py-1">Miembros</span>
-          <span className="px-2 py-1">Facturación</span>
+          <span className="px-2 py-0.5">Miembros</span>
+          <span className="hidden px-2 py-0.5 md:inline">Facturación</span>
         </div>
       </div>
 
@@ -158,10 +160,7 @@ function GymDashboardMockup() {
                 <div className="h-2 overflow-hidden rounded-full bg-white/10">
                   <div
                     className="h-full rounded-full"
-                    style={{
-                      width: `${type.pct}%`,
-                      background: type.color,
-                    }}
+                    style={{ width: `${type.pct}%`, background: type.color }}
                   />
                 </div>
               </div>
@@ -210,7 +209,8 @@ export default function TrustSection() {
     >
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-10">
-          {/* Left side: SaaS case mockup */}
+
+          {/* ── Left: SaaS case mockup ──────────────────────────── */}
           <div className="lg:col-span-7">
             <div className="mb-6">
               <span className="inline-flex rounded-full border border-[#00F5FF]/20 bg-[#00F5FF]/10 px-3 py-1 text-xs font-semibold text-[#00F5FF]">
@@ -235,7 +235,7 @@ export default function TrustSection() {
             <GymDashboardMockup />
           </div>
 
-          {/* Right side: Team trust */}
+          {/* ── Right: Team trust ───────────────────────────────── */}
           <div className="lg:col-span-5">
             <span className="inline-flex rounded-full border border-[#007BFF]/20 bg-[#007BFF]/10 px-3 py-1 text-xs font-semibold text-[#00F5FF]">
               Equipo fundador
@@ -255,17 +255,49 @@ export default function TrustSection() {
               {FOUNDERS.map((founder) => (
                 <div
                   key={founder.initials}
-                  className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 backdrop-blur-sm"
+                  className="group rounded-2xl border border-white/10 bg-white/[0.03] p-5 backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-white/[0.18] hover:bg-white/[0.05] hover:shadow-[0_8px_24px_-4px_rgba(255,255,255,0.06)]"
                 >
                   <div className="flex items-start gap-4">
+                    {/*
+                      Avatar placeholder — to replace with real photo:
+                      1. Add imageSrc to the FOUNDERS array entry
+                      2. Replace this div with:
+                         <Image src={founder.imageSrc} alt={founder.role}
+                           width={48} height={48}
+                           className="h-12 w-12 shrink-0 rounded-full object-cover" />
+                    */}
                     <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#007BFF] to-[#8A2BE2] text-sm font-bold text-white shadow-lg shadow-[#007BFF]/20">
                       {founder.initials}
                     </div>
 
-                    <div>
-                      <h4 className="text-base font-semibold text-white">
-                        {founder.role}
-                      </h4>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between gap-2">
+                        <h4 className="text-base font-semibold text-white">
+                          {founder.role}
+                        </h4>
+                        {/* LinkedIn icon — renders only when linkedIn is set in FOUNDERS */}
+                        {founder.linkedIn && (
+                          <a
+                            href={founder.linkedIn}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={`LinkedIn de ${founder.role}`}
+                            className="shrink-0 text-white/30 transition-colors duration-200 hover:text-[#0A66C2]"
+                          >
+                            <svg
+                              width="14"
+                              height="14"
+                              viewBox="0 0 24 24"
+                              fill="currentColor"
+                              aria-hidden="true"
+                            >
+                              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                              <rect x="2" y="9" width="4" height="12" />
+                              <circle cx="4" cy="4" r="2" />
+                            </svg>
+                          </a>
+                        )}
+                      </div>
 
                       <p className="mt-1 text-sm leading-6 text-white/55">
                         {founder.description}
@@ -292,15 +324,23 @@ export default function TrustSection() {
                 ))}
               </div>
             </div>
-
-            <div className="mt-8 rounded-2xl border border-[#00F5FF]/15 bg-[#00F5FF]/[0.04] p-5">
-              <p className="text-sm leading-6 text-white/65">
-                Nuestro objetivo no es solo entregar pantallas, sino construir
-                sistemas que ayuden a operar mejor, automatizar procesos y tomar
-                decisiones con información clara.
-              </p>
-            </div>
           </div>
+        </div>
+
+        {/* ── Mission card — full width, centered ─────────────── */}
+        <div
+          className="mt-12 rounded-2xl border border-white/[0.10] p-8 text-center md:p-10"
+          style={{
+            background: "rgba(255,255,255,0.025)",
+            boxShadow:
+              "0 0 0 1px rgba(255,255,255,0.04) inset, 0 0 60px -20px rgba(0,245,255,0.07)",
+          }}
+        >
+          <p className="mx-auto max-w-2xl text-base leading-7 text-white/65 md:text-[1.05rem] md:leading-8">
+            Nuestro objetivo no es solo entregar pantallas, sino construir
+            sistemas que ayuden a operar mejor, automatizar procesos y tomar
+            decisiones con información clara.
+          </p>
         </div>
       </div>
     </section>

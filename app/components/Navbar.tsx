@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const NAV_LINKS = [
   { label: "Servicios", href: "#servicios" },
@@ -59,16 +60,17 @@ export default function Navbar() {
           {/* ── Logo ─────────────────────────────────────────── */}
           <Link
             href="/"
-            className="group relative flex items-center gap-2 select-none shrink-0"
+            className="group relative flex items-center select-none shrink-0"
             aria-label="Nodatix — inicio"
           >
-            <span
-              className="glow-dot shrink-0 transition-transform duration-300 group-hover:scale-125"
-              aria-hidden="true"
+            <Image
+              src="/images/Nodatix_logo.png"
+              alt="Nodatix"
+              width={120}
+              height={32}
+              priority
+              className="h-8 md:h-9 w-auto object-contain"
             />
-            <span className="font-clash text-[1.2rem] font-bold tracking-tight leading-none text-(--color-text-primary)">
-              Nodatix
-            </span>
           </Link>
 
           {/* ── Desktop nav ──────────────────────────────────── */}
@@ -98,7 +100,7 @@ export default function Navbar() {
 
           {/* ── Desktop CTA ──────────────────────────────────── */}
           <div className="hidden md:flex items-center shrink-0">
-            <Link href="#contacto" className="btn-primary text-sm px-5 py-2">
+            <Link href="#contacto" className="btn-primary btn-light text-sm px-5 py-2">
               Agendar llamada
             </Link>
           </div>
@@ -201,7 +203,7 @@ export default function Navbar() {
               <Link
                 href="#contacto"
                 onClick={closeMenu}
-                className="btn-primary w-full text-center text-sm py-2.5"
+                className="btn-primary btn-light text-center text-sm py-2.5"
               >
                 Agendar llamada
               </Link>

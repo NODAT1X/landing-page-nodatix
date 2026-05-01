@@ -86,7 +86,7 @@ export default function HeroSection() {
           >
             <Link
               href="#contacto"
-              className="btn-primary w-full sm:w-auto text-sm px-6 py-3"
+              className="btn-primary btn-light w-full sm:w-auto text-sm px-6 py-3"
             >
               Agendar una llamada
             </Link>

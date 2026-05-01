@@ -446,11 +446,6 @@
     animation: marquee-reverse 32s linear infinite;
   }
 
-  /* pause entire section on hover */
-  #tecnologias:hover .animate-marquee,
-  #tecnologias:hover .animate-marquee-reverse {
-    animation-play-state: paused;
-  }
 
   @media (prefers-reduced-motion: reduce) {
 
@@ -502,6 +497,17 @@
   .btn-primary:focus-visible {
     outline: 2px solid var(--color-primary-blue);
     outline-offset: 3px;
+  }
+
+  .btn-light {
+    background: #d3d3d3;
+    color: #111111;
+  }
+
+  .btn-light:hover {
+    background: #c8c8c8;
+    opacity: 1;
+    box-shadow: none;
   }
 
   .btn-secondary {
