@@ -20,13 +20,13 @@ const FOUNDERS: Founder[] = [
     initials: "J.S.",
     role: "CEO & Co-founder",
     description:
-      "Visión de producto, estrategia comercial y desarrollo de negocio B2B.",
+      "Estrategia de producto y crecimiento B2B.",
   },
   {
     initials: "A.M.",
     role: "CTO & Co-founder",
     description:
-      "Arquitectura de software, infraestructura y liderazgo técnico del equipo.",
+      "Arquitectura, infraestructura y liderazgo técnico.",
   },
 ];
 
@@ -63,7 +63,7 @@ const CHECKINS = [
 function GymDashboardMockup() {
   return (
     <div
-      className="relative overflow-hidden rounded-xl transition-transform duration-500 hover:-translate-y-1"
+      className="relative w-full max-w-full overflow-hidden rounded-xl transition-transform duration-500 hover:-translate-y-1"
       style={{
         background:
           "linear-gradient(160deg, #1E1E24 0%, #17171D 60%, #121218 100%)",
@@ -212,23 +212,20 @@ export default function TrustSection() {
 
           {/* ── Left: SaaS case mockup ──────────────────────────── */}
           <div className="lg:col-span-7">
-            <div className="mb-6">
+            <div className="mb-8 md:mb-16 lg:mb-20">
               <span className="inline-flex rounded-full border border-[#00F5FF]/20 bg-[#00F5FF]/10 px-3 py-1 text-xs font-semibold text-[#00F5FF]">
                 Caso representativo
               </span>
 
               <h2
                 id="trust-heading"
-                className="font-clash mt-5 max-w-2xl text-3xl font-normal tracking-tight text-white sm:text-4xl"
+                className="font-clash mt-5 max-w-2xl text-3xl font-normal tracking-tight text-white md:text-5xl"
               >
-                Software diseñado para operaciones reales, no solo para verse
-                bien.
+                Un panel. Toda tu operación.
               </h2>
 
-              <p className="mt-4 max-w-2xl text-base leading-7 text-white/60">
-                Un ejemplo de sistema SaaS para gimnasios: control de miembros,
-                ingresos, asistencias, membresías y accesos en un solo panel
-                administrativo.
+              <p className="mt-4 max-w-2xl text-lg md:text-xl leading-relaxed text-white/60">
+                SaaS para gimnasios: miembros, ingresos, asistencia y accesos en tiempo real.
               </p>
             </div>
 
@@ -241,21 +238,19 @@ export default function TrustSection() {
               Equipo fundador
             </span>
 
-            <h3 className="font-clash mt-5 text-2xl font-normal tracking-tight text-white sm:text-3xl">
-              Construimos con enfoque técnico, claridad y visión de negocio.
+            <h3 className="font-clash mt-5 text-2xl font-normal tracking-tight text-white md:text-3xl">
+              Técnica sólida. Visión de negocio.
             </h3>
 
-            <p className="mt-4 text-base leading-7 text-white/60">
-              En Nodatix combinamos estrategia, diseño de producto y desarrollo
-              de software para crear soluciones digitales mantenibles,
-              escalables y alineadas a procesos empresariales.
+            <p className="mt-4 text-base md:text-lg leading-relaxed text-white/60">
+              Arquitectura de software y estrategia B2B para construir sistemas que escalan con tu empresa.
             </p>
 
-            <div className="mt-8 space-y-4">
+            <div className="mt-10 md:mt-12 space-y-5 md:space-y-6">
               {FOUNDERS.map((founder) => (
                 <div
                   key={founder.initials}
-                  className="group rounded-2xl border border-white/10 bg-white/[0.03] p-5 backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-white/[0.18] hover:bg-white/[0.05] hover:shadow-[0_8px_24px_-4px_rgba(255,255,255,0.06)]"
+                  className="group rounded-2xl border border-white/10 bg-white/[0.03] p-6 md:p-8 backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-white/[0.18] hover:bg-white/[0.05] hover:shadow-[0_8px_24px_-4px_rgba(255,255,255,0.06)]"
                 >
                   <div className="flex items-start gap-4">
                     {/*
@@ -272,7 +267,7 @@ export default function TrustSection() {
 
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between gap-2">
-                        <h4 className="text-base font-semibold text-white">
+                        <h4 className="text-base md:text-lg font-semibold text-white">
                           {founder.role}
                         </h4>
                         {/* LinkedIn icon — renders only when linkedIn is set in FOUNDERS */}
@@ -299,7 +294,7 @@ export default function TrustSection() {
                         )}
                       </div>
 
-                      <p className="mt-1 text-sm leading-6 text-white/55">
+                      <p className="mt-1 text-sm md:text-base leading-6 text-white/55">
                         {founder.description}
                       </p>
                     </div>
@@ -310,7 +305,7 @@ export default function TrustSection() {
 
             <div className="mt-8">
               <p className="mb-3 text-sm font-semibold text-white/70">
-                Stack base de desarrollo
+                Stack
               </p>
 
               <div className="flex flex-wrap gap-2">
@@ -336,10 +331,8 @@ export default function TrustSection() {
               "0 0 0 1px rgba(255,255,255,0.04) inset, 0 0 60px -20px rgba(0,245,255,0.07)",
           }}
         >
-          <p className="mx-auto max-w-2xl text-base leading-7 text-white/65 md:text-[1.05rem] md:leading-8">
-            Nuestro objetivo no es solo entregar pantallas, sino construir
-            sistemas que ayuden a operar mejor, automatizar procesos y tomar
-            decisiones con información clara.
+          <p className="mx-auto max-w-2xl text-lg leading-relaxed text-white/65 md:text-xl">
+            Construimos sistemas que automatizan, centralizan y escalan tu operación.
           </p>
         </div>
       </div>

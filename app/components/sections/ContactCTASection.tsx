@@ -109,6 +109,7 @@ function FormBody({
 export default function ContactCTASection() {
   const [form, setForm] = useState<FormState>({ name: "", email: "", details: "" });
   const [isSheetOpen, setIsSheetOpen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -118,6 +119,10 @@ export default function ContactCTASection() {
     e.preventDefault();
     // TODO: connect backend / form service
   };
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = isSheetOpen ? "hidden" : "";
@@ -166,7 +171,7 @@ export default function ContactCTASection() {
             {/* LEFT: Copy */}
             <div className="flex flex-col gap-7">
               <span className="self-start inline-flex items-center rounded-full border border-white/10 bg-white/[0.05] px-3 py-1 text-xs font-medium text-(--color-text-secondary)">
-                Consulta inicial
+                Consulta sin costo
               </span>
 
               <div className="flex flex-col gap-4">
@@ -178,17 +183,15 @@ export default function ContactCTASection() {
                   <span className="text-tech-gradient">un sistema real</span>
                 </h2>
                 <p className="max-w-[48ch] text-sm leading-relaxed text-(--color-text-secondary) md:text-base">
-                  Muchas empresas operan con hojas de cálculo, herramientas
-                  separadas y procesos manuales. Diseñamos sistemas que
-                  centralizan, automatizan y escalan su operación.
+                  Operaciones en Excel, tareas manuales, datos dispersos. Diseñamos el sistema que lo centraliza todo.
                 </p>
               </div>
 
               <ul className="flex flex-col gap-3" aria-label="Qué resolvemos">
                 {[
-                  "Centralización de datos y procesos",
-                  "Automatización de tareas manuales",
-                  "Dashboards para control operativo",
+                  "Centraliza datos y elimina silos",
+                  "Automatiza tareas de alto volumen",
+                  "Visibilidad operativa en tiempo real",
                 ].map((item) => (
                   <li
                     key={item}
@@ -240,7 +243,7 @@ export default function ContactCTASection() {
         {/* ── MOBILE: Compact CTA ──────────────────────────────────── */}
         <div className="flex flex-col items-center gap-6 text-center md:hidden">
           <span className="inline-flex items-center rounded-full border border-white/10 bg-white/[0.05] px-3 py-1 text-xs font-medium text-(--color-text-secondary)">
-            Consulta inicial
+            Consulta sin costo
           </span>
 
           <h2 className="font-clash text-[clamp(1.7rem,7vw,2.4rem)] font-bold leading-tight tracking-tight text-[#F8F9FA]">
@@ -249,8 +252,7 @@ export default function ContactCTASection() {
           </h2>
 
           <p className="max-w-[36ch] text-sm leading-relaxed text-(--color-text-secondary)">
-            Muchas empresas operan con hojas de cálculo y herramientas
-            separadas. Diseñamos el sistema que centraliza tu operación.
+            Operaciones dispersas, procesos manuales. Diseñamos el sistema que lo resuelve.
           </p>
 
           <button
@@ -261,7 +263,7 @@ export default function ContactCTASection() {
               boxShadow: "0 2px 8px rgba(0,0,0,0.4)",
             }}
           >
-            Cuéntanos tu proyecto
+            Iniciar diagnóstico
             <svg
               viewBox="0 0 16 16"
               className="h-4 w-4"
@@ -277,91 +279,95 @@ export default function ContactCTASection() {
           </button>
 
           <p className="text-[0.7rem] text-(--color-text-disabled)">
-            Te respondemos a instante
+            Respuesta en menos de 24 h
           </p>
         </div>
       </div>
 
       {/* ── MOBILE BOTTOM SHEET ──────────────────────────────────────── */}
-
-      {/* Backdrop */}
-      <div
-        className={[
-          "fixed inset-0 z-60 md:hidden",
-          "bg-black/55 backdrop-blur-[2px]",
-          "transition-opacity duration-300",
-          isSheetOpen
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none",
-        ].join(" ")}
-        onClick={() => setIsSheetOpen(false)}
-        aria-hidden="true"
-      />
-
-      {/* Sheet */}
-      <div
-        role="dialog"
-        aria-modal="true"
-        aria-label="Formulario de diagnóstico"
-        className={[
-          "fixed bottom-0 left-0 right-0 z-61 md:hidden",
-          "max-h-[88vh] overflow-y-auto overscroll-contain",
-          "rounded-t-2xl border-t border-x border-white/10",
-          "transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]",
-          isSheetOpen ? "translate-y-0" : "translate-y-full",
-        ].join(" ")}
-        style={{
-          background: "linear-gradient(180deg, #161622 0%, #111118 100%)",
-          boxShadow: "0 -8px 40px -4px rgba(0,0,0,0.75)",
-        }}
-      >
-        {/* Sheet header */}
-        <div
-          className="sticky top-0 z-10 flex items-start justify-between gap-4 px-6 pb-4 pt-5"
-          style={{
-            background:
-              "linear-gradient(180deg, #161622 80%, transparent 100%)",
-          }}
-        >
-          <div className="flex flex-col gap-1">
-            <h3 className="text-base font-semibold text-(--color-text-primary)">
-              Cuéntanos tu proyecto
-            </h3>
-            <p className="text-xs text-(--color-text-secondary)">
-              Describe tu operación y te enviamos una propuesta concreta.
-            </p>
-          </div>
-          <button
-            type="button"
+      {/* Rendered only after mount to avoid SSR/client hydration mismatch */}
+      {isMounted && (
+        <>
+          {/* Backdrop */}
+          <div
+            className={[
+              "fixed inset-0 z-[60] md:hidden",
+              "bg-black/55 backdrop-blur-[2px]",
+              "transition-opacity duration-300",
+              isSheetOpen
+                ? "opacity-100 pointer-events-auto"
+                : "opacity-0 pointer-events-none",
+            ].join(" ")}
             onClick={() => setIsSheetOpen(false)}
-            aria-label="Cerrar formulario"
-            className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-(--color-text-secondary) transition-colors duration-200 hover:bg-white/6 hover:text-(--color-text-primary)"
-          >
-            <svg
-              viewBox="0 0 16 16"
-              className="h-4 w-4"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.75"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-            >
-              <path d="M3 3l10 10M13 3 3 13" />
-            </svg>
-          </button>
-        </div>
-
-        {/* Sheet form */}
-        <div className="px-6 pb-8">
-          <FormBody
-            idPrefix="sheet"
-            form={form}
-            onChange={handleChange}
-            onSubmit={handleSubmit}
+            aria-hidden="true"
           />
-        </div>
-      </div>
+
+          {/* Sheet */}
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label="Formulario de diagnóstico"
+            className={[
+              "fixed bottom-0 left-0 right-0 z-[61] md:hidden",
+              "max-h-[88vh] overflow-y-auto overscroll-contain",
+              "rounded-t-2xl border-t border-x border-white/10",
+              "transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]",
+              isSheetOpen ? "translate-y-0" : "translate-y-full",
+            ].join(" ")}
+            style={{
+              background: "linear-gradient(180deg, #161622 0%, #111118 100%)",
+              boxShadow: "0 -8px 40px -4px rgba(0,0,0,0.75)",
+            }}
+          >
+            {/* Sheet header */}
+            <div
+              className="sticky top-0 z-10 flex items-start justify-between gap-4 px-6 pb-4 pt-5"
+              style={{
+                background:
+                  "linear-gradient(180deg, #161622 80%, transparent 100%)",
+              }}
+            >
+              <div className="flex flex-col gap-1">
+                <h3 className="text-base font-semibold text-(--color-text-primary)">
+                  Inicia tu diagnóstico
+                </h3>
+                <p className="text-xs text-(--color-text-secondary)">
+                  Describe tu operación y te enviamos una propuesta en 24 h.
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setIsSheetOpen(false)}
+                aria-label="Cerrar formulario"
+                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-(--color-text-secondary) transition-colors duration-200 hover:bg-white/6 hover:text-(--color-text-primary)"
+              >
+                <svg
+                  viewBox="0 0 16 16"
+                  className="h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.75"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M3 3l10 10M13 3 3 13" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Sheet form */}
+            <div className="px-6 pb-8">
+              <FormBody
+                idPrefix="sheet"
+                form={form}
+                onChange={handleChange}
+                onSubmit={handleSubmit}
+              />
+            </div>
+          </div>
+        </>
+      )}
     </section>
   );
 }

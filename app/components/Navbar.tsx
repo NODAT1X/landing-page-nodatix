@@ -60,6 +60,8 @@ export default function Navbar() {
           {/* ── Logo ─────────────────────────────────────────── */}
           <Link
             href="/"
+            scroll={false}
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="group relative flex items-center select-none shrink-0"
             aria-label="Nodatix — inicio"
           >
@@ -70,6 +72,7 @@ export default function Navbar() {
               height={32}
               priority
               className="h-8 md:h-9 w-auto object-contain"
+              style={{ width: "auto" }}
             />
           </Link>
 

@@ -1,4 +1,10 @@
 import type { ReactNode } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faTable,
+  faClock,
+} from "@fortawesome/free-solid-svg-icons";
+import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { FadeUp } from "../ui/FadeUp";
 
 /* ─────────────────────────────────────────────────────────────────
@@ -16,65 +22,39 @@ interface PainPoint {
 const PAIN_POINTS: PainPoint[] = [
   {
     icon: (
-      <svg
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        aria-hidden="true"
-      >
-        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-      </svg>
+      <FontAwesomeIcon
+        icon={faWhatsapp}
+        aria-hidden={true}
+        className="w-[26px] h-[26px]"
+      />
     ),
     title: "Coordinación por WhatsApp",
     description:
-      "Decisiones críticas sepultadas en chats. Sin trazabilidad, sin historial ni control sobre el seguimiento.",
+      "Decisiones sin trazabilidad. El historial se pierde; el seguimiento, también.",
   },
   {
     icon: (
-      <svg
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        aria-hidden="true"
-      >
-        <rect x="3" y="3" width="18" height="18" rx="2" />
-        <path d="M3 9h18M3 15h18M9 3v18" />
-      </svg>
+      <FontAwesomeIcon
+        icon={faTable}
+        aria-hidden={true}
+        className="w-[26px] h-[26px]"
+      />
     ),
-    title: "Datos dispersos en hojas de cálculo",
+    title: "Datos en hojas de cálculo",
     description:
-      "Archivos duplicados, versiones desactualizadas y reportes que consumen horas sin generar claridad real.",
+      "Versiones duplicadas, reportes lentos. Nadie trabaja con la misma verdad.",
   },
   {
     icon: (
-      <svg
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        aria-hidden="true"
-      >
-        <circle cx="12" cy="12" r="10" />
-        <polyline points="12 6 12 12 16 14" />
-      </svg>
+      <FontAwesomeIcon
+        icon={faClock}
+        aria-hidden={true}
+        className="w-[26px] h-[26px]"
+      />
     ),
     title: "Procesos que no escalan",
     description:
-      "Cada persona trabaja a su manera. Sin automatización ni estándares, crecer solo genera más caos operativo.",
+      "Sin estándares ni automatización, escalar solo amplifica el caos.",
   },
 ];
 
@@ -86,7 +66,7 @@ export default function ProblemSection() {
       className="section-padding bg-black"
     >
       <div className="section-container">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+        <div className="grid grid-cols-1 gap-8 md:gap-12 lg:grid-cols-12 lg:gap-16">
           {/* ── Left col (7/12): eyebrow + H2 + pain points ───── */}
           <div className="lg:col-span-7 flex flex-col gap-8">
             {/* badge + heading grouped — animate as one unit */}
@@ -99,25 +79,21 @@ export default function ProblemSection() {
                 id="problem-heading"
                 className="font-clash text-[clamp(1.9rem,3.8vw,3rem)] font-normal leading-tight tracking-tight text-[var(--color-text-primary)]"
               >
-                ¿Demasiado tiempo en{" "}
+                Tu operación pierde tiempo en{" "}
                 <span className="text-tech-gradient">
-                  hojas de cálculo y WhatsApp?
+                  herramientas que no conectan.
                 </span>
               </h2>
             </FadeUp>
 
             {/* Pain point list */}
-            <div className="flex flex-col gap-3" role="list">
+            <div className="flex flex-col gap-5 md:gap-8 lg:gap-10" role="list">
               {PAIN_POINTS.map((point, i) => (
-                <FadeUp
-                  key={point.title}
-                  role="listitem"
-                  delay={i * 100}
-                >
-                  <div className="flex items-start gap-4 rounded-xl p-4 transition-all duration-500 ease-out bg-white/5 backdrop-blur-md border border-white/[0.08] border-t-white/20 hover:-translate-y-1.5 hover:shadow-[0_12px_40px_-8px_rgba(0,123,255,0.15)]">
+                <FadeUp key={point.title} role="listitem" delay={i * 100}>
+                  <div className="flex items-start gap-6 rounded-xl p-5 md:p-6 transition-all duration-500 ease-out bg-white/5 backdrop-blur-md border border-white/[0.08] border-t-white/20 hover:-translate-y-1.5 hover:shadow-[0_12px_40px_-8px_rgba(0,123,255,0.15)]">
                     {/* icon node */}
                     <div
-                      className="mt-0.5 w-9 h-9 rounded-lg flex items-center justify-center shrink-0 text-[var(--color-primary-blue)]"
+                      className="w-14 h-14 rounded-xl flex items-center justify-center shrink-0 text-[var(--color-primary-blue)]"
                       style={{
                         background: "rgba(0,123,255,0.08)",
                         border: "1px solid rgba(0,123,255,0.16)",
@@ -128,10 +104,10 @@ export default function ProblemSection() {
 
                     {/* text */}
                     <div className="min-w-0 flex flex-col gap-1">
-                      <p className="text-sm font-semibold tracking-tight text-[var(--color-text-primary)]">
+                      <p className="text-xl md:text-2xl font-normal tracking-tight text-[var(--color-text-primary)]">
                         {point.title}
                       </p>
-                      <p className="text-sm leading-relaxed text-[var(--color-text-secondary)]">
+                      <p className="text-base md:text-lg leading-relaxed text-white/60">
                         {point.description}
                       </p>
                     </div>
@@ -142,33 +118,31 @@ export default function ProblemSection() {
           </div>
 
           {/* ── Right col (5/12): solution + differentiator ───── */}
-          <div className="lg:col-span-5 flex flex-col gap-6 lg:justify-center">
+          <div className="lg:col-span-5 flex flex-col items-start md:items-end gap-5 md:gap-8 lg:gap-10 lg:justify-center">
             <FadeUp delay={100}>
-              <p className="text-[clamp(1rem,1.4vw,1.15rem)] leading-relaxed font-semibold text-[var(--color-text-primary)]">
-                Construimos tecnología que centraliza tu operación para que
-                puedas enfocarte en{" "}
+              <p className="text-left md:text-right text-xl md:text-2xl lg:text-3xl leading-normal font-semibold text-[var(--color-text-primary)]">
+                Centraliza tu operación. Automatiza lo repetitivo.{" "}
                 <span className="text-tech-gradient font-semibold">
-                  tomar decisiones.
+                  Decide con datos reales.
                 </span>
               </p>
             </FadeUp>
 
             <FadeUp delay={220}>
-              <blockquote className="relative rounded-xl p-5 bg-white/5 backdrop-blur-md border border-white/[0.08] border-t-white/20">
-                {/* cyan left-bar accent */}
+              <blockquote className="relative rounded-xl p-6 md:p-8 bg-white/5 backdrop-blur-md border border-white/[0.08] border-t-white/20">
+                {/* cyan right-bar accent */}
                 <div
                   aria-hidden="true"
-                  className="absolute left-0 top-4 bottom-4 w-[3px] rounded-r-full"
+                  className="absolute right-0 top-5 bottom-5 w-[4px] rounded-l-full"
                   style={{ background: "var(--gradient-glow-line)" }}
                 />
-                <p className="pl-4 text-sm leading-relaxed text-[var(--color-text-secondary)]">
+                <p className="pr-0 md:pr-5 text-left md:text-right text-base md:text-lg leading-relaxed text-white/60">
                   <em>
-                    No entregamos solo{" "}
+                    Analizamos tu operación antes de escribir código{" "}
                     <strong className="not-italic font-semibold text-[var(--color-text-primary)]">
-                      software bonito
-                    </strong>
-                    . Entendemos tu operación antes de escribir una sola línea
-                    de código, garantizando adopción real.
+                      entregamos adopción real,
+                    </strong>{" "}
+                    no solo pantallas.
                   </em>
                 </p>
               </blockquote>

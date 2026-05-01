@@ -313,9 +313,9 @@ export default function TechStackSection() {
         <div className="absolute -left-[150px] top-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-[#00F5FF]/15 blur-[120px] rounded-full" />
       </div>
 
-      <div className="relative z-10 flex flex-col gap-10 md:gap-12">
+      <div className="relative z-10 flex flex-col gap-8 md:gap-16 lg:gap-20">
         {/* header — constrained */}
-        <div className="section-container flex flex-col gap-4 max-w-[42ch]">
+        <div className="section-container flex flex-col items-center text-center gap-6 max-w-[42ch]">
           <div className="badge badge-violet w-fit">
             <span className="glow-dot w-1.5 h-1.5" aria-hidden="true" />
             Stack tecnológico
@@ -330,9 +330,8 @@ export default function TechStackSection() {
             <span className="text-tech-gradient">ya conoces</span>
           </h2>
 
-          <p className="text-sm leading-relaxed" style={{ color: "#A0A0A0" }}>
-            Trabajamos con herramientas probadas en producción a escala. Sin
-            experimentos innecesarios, sin vendor lock-in.
+          <p className="text-center text-base md:text-xl lg:text-2xl leading-relaxed text-white/60">
+            Producción a escala. Sin vendor lock-in.
           </p>
         </div>
 
@@ -343,7 +342,7 @@ export default function TechStackSection() {
           @keyframes marquee / marquee-reverse defined below.
         */}
         <div
-          className="relative"
+          className="relative overflow-hidden w-full"
           aria-label="Tecnologías que usamos"
           role="list"
         >
