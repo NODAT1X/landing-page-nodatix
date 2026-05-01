@@ -91,7 +91,7 @@ function GymDashboardMockup() {
           <span className="text-xs font-semibold text-white/60">Nodatix</span>
         </div>
 
-        <div className="ml-auto flex gap-3 text-xs font-medium text-white/40">
+        <div className="ml-auto flex gap-3 text-xs font-semibold text-white/40">
           <span className="rounded border border-white/10 bg-white/5 px-2 py-1">
             Dashboard
           </span>
@@ -206,7 +206,7 @@ export default function TrustSection() {
     <section
       id="confianza"
       aria-labelledby="trust-heading"
-      className="relative overflow-hidden bg-[#0A0C0D] px-6 py-24 text-white sm:px-8 lg:px-12"
+      className="relative overflow-hidden bg-black px-6 py-24 text-white sm:px-8 lg:px-12"
     >
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-10">
@@ -219,7 +219,7 @@ export default function TrustSection() {
 
               <h2
                 id="trust-heading"
-                className="mt-5 max-w-2xl text-3xl font-semibold tracking-tight text-white sm:text-4xl"
+                className="font-clash mt-5 max-w-2xl text-3xl font-normal tracking-tight text-white sm:text-4xl"
               >
                 Software diseñado para operaciones reales, no solo para verse
                 bien.
@@ -241,7 +241,7 @@ export default function TrustSection() {
               Equipo fundador
             </span>
 
-            <h3 className="mt-5 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+            <h3 className="font-clash mt-5 text-2xl font-normal tracking-tight text-white sm:text-3xl">
               Construimos con enfoque técnico, claridad y visión de negocio.
             </h3>
 
@@ -277,7 +277,7 @@ export default function TrustSection() {
             </div>
 
             <div className="mt-8">
-              <p className="mb-3 text-sm font-medium text-white/70">
+              <p className="mb-3 text-sm font-semibold text-white/70">
                 Stack base de desarrollo
               </p>
 

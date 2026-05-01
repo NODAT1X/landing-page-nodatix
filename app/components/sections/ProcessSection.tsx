@@ -64,7 +64,7 @@ function StepCard({ step, isLast }: { step: Step; isLast: boolean }) {
   const Icon = step.icon;
 
   return (
-    <div className="relative flex gap-4 md:gap-5 lg:flex-col lg:gap-6 transition-all duration-500 ease-out hover:-translate-y-1.5 hover:shadow-[0_12px_40px_-8px_rgba(0,123,255,0.15)]">
+    <div className="relative flex gap-4 md:gap-5 lg:flex-col lg:gap-6 transition-all duration-500 ease-out hover:-translate-y-1.5 hover:shadow-[0_12px_40px_-8px_rgba(0,123,255,0.15)] bg-white/[0.02] border border-white/[0.05] rounded-xl backdrop-blur-sm">
       {/* ── Timeline connector (mobile/tablet only) ────────────── */}
       {!isLast && (
         <div
@@ -101,7 +101,7 @@ function StepCard({ step, isLast }: { step: Step; isLast: boolean }) {
             Paso
           </span>
           <span
-            className="text-[2rem] font-extrabold leading-none tracking-tight text-white/20"
+            className="text-6xl font-light leading-none tracking-tight text-white/10"
             style={{ fontFamily: "var(--font-display, var(--font-sans))" }}
           >
             {step.number}
@@ -110,7 +110,7 @@ function StepCard({ step, isLast }: { step: Step; isLast: boolean }) {
 
         {/* title */}
         <h3
-          className="font-clash text-[1.05rem] font-semibold leading-tight tracking-tight"
+          className="font-clash text-[1.05rem] font-normal leading-tight tracking-tight"
           style={{ color: "#F8F9FA" }}
         >
           {step.title}
@@ -152,8 +152,7 @@ export default function ProcessSection() {
     <section
       id="proceso"
       aria-labelledby="process-heading"
-      className="section-padding"
-      style={{ background: "#121212" }}
+      className="section-padding bg-black relative overflow-hidden"
     >
       <div className="section-container flex flex-col gap-10 md:gap-14">
         {/* ── Header ────────────────────────────────────────────── */}
@@ -166,7 +165,7 @@ export default function ProcessSection() {
 
             <h2
               id="process-heading"
-              className="font-clash text-[clamp(1.75rem,3.5vw,2.6rem)] font-bold leading-tight tracking-tight"
+              className="font-clash text-[clamp(1.75rem,3.5vw,2.6rem)] font-normal leading-tight tracking-tight"
               style={{ color: "#F8F9FA" }}
             >
               Un proceso{" "}
@@ -186,6 +185,12 @@ export default function ProcessSection() {
 
         {/* ── Steps ─────────────────────────────────────────────── */}
         <div className="relative grid grid-cols-1 gap-0 lg:grid-cols-4 lg:gap-8">
+          {/* directional violet→cyan glow behind the step timeline */}
+          <div
+            aria-hidden="true"
+            className="absolute left-1/2 -translate-x-1/2 top-0 w-[150px] h-[80%] bg-gradient-to-b from-[#8A2BE2]/10 to-[#00F5FF]/10 blur-[100px] pointer-events-none"
+          />
+
           {/* Desktop connector rail */}
           <div
             aria-hidden="true"
@@ -213,7 +218,7 @@ export default function ProcessSection() {
             }}
           >
             <div className="min-w-0 flex flex-col gap-1">
-              <p className="text-sm font-medium" style={{ color: "#F8F9FA" }}>
+              <p className="text-sm font-semibold" style={{ color: "#F8F9FA" }}>
                 ¿Listo para empezar tu diagnóstico?
               </p>
               <p className="text-xs" style={{ color: "#A0A0A0" }}>

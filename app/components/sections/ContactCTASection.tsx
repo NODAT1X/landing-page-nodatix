@@ -20,8 +20,7 @@ export default function ContactCTASection() {
     <section
       id="contacto"
       aria-labelledby="contact-cta-heading"
-      className="relative overflow-hidden py-24 md:py-32"
-      style={{ background: "#0C0C10" }}
+      className="relative overflow-hidden py-24 md:py-32 bg-black"
     >
       {/* ── Ambient backdrop glows ───────────────────────────────── */}
       <div
@@ -49,7 +48,13 @@ export default function ContactCTASection() {
         }}
       />
 
-      <div className="section-container">
+      {/* ascending violet→cyan glow — climax aura from bottom */}
+      <div
+        aria-hidden="true"
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-[400px] bg-gradient-to-t from-[#8A2BE2]/20 via-[#00F5FF]/5 to-transparent blur-[100px] rounded-t-full z-0 pointer-events-none"
+      />
+
+      <div className="section-container relative z-10">
         {/* ── Card ─────────────────────────────────────────────────── */}
         <div
           className="relative isolate overflow-hidden rounded-2xl border border-white/[0.10] px-6 py-12 md:px-14 md:py-16"
@@ -93,7 +98,7 @@ export default function ContactCTASection() {
               <div className="flex flex-col gap-4">
                 <h2
                   id="contact-cta-heading"
-                  className="text-[clamp(1.9rem,3.5vw,3.1rem)] font-bold leading-tight tracking-tight text-[#F8F9FA]"
+                  className="font-clash text-[clamp(1.9rem,3.5vw,3.1rem)] font-normal leading-tight tracking-tight text-[#F8F9FA]"
                 >
                   ¿Listo para escalar tu{" "}
                   <span className="text-tech-gradient">operación?</span>

@@ -120,7 +120,11 @@ function ServiceCard({ icon, title, description, tags, accent, featured }: Servi
   return (
     <article
       className={[
-        "service-card group relative flex flex-col rounded-xl p-5 bg-white/5 backdrop-blur-md border border-white/[0.08] border-t-white/20 transition-all duration-500 ease-out hover:-translate-y-1.5",
+        "group relative flex flex-col rounded-xl p-5",
+        "bg-white/[0.02] backdrop-blur-sm border border-white/[0.05]",
+        "transition-all duration-300 ease-out",
+        "hover:-translate-y-1 hover:border-[#00F5FF]/30",
+        "hover:shadow-[0_8px_32px_-8px_rgba(0,245,255,0.10)]",
         featured
           ? "gap-5 md:h-full md:gap-6 md:rounded-2xl md:p-8 lg:p-10"
           : "gap-4 md:gap-5 md:rounded-2xl md:p-7",
@@ -157,7 +161,7 @@ function ServiceCard({ icon, title, description, tags, accent, featured }: Servi
 
       {/* copy */}
       <div className="flex flex-col gap-2.5">
-        <h3 className={`font-clash font-semibold leading-tight tracking-tight text-[var(--color-text-primary)] ${featured ? "text-base md:text-lg" : "text-base"}`}>
+        <h3 className={`font-clash font-normal leading-tight tracking-tight text-[var(--color-text-primary)] ${featured ? "text-base md:text-lg" : "text-base"}`}>
           {title}
         </h3>
         <p className={`leading-relaxed text-[var(--color-text-secondary)] ${featured ? "text-sm md:text-base" : "text-sm"}`}>
@@ -170,7 +174,7 @@ function ServiceCard({ icon, title, description, tags, accent, featured }: Servi
         {tags.map((tag) => (
           <span
             key={tag}
-            className="px-2.5 py-1 rounded-md text-[11px] font-medium tracking-wide text-[var(--color-text-disabled)]"
+            className="px-2.5 py-1 rounded-md text-[11px] font-semibold tracking-wide text-[var(--color-text-disabled)]"
             style={{
               background: "rgba(255,255,255,0.04)",
               border: "1px solid rgba(255,255,255,0.06)",
@@ -190,9 +194,14 @@ export default function ServicesSection() {
     <section
       id="servicios"
       aria-labelledby="services-heading"
-      className="section-padding"
+      className="section-padding relative overflow-hidden"
     >
-      <div className="section-container flex flex-col gap-10 md:gap-14">
+      {/* ambient violet glow — centered behind card grid */}
+      <div aria-hidden="true" className="absolute inset-0 z-0 pointer-events-none flex justify-center items-center">
+        <div className="w-[80%] h-[300px] bg-[#8A2BE2]/10 blur-[120px] rounded-[100%]" />
+      </div>
+
+      <div className="section-container relative z-10 flex flex-col gap-10 md:gap-14">
         {/* header */}
         <FadeUp className="flex flex-col items-center gap-4 max-w-2xl mx-auto text-center">
           <div className="badge badge-cyan w-fit">
@@ -202,7 +211,7 @@ export default function ServicesSection() {
 
           <h2
             id="services-heading"
-            className="font-clash text-[clamp(1.75rem,3.5vw,2.6rem)] font-bold leading-tight tracking-tight text-[var(--color-text-primary)]"
+            className="font-clash text-[clamp(1.75rem,3.5vw,2.6rem)] font-normal leading-tight tracking-tight text-[var(--color-text-primary)]"
           >
             Soluciones enfocadas en{" "}
             <span className="text-tech-gradient">tu operación</span>

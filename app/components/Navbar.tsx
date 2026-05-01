@@ -13,14 +13,12 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  /* ── scroll detection ─────────────────────────────────────── */
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  /* ── lock body scroll when menu is open ───────────────────── */
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => {
@@ -35,25 +33,25 @@ export default function Navbar() {
       <header
         className={[
           "fixed top-0 inset-x-0 z-50",
+          "backdrop-blur-md border-b border-white/[0.05]",
           "transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]",
           scrolled
-            ? "py-3 bg-[rgba(18,18,18,0.72)] backdrop-blur-xl border-b border-white/[0.06] shadow-[0_8px_32px_-8px_rgba(0,0,0,0.6)]"
-            : "py-5 bg-transparent border-b border-transparent",
+            ? "py-3 bg-black/80 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.6)]"
+            : "py-5 bg-black/60",
         ].join(" ")}
       >
         <div className="section-container flex items-center justify-between">
           {/* ── Logo ─────────────────────────────────────────── */}
           <Link
             href="/"
-            className="group relative flex items-center gap-2 select-none"
+            className="group relative flex items-center gap-2.5 select-none"
             aria-label="Nodatix — inicio"
           >
-            {/* glowing dot accent */}
             <span
               className="glow-dot shrink-0 transition-transform duration-300 group-hover:scale-125"
               aria-hidden="true"
             />
-            <span className="text-[1.35rem] font-bold tracking-tight leading-none text-[var(--color-text-primary)]">
+            <span className="font-clash text-[1.35rem] font-normal tracking-tight leading-none text-[var(--color-text-primary)]">
               Nodatix
             </span>
           </Link>
@@ -68,12 +66,11 @@ export default function Navbar() {
                 key={href}
                 href={href}
                 className={[
-                  "relative px-4 py-2 text-sm font-medium rounded-lg",
+                  "relative px-4 py-2 text-sm font-semibold rounded-lg",
                   "text-[var(--color-text-secondary)]",
                   "transition-colors duration-200",
-                  "hover:text-[var(--color-text-primary)]",
+                  "hover:text-[var(--color-cyan)]",
                   "hover:bg-white/[0.04]",
-                  /* animated underline */
                   "after:absolute after:inset-x-4 after:bottom-1.5 after:h-px",
                   "after:bg-glow-line after:scale-x-0 after:origin-left",
                   "after:transition-transform after:duration-300",
@@ -105,7 +102,6 @@ export default function Navbar() {
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
           >
-            {/* top bar */}
             <span
               className={[
                 "block w-5 h-px rounded-full bg-[var(--color-text-primary)]",
@@ -113,7 +109,6 @@ export default function Navbar() {
                 menuOpen ? "translate-y-[6px] rotate-45" : "translate-y-0 rotate-0",
               ].join(" ")}
             />
-            {/* middle bar */}
             <span
               className={[
                 "block w-5 h-px rounded-full bg-[var(--color-text-primary)]",
@@ -121,7 +116,6 @@ export default function Navbar() {
                 menuOpen ? "opacity-0 scale-x-0" : "opacity-100 scale-x-100",
               ].join(" ")}
             />
-            {/* bottom bar */}
             <span
               className={[
                 "block w-5 h-px rounded-full bg-[var(--color-text-primary)]",
@@ -173,16 +167,15 @@ export default function Navbar() {
               style={{ animationDelay: `${i * 60}ms` }}
               className={[
                 "group flex items-center justify-between",
-                "px-4 py-3.5 rounded-xl text-base font-medium",
+                "px-4 py-3.5 rounded-xl text-base font-semibold",
                 "text-[var(--color-text-secondary)]",
-                "hover:text-[var(--color-text-primary)] hover:bg-white/[0.05]",
+                "hover:text-[var(--color-cyan)] hover:bg-white/[0.05]",
                 "border border-transparent hover:border-white/[0.06]",
                 "transition-all duration-200",
                 menuOpen ? "animate-fade-up" : "",
               ].join(" ")}
             >
               {label}
-              {/* chevron */}
               <svg
                 className="w-4 h-4 opacity-30 -translate-x-1 group-hover:opacity-70 group-hover:translate-x-0 transition-all duration-200"
                 fill="none"
@@ -200,10 +193,8 @@ export default function Navbar() {
             </Link>
           ))}
 
-          {/* divider */}
           <div className="divider-glow-line my-3" aria-hidden="true" />
 
-          {/* mobile CTA */}
           <Link
             href="#contacto"
             onClick={closeMenu}

@@ -293,7 +293,7 @@ function TechPill({ tech }: { tech: Tech }) {
         {tech.svg}
       </span>
       {/* name */}
-      <span className="text-[13px] font-medium whitespace-nowrap text-[var(--color-text-disabled)] transition-colors duration-300 group-hover:text-[#F8F9FA]">
+      <span className="text-[13px] font-semibold whitespace-nowrap text-[var(--color-text-disabled)] transition-colors duration-300 group-hover:text-[#F8F9FA]">
         {tech.name}
       </span>
     </div>
@@ -306,10 +306,14 @@ export default function TechStackSection() {
     <section
       id="tecnologias"
       aria-labelledby="tech-heading"
-      className="section-padding overflow-hidden"
-      style={{ background: "#121212" }}
+      className="section-padding overflow-hidden bg-black relative"
     >
-      <div className="flex flex-col gap-10 md:gap-12">
+      {/* lateral cyan glow — left edge, emanates from tech stack */}
+      <div aria-hidden="true" className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        <div className="absolute -left-[150px] top-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-[#00F5FF]/15 blur-[120px] rounded-full" />
+      </div>
+
+      <div className="relative z-10 flex flex-col gap-10 md:gap-12">
         {/* header — constrained */}
         <div className="section-container flex flex-col gap-4 max-w-[42ch]">
           <div className="badge badge-violet w-fit">
@@ -319,7 +323,7 @@ export default function TechStackSection() {
 
           <h2
             id="tech-heading"
-            className="text-[clamp(1.75rem,3.5vw,2.6rem)] font-bold leading-tight tracking-tight"
+            className="font-clash text-[clamp(1.75rem,3.5vw,2.6rem)] font-normal leading-tight tracking-tight"
             style={{ color: "#F8F9FA" }}
           >
             Tecnología que{" "}
@@ -349,7 +353,7 @@ export default function TechStackSection() {
             className="pointer-events-none absolute inset-y-0 left-0 w-12 z-10 md:w-32"
             style={{
               background:
-                "linear-gradient(90deg, #121212 0%, transparent 100%)",
+                "linear-gradient(90deg, #000000 0%, transparent 100%)",
             }}
           />
           <div
@@ -357,7 +361,7 @@ export default function TechStackSection() {
             className="pointer-events-none absolute inset-y-0 right-0 w-12 z-10 md:w-32"
             style={{
               background:
-                "linear-gradient(270deg, #121212 0%, transparent 100%)",
+                "linear-gradient(270deg, #000000 0%, transparent 100%)",
             }}
           />
 

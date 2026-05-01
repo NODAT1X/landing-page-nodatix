@@ -83,8 +83,7 @@ export default function ProblemSection() {
     <section
       id="problema"
       aria-labelledby="problem-heading"
-      className="section-padding"
-      style={{ background: "#121212" }}
+      className="section-padding bg-black"
     >
       <div className="section-container">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
@@ -98,7 +97,7 @@ export default function ProblemSection() {
               </div>
               <h2
                 id="problem-heading"
-                className="font-clash text-[clamp(1.9rem,3.8vw,3rem)] font-bold leading-tight tracking-tight text-[var(--color-text-primary)]"
+                className="font-clash text-[clamp(1.9rem,3.8vw,3rem)] font-normal leading-tight tracking-tight text-[var(--color-text-primary)]"
               >
                 ¿Demasiado tiempo en{" "}
                 <span className="text-tech-gradient">
@@ -145,7 +144,7 @@ export default function ProblemSection() {
           {/* ── Right col (5/12): solution + differentiator ───── */}
           <div className="lg:col-span-5 flex flex-col gap-6 lg:justify-center">
             <FadeUp delay={100}>
-              <p className="text-[clamp(1rem,1.4vw,1.15rem)] leading-relaxed font-medium text-[var(--color-text-primary)]">
+              <p className="text-[clamp(1rem,1.4vw,1.15rem)] leading-relaxed font-semibold text-[var(--color-text-primary)]">
                 Construimos tecnología que centraliza tu operación para que
                 puedas enfocarte en{" "}
                 <span className="text-tech-gradient font-semibold">
