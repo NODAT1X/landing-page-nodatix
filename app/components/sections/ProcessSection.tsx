@@ -1,5 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass, faFileContract, faCode, faRocket } from "@fortawesome/free-solid-svg-icons";
+import {
+  faMagnifyingGlass,
+  faFileContract,
+  faCode,
+  faRocket,
+  faArrowsRotate,
+} from "@fortawesome/free-solid-svg-icons";
 import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { FadeUp } from "../ui/FadeUp";
 
@@ -23,48 +29,51 @@ const STEPS: Step[] = [
     icon: faMagnifyingGlass,
     title: "Diagnóstico",
     description:
-      "Mapeamos tu operación e identificamos los cuellos de botella clave.",
-    detail: [
-      "Entrevistas con stakeholders",
-      "Mapeo de procesos",
-      "Definición de KPIs",
-    ],
+      "Entendemos tu operación, objetivos y puntos críticos antes de proponer una solución.",
+    detail: ["Entrevistas clave", "Mapeo de procesos", "KPIs y prioridades"],
   },
   {
     number: "02",
     icon: faFileContract,
-    title: "Propuesta",
+    title: "Definición",
     description:
-      "Alcance, arquitectura y precio cerrado. Sin ambigüedades.",
-    detail: ["Arquitectura técnica", "Roadmap de entregas", "Precio cerrado"],
+      "Aterrizamos alcance, arquitectura y roadmap para construir con claridad.",
+    detail: [
+      "Alcance funcional",
+      "Arquitectura técnica",
+      "Roadmap de entregas",
+    ],
   },
   {
     number: "03",
     icon: faCode,
     title: "Desarrollo",
     description:
-      "Sprints de 2 semanas con demos reales y staging continuo.",
-    detail: ["Sprints de 2 semanas", "Demo por sprint", "Staging continuo"],
+      "Construimos en ciclos cortos con avances visibles y validación continua.",
+    detail: ["Sprints de 2 semanas", "Demos por sprint", "Staging continuo"],
   },
   {
     number: "04",
     icon: faRocket,
-    title: "Despliegue",
+    title: "Lanzamiento",
     description:
-      "Deploy auditado, capacitación incluida y soporte post-lanzamiento.",
-    detail: [
-      "Deploy auditado",
-      "Capacitación incluida",
-      "Soporte post-lanzamiento",
-    ],
+      "Publicamos la solución con control, capacitación y soporte inicial.",
+    detail: ["Deploy auditado", "Capacitación incluida", "Soporte inicial"],
+  },
+  {
+    number: "05",
+    icon: faArrowsRotate,
+    title: "Iteración",
+    description:
+      "Medimos el uso real y convertimos el aprendizaje en mejoras concretas.",
+    detail: ["Monitoreo de KPIs", "Backlog de mejoras", "Evolución continua"],
   },
 ];
 
 /* ── Step card ────────────────────────────────────────────────── */
 function StepCard({ step, isLast }: { step: Step; isLast: boolean }) {
-
   return (
-    <div className="relative flex h-full gap-5 md:gap-6 p-6 md:p-8 lg:flex-col lg:gap-7 lg:p-10 transition-all duration-500 ease-out hover:-translate-y-1.5 hover:shadow-[0_12px_40px_-8px_rgba(0,123,255,0.15)] bg-white/[0.02] border border-white/[0.05] rounded-xl backdrop-blur-sm">
+    <div className="relative flex h-full gap-5 md:gap-6 p-6 md:p-8 lg:flex-col lg:gap-6 lg:p-8 xl:p-5 transition-all duration-500 ease-out hover:-translate-y-1.5 hover:shadow-[0_12px_40px_-8px_rgba(0,123,255,0.15)] bg-white/[0.02] border border-white/[0.05] rounded-xl backdrop-blur-sm">
       {/* ── Timeline connector (mobile/tablet only) ────────────── */}
       {!isLast && (
         <div
@@ -86,7 +95,11 @@ function StepCard({ step, isLast }: { step: Step; isLast: boolean }) {
             border: "1px solid rgba(0,123,255,0.20)",
           }}
         >
-          <FontAwesomeIcon icon={step.icon} aria-hidden={true} className="w-[17px] h-[17px]" />
+          <FontAwesomeIcon
+            icon={step.icon}
+            aria-hidden={true}
+            className="w-[17px] h-[17px]"
+          />
         </div>
       </div>
 
@@ -101,7 +114,7 @@ function StepCard({ step, isLast }: { step: Step; isLast: boolean }) {
             Paso
           </span>
           <span
-            className="text-7xl font-light leading-none tracking-tight text-white/[0.08]"
+            className="text-7xl xl:text-5xl font-light leading-none tracking-tight text-white/[0.08]"
             style={{ fontFamily: "var(--font-display, var(--font-sans))" }}
           >
             {step.number}
@@ -110,14 +123,14 @@ function StepCard({ step, isLast }: { step: Step; isLast: boolean }) {
 
         {/* title */}
         <h3
-          className="font-clash text-xl md:text-2xl font-normal leading-tight tracking-tight"
+          className="font-clash text-xl md:text-2xl xl:text-lg font-normal leading-tight tracking-tight"
           style={{ color: "#F8F9FA" }}
         >
           {step.title}
         </h3>
 
         {/* description */}
-        <p className="text-base md:text-lg leading-relaxed text-white/60">
+        <p className="text-base md:text-lg xl:text-sm leading-relaxed text-white/60">
           {step.description}
         </p>
 
@@ -168,18 +181,19 @@ export default function ProcessSection() {
               className="font-clash text-3xl md:text-4xl lg:text-5xl font-normal leading-tight tracking-tight"
               style={{ color: "#F8F9FA" }}
             >
-              Cuatro fases.{" "}
+              Cinco fases.{" "}
               <span className="text-tech-gradient">Sin sorpresas.</span>
             </h2>
 
             <p className="text-lg md:text-xl leading-relaxed text-white/60">
-              Visibilidad total en cada etapa. Sabes qué se entrega, cuándo y a qué costo.
+              Visibilidad total en cada etapa. Sabes qué se entrega, cuándo y a
+              qué costo.
             </p>
           </div>
         </FadeUp>
 
         {/* ── Steps ─────────────────────────────────────────────── */}
-        <div className="relative grid grid-cols-1 gap-0 md:grid-cols-2 md:gap-6 lg:grid-cols-4 lg:gap-10">
+        <div className="relative grid grid-cols-1 gap-0 md:grid-cols-2 md:gap-6 xl:grid-cols-5 xl:gap-5">
           {/* directional violet→cyan glow behind the step timeline */}
           <div
             aria-hidden="true"
@@ -213,7 +227,10 @@ export default function ProcessSection() {
             }}
           >
             <div className="min-w-0 flex flex-col gap-1">
-              <p className="font-clash text-xl md:text-3xl font-normal" style={{ color: "#F8F9FA" }}>
+              <p
+                className="font-clash text-xl md:text-3xl font-normal"
+                style={{ color: "#F8F9FA" }}
+              >
                 Agenda tu sesión de diagnóstico
               </p>
               <p className="text-base md:text-lg text-white/60">

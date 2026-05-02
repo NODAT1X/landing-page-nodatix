@@ -46,10 +46,8 @@ export default function HeroSection() {
 
       {/* ── Content ───────────────────────────────────────────── */}
       <div className="section-container w-full grid lg:grid-cols-2 gap-12 lg:gap-16 xl:gap-24 items-center py-28 md:py-36 lg:py-40">
-
         {/* ── Left column: copy ─────────────────────────────── */}
         <div className="flex flex-col items-start gap-7 text-left">
-
           {/* eyebrow badge */}
           <div
             className="badge badge-blue animate-fade-up"
@@ -65,9 +63,8 @@ export default function HeroSection() {
             className="font-clash animate-fade-up text-[clamp(2.6rem,5vw,4.5rem)] font-semibold leading-[1.06] tracking-tight text-[#F8F9FA]"
             style={{ animationDelay: "80ms" }}
           >
-            Construimos Software{" "}
-            <span className="text-tech-gradient">a medida</span>{" "}
-            que simplifica y escala tu negocio.
+            DIGITALIZA TU OPERACIÓN Y MULTIPLICA{" "}
+            <span className="text-tech-gradient">TUS RESULTADOS</span>
           </h1>
 
           {/* subtitle */}
@@ -75,8 +72,8 @@ export default function HeroSection() {
             className="animate-fade-up max-w-[48ch] text-[clamp(1rem,1.8vw,1.15rem)] leading-relaxed text-(--color-text-secondary)"
             style={{ animationDelay: "160ms" }}
           >
-            Convertimos tus procesos manuales y herramientas desconectadas en
-            sistemas digitales centralizados, rápidos y listos para crecer.
+            Transformamos procesos manuales en plataformas eficientes que
+            maximizan productividad y rentabilidad
           </p>
 
           {/* CTAs */}
@@ -114,7 +111,7 @@ export default function HeroSection() {
           aria-hidden="true"
         >
           {/* cyan accent — moved to bottom-right corner, off the laptop chassis */}
-          <div className="absolute bottom-[5%] right-[5%] w-[100px] h-[100px] rounded-full bg-[#00F5FF] opacity-[0.08] blur-[55px] pointer-events-none" />   
+          <div className="absolute bottom-[5%] right-[5%] w-[100px] h-[100px] rounded-full bg-[#00F5FF] opacity-[0.08] blur-[55px] pointer-events-none" />
 
           <Image
             src="/images/laptop.png"
