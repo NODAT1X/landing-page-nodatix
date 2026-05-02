@@ -73,7 +73,7 @@ const STEPS: Step[] = [
 /* ── Step card ────────────────────────────────────────────────── */
 function StepCard({ step, isLast }: { step: Step; isLast: boolean }) {
   return (
-    <div className="relative flex h-full gap-5 md:gap-6 p-6 md:p-8 lg:flex-col lg:gap-6 lg:p-8 xl:p-5 transition-all duration-500 ease-out hover:-translate-y-1.5 hover:shadow-[0_12px_40px_-8px_rgba(0,123,255,0.15)] bg-white/[0.02] border border-white/[0.05] rounded-xl backdrop-blur-sm">
+    <div className="relative flex h-full gap-5 md:gap-6 p-6 md:p-8 lg:flex-col lg:gap-6 lg:p-8 xl:p-5 transition-all duration-500 ease-out hover:-translate-y-1.5 hover:shadow-[0_12px_40px_-8px_rgba(0,123,255,0.15)] bg-[var(--color-glass-surface-subtle)] border border-[var(--color-glass-border-subtle)] rounded-xl backdrop-blur-sm">
       {/* ── Timeline connector (mobile/tablet only) ────────────── */}
       {!isLast && (
         <div
@@ -130,7 +130,7 @@ function StepCard({ step, isLast }: { step: Step; isLast: boolean }) {
         </h3>
 
         {/* description */}
-        <p className="text-base md:text-lg xl:text-sm leading-relaxed text-white/60">
+        <p className="text-base md:text-lg xl:text-sm leading-relaxed text-(--color-text-secondary)">
           {step.description}
         </p>
 
@@ -185,7 +185,7 @@ export default function ProcessSection() {
               <span className="text-tech-gradient">Sin sorpresas.</span>
             </h2>
 
-            <p className="text-lg md:text-xl leading-relaxed text-white/60">
+            <p className="text-lg md:text-xl leading-relaxed text-(--color-text-secondary)">
               Visibilidad total en cada etapa. Sabes qué se entrega, cuándo y a
               qué costo.
             </p>
@@ -233,7 +233,7 @@ export default function ProcessSection() {
               >
                 Agenda tu sesión de diagnóstico
               </p>
-              <p className="text-base md:text-lg text-white/60">
+              <p className="text-base md:text-lg text-(--color-text-disabled)">
                 Sin costo · 45 minutos · Sin compromiso
               </p>
             </div>

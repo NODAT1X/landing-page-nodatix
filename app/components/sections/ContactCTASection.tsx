@@ -5,10 +5,10 @@ import { useState, useEffect } from "react";
 type FormState = { name: string; email: string; details: string };
 
 const inputCls = [
-  "w-full rounded-lg border border-white/10 bg-[#060810] px-4 py-3 text-sm",
+  "w-full rounded-lg border border-[var(--color-glass-border)] bg-[#060810] px-4 py-3 text-sm",
   "text-(--color-text-primary) placeholder-(--color-text-disabled) outline-none",
   "transition-all duration-200",
-  "focus:border-white/[0.22] focus:bg-[#060810] focus:shadow-[0_0_0_2px_rgba(255,255,255,0.04)]",
+  "focus:border-[var(--color-glass-border-highlight)] focus:bg-[#060810] focus:shadow-[0_0_0_2px_rgba(255,255,255,0.04)]",
 ].join(" ");
 
 const labelCls =
@@ -153,7 +153,7 @@ export default function ContactCTASection() {
 
         {/* ── DESKTOP: Two-column card ─────────────────────────────── */}
         <div
-          className="relative isolate hidden overflow-hidden rounded-2xl border border-white/[0.11] px-6 py-12 md:block md:px-14 md:py-16"
+          className="relative isolate hidden overflow-hidden rounded-2xl border border-[var(--color-glass-border)] px-6 py-12 md:block md:px-14 md:py-16"
           style={{
             background: "#13151C",
             boxShadow:
@@ -163,14 +163,14 @@ export default function ContactCTASection() {
           {/* Top hairline */}
           <div
             aria-hidden="true"
-            className="absolute inset-x-0 top-0 h-px bg-white/[0.10]"
+            className="absolute inset-x-0 top-0 h-px bg-[var(--color-glass-border)]"
           />
 
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-20">
 
             {/* LEFT: Copy */}
             <div className="flex flex-col gap-7">
-              <span className="self-start inline-flex items-center rounded-full border border-white/10 bg-white/[0.05] px-3 py-1 text-xs font-medium text-(--color-text-secondary)">
+              <span className="self-start inline-flex items-center rounded-full border border-[var(--color-glass-border)] bg-[var(--color-glass-surface)] px-3 py-1 text-xs font-medium text-(--color-text-secondary)">
                 Consulta sin costo
               </span>
 
@@ -200,7 +200,7 @@ export default function ContactCTASection() {
                     <span
                       aria-hidden="true"
                       className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full"
-                      style={{ background: "rgba(255,255,255,0.06)" }}
+                      style={{ background: "var(--color-glass-border-subtle)" }}
                     >
                       <svg
                         viewBox="0 0 12 12"
@@ -223,7 +223,7 @@ export default function ContactCTASection() {
 
             {/* RIGHT: Form */}
             <div
-              className="rounded-xl border border-white/7 p-6 md:p-8"
+              className="rounded-xl border border-[var(--color-glass-border-subtle)] p-6 md:p-8"
               style={{
                 background: "#080A0F",
                 boxShadow:
@@ -242,7 +242,7 @@ export default function ContactCTASection() {
 
         {/* ── MOBILE: Compact CTA ──────────────────────────────────── */}
         <div className="flex flex-col items-center gap-6 text-center md:hidden">
-          <span className="inline-flex items-center rounded-full border border-white/10 bg-white/[0.05] px-3 py-1 text-xs font-medium text-(--color-text-secondary)">
+          <span className="inline-flex items-center rounded-full border border-[var(--color-glass-border)] bg-[var(--color-glass-surface)] px-3 py-1 text-xs font-medium text-(--color-text-secondary)">
             Consulta sin costo
           </span>
 
@@ -310,7 +310,7 @@ export default function ContactCTASection() {
             className={[
               "fixed bottom-0 left-0 right-0 z-[61] md:hidden",
               "max-h-[88vh] overflow-y-auto overscroll-contain",
-              "rounded-t-2xl border-t border-x border-white/10",
+              "rounded-t-2xl border-t border-x border-[var(--color-glass-border)]",
               "transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]",
               isSheetOpen ? "translate-y-0" : "translate-y-full",
             ].join(" ")}

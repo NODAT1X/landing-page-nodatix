@@ -75,7 +75,7 @@ function ServiceCard({ icon, title, description, tags, accent, featured }: Servi
     <article
       className={[
         "group relative flex flex-col rounded-xl",
-        "bg-white/[0.02] backdrop-blur-sm border border-white/[0.05]",
+        "bg-[var(--color-glass-surface-subtle)] backdrop-blur-sm border border-[var(--color-glass-border-subtle)]",
         "transition-all duration-300 ease-out",
         "hover:-translate-y-1 hover:border-[#00F5FF]/30",
         "hover:shadow-[0_8px_32px_-8px_rgba(0,245,255,0.10)]",
@@ -135,7 +135,7 @@ function ServiceCard({ icon, title, description, tags, accent, featured }: Servi
             <path d="M5 12h14M13 6l6 6-6 6" />
           </svg>
         </div>
-        <p className={`leading-relaxed text-white/60 ${featured ? "text-base md:text-lg" : "text-sm md:text-base"}`}>
+        <p className={`leading-relaxed text-(--color-text-secondary) ${featured ? "text-base md:text-lg" : "text-sm md:text-base"}`}>
           {description}
         </p>
       </div>
@@ -147,8 +147,8 @@ function ServiceCard({ icon, title, description, tags, accent, featured }: Servi
             key={tag}
             className="px-2.5 py-1 rounded-md text-[11px] font-semibold tracking-wide text-[var(--color-text-disabled)]"
             style={{
-              background: "rgba(255,255,255,0.04)",
-              border: "1px solid rgba(255,255,255,0.06)",
+              background: "var(--color-glass-surface-subtle)",
+              border: "1px solid var(--color-glass-border-subtle)",
             }}
           >
             {tag}

@@ -224,7 +224,7 @@ export default function TrustSection() {
                 Un panel. Toda tu operación.
               </h2>
 
-              <p className="mt-4 max-w-2xl text-lg md:text-xl leading-relaxed text-white/60">
+              <p className="mt-4 max-w-2xl text-lg md:text-xl leading-relaxed text-(--color-text-secondary)">
                 SaaS para gimnasios: miembros, ingresos, asistencia y accesos en tiempo real.
               </p>
             </div>
@@ -242,7 +242,7 @@ export default function TrustSection() {
               Técnica sólida. Visión de negocio.
             </h3>
 
-            <p className="mt-4 text-base md:text-lg leading-relaxed text-white/60">
+            <p className="mt-4 text-base md:text-lg leading-relaxed text-(--color-text-secondary)">
               Arquitectura de software y estrategia B2B para construir sistemas que escalan con tu empresa.
             </p>
 
@@ -250,7 +250,7 @@ export default function TrustSection() {
               {FOUNDERS.map((founder) => (
                 <div
                   key={founder.initials}
-                  className="group rounded-2xl border border-white/10 bg-white/[0.03] p-6 md:p-8 backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-white/[0.18] hover:bg-white/[0.05] hover:shadow-[0_8px_24px_-4px_rgba(255,255,255,0.06)]"
+                  className="group rounded-2xl border border-[var(--color-glass-border)] bg-[var(--color-glass-surface-subtle)] p-6 md:p-8 backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--color-glass-border-highlight)] hover:bg-[var(--color-glass-surface)] hover:shadow-[0_8px_24px_-4px_rgba(255,255,255,0.06)]"
                 >
                   <div className="flex items-start gap-4">
                     {/*
@@ -294,7 +294,7 @@ export default function TrustSection() {
                         )}
                       </div>
 
-                      <p className="mt-1 text-sm md:text-base leading-6 text-white/55">
+                      <p className="mt-1 text-sm md:text-base leading-6 text-(--color-text-secondary)">
                         {founder.description}
                       </p>
                     </div>
@@ -304,7 +304,7 @@ export default function TrustSection() {
             </div>
 
             <div className="mt-8">
-              <p className="mb-3 text-sm font-semibold text-white/70">
+              <p className="mb-3 text-sm font-semibold text-(--color-text-disabled)">
                 Stack
               </p>
 
@@ -312,7 +312,7 @@ export default function TrustSection() {
                 {TECH_TAGS.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs text-white/60"
+                    className="rounded-full border border-[var(--color-glass-border)] bg-[var(--color-glass-surface-subtle)] px-3 py-1 text-xs text-(--color-text-secondary)"
                   >
                     {tag}
                   </span>
@@ -324,14 +324,14 @@ export default function TrustSection() {
 
         {/* ── Mission card — full width, centered ─────────────── */}
         <div
-          className="mt-12 rounded-2xl border border-white/[0.10] p-8 text-center md:p-10"
+          className="mt-12 rounded-2xl border border-[var(--color-glass-border)] p-8 text-center md:p-10"
           style={{
-            background: "rgba(255,255,255,0.025)",
+            background: "var(--color-glass-surface-subtle)",
             boxShadow:
               "0 0 0 1px rgba(255,255,255,0.04) inset, 0 0 60px -20px rgba(0,245,255,0.07)",
           }}
         >
-          <p className="mx-auto max-w-2xl text-lg leading-relaxed text-white/65 md:text-xl">
+          <p className="mx-auto max-w-2xl text-lg leading-relaxed text-(--color-text-secondary) md:text-xl">
             Construimos sistemas que automatizan, centralizan y escalan tu operación.
           </p>
         </div>

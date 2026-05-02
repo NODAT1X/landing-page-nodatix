@@ -46,13 +46,13 @@ export default function Navbar() {
               ? [
                   "bg-[rgba(10,10,16,0.92)]",
                   "backdrop-blur-2xl",
-                  "border border-white/10",
+                  "border border-[var(--color-glass-border)]",
                   "shadow-[0_8px_40px_-4px_rgba(0,0,0,0.75),0_0_0_0.5px_rgba(138,43,226,0.15),inset_0_1px_0_rgba(255,255,255,0.05)]",
                 ].join(" ")
               : [
                   "bg-[rgba(18,18,26,0.62)]",
                   "backdrop-blur-xl",
-                  "border border-white/7",
+                  "border border-[var(--color-glass-border-subtle)]",
                   "shadow-[0_4px_24px_-4px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.03)]",
                 ].join(" "),
           ].join(" ")}
@@ -89,7 +89,7 @@ export default function Navbar() {
                   "relative px-3.5 py-1.5 text-sm font-medium rounded-lg",
                   "text-(--color-text-secondary)",
                   "transition-colors duration-200",
-                  "hover:text-(--color-text-primary) hover:bg-white/5",
+                  "hover:text-(--color-text-primary) hover:bg-[var(--color-glass-surface)]",
                   "after:absolute after:inset-x-3.5 after:bottom-1 after:h-px",
                   "after:bg-glow-line after:scale-x-0 after:origin-left",
                   "after:transition-transform after:duration-300",
@@ -114,7 +114,7 @@ export default function Navbar() {
             className={[
               "md:hidden relative flex flex-col items-center justify-center gap-[5px]",
               "w-11 h-11 rounded-lg transition-colors duration-200",
-              "hover:bg-white/6",
+              "hover:bg-[var(--color-glass-border-subtle)]",
               "focus-visible:outline focus-visible:outline-2",
               "focus-visible:outline-(--color-primary-blue)",
             ].join(" ")}
@@ -157,7 +157,7 @@ export default function Navbar() {
               "md:hidden absolute top-full left-0 right-0 mt-2",
               "rounded-2xl overflow-hidden",
               "bg-[rgba(10,10,16,0.96)] backdrop-blur-2xl",
-              "border border-white/9",
+              "border border-[var(--color-glass-border)]",
               "shadow-[0_12px_40px_-4px_rgba(0,0,0,0.8),inset_0_1px_0_rgba(255,255,255,0.05)]",
               "transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]",
               menuOpen
@@ -178,8 +178,8 @@ export default function Navbar() {
                     "group flex items-center justify-between",
                     "px-4 py-3 rounded-xl text-sm font-medium",
                     "text-(--color-text-secondary)",
-                    "hover:text-(--color-text-primary) hover:bg-white/5",
-                    "border border-transparent hover:border-white/6",
+                    "hover:text-(--color-text-primary) hover:bg-[var(--color-glass-surface)]",
+                    "border border-transparent hover:border-[var(--color-glass-border-subtle)]",
                     "transition-all duration-200",
                   ].join(" ")}
                 >

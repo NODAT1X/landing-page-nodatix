@@ -90,7 +90,7 @@ export default function ProblemSection() {
             <div className="flex flex-col gap-5 md:gap-8 lg:gap-10" role="list">
               {PAIN_POINTS.map((point, i) => (
                 <FadeUp key={point.title} role="listitem" delay={i * 100}>
-                  <div className="flex items-start gap-6 rounded-xl p-5 md:p-6 transition-all duration-500 ease-out bg-white/5 backdrop-blur-md border border-white/[0.08] border-t-white/20 hover:-translate-y-1.5 hover:shadow-[0_12px_40px_-8px_rgba(0,123,255,0.15)]">
+                  <div className="flex items-start gap-6 rounded-xl p-5 md:p-6 transition-all duration-500 ease-out bg-[var(--color-glass-surface)] backdrop-blur-md border border-[var(--color-glass-border)] border-t-[var(--color-glass-border-highlight)] hover:-translate-y-1.5 hover:shadow-[0_12px_40px_-8px_rgba(0,123,255,0.15)]">
                     {/* icon node */}
                     <div
                       className="w-14 h-14 rounded-xl flex items-center justify-center shrink-0 text-[var(--color-primary-blue)]"
@@ -107,7 +107,7 @@ export default function ProblemSection() {
                       <p className="text-xl md:text-2xl font-normal tracking-tight text-[var(--color-text-primary)]">
                         {point.title}
                       </p>
-                      <p className="text-base md:text-lg leading-relaxed text-white/60">
+                      <p className="text-base md:text-lg leading-relaxed text-(--color-text-secondary)">
                         {point.description}
                       </p>
                     </div>
@@ -129,14 +129,14 @@ export default function ProblemSection() {
             </FadeUp>
 
             <FadeUp delay={220}>
-              <blockquote className="relative rounded-xl p-6 md:p-8 bg-white/5 backdrop-blur-md border border-white/[0.08] border-t-white/20">
+              <blockquote className="relative rounded-xl p-6 md:p-8 bg-[var(--color-glass-surface)] backdrop-blur-md border border-[var(--color-glass-border)] border-t-[var(--color-glass-border-highlight)]">
                 {/* cyan right-bar accent */}
                 <div
                   aria-hidden="true"
                   className="absolute right-0 top-5 bottom-5 w-[4px] rounded-l-full"
                   style={{ background: "var(--gradient-glow-line)" }}
                 />
-                <p className="pr-0 md:pr-5 text-left md:text-right text-base md:text-lg leading-relaxed text-white/60">
+                <p className="pr-0 md:pr-5 text-left md:text-right text-base md:text-lg leading-relaxed text-(--color-text-secondary)">
                   <em>
                     Analizamos tu operación antes de escribir código{" "}
                     <strong className="not-italic font-semibold text-[var(--color-text-primary)]">

@@ -330,7 +330,7 @@ export default function TechStackSection() {
             <span className="text-tech-gradient">ya conoces</span>
           </h2>
 
-          <p className="text-center text-base md:text-xl lg:text-2xl leading-relaxed text-white/60">
+          <p className="text-center text-base md:text-xl lg:text-2xl leading-relaxed text-(--color-text-secondary)">
             Producción a escala. Sin vendor lock-in.
           </p>
         </div>

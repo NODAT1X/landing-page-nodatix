@@ -3,7 +3,7 @@ import Link from "next/link";
 /* ─────────────────────────────────────────────────────────────────
    Footer — Nodatix
    4-column grid: brand · navegación · legal · contacto
-   bg: #121212 · minimalista · cierre corporativo
+   bg: var(--color-background) · minimalista · cierre corporativo
 ───────────────────────────────────────────────────────────────── */
 
 const QUICK_LINKS = [
@@ -100,7 +100,7 @@ function SocialLink({
         "w-8 h-8 rounded-lg flex items-center justify-center",
         "text-(--color-text-disabled)",
         "transition-all duration-200",
-        "hover:text-(--color-text-primary) hover:bg-white/[0.06]",
+        "hover:text-(--color-text-primary) hover:bg-[var(--color-glass-border-subtle)]",
       ].join(" ")}
       style={{ border: "1px solid var(--color-border-subtle)" }}
     >
@@ -132,13 +132,13 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer aria-label="Pie de página Nodatix" style={{ background: "#121212" }}>
+    <footer aria-label="Pie de página Nodatix" style={{ background: "var(--color-background)" }}>
       <div className="section-container">
         {/* top glow divider */}
         <div className="divider-glow-line" aria-hidden="true" />
 
         {/* ── Main grid ─────────────────────────────────────────── */}
-        <div className="grid grid-cols-1 gap-0 py-8 sm:grid-cols-2 sm:gap-10 sm:py-12 lg:grid-cols-4 lg:py-16 divide-y divide-white/[0.08] sm:divide-y-0">
+        <div className="grid grid-cols-1 gap-0 py-8 sm:grid-cols-2 sm:gap-10 sm:py-12 lg:grid-cols-4 lg:py-16 divide-y divide-[var(--color-glass-border-subtle)] sm:divide-y-0">
 
           {/* ── Brand col ───────────────────────────────────────── */}
           <div className="sm:col-span-2 lg:col-span-1 flex flex-col gap-5 items-center sm:items-start pb-6 sm:pb-0">
