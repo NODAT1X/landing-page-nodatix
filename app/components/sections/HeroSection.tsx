@@ -10,7 +10,7 @@ import Link from "next/link";
 export default function HeroSection() {
   return (
     <section
-      className="relative isolate min-h-dvh bg-black flex flex-col items-center justify-center overflow-hidden"
+      className="relative isolate min-h-dvh bg-[var(--background)] flex flex-col items-center justify-center overflow-hidden"
       aria-labelledby="hero-heading"
     >
       {/* ── Mesh gradient layer ───────────────────────────────── */}
@@ -18,14 +18,14 @@ export default function HeroSection() {
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10"
       >
-        {/* VIOLET — large orb, bottom-left, washes the text column */}
-        <div className="absolute bottom-[-120px] left-[-200px] w-[950px] h-[950px] rounded-full bg-[#8A2BE2] opacity-[0.35] blur-[180px]" />
+        {/* Depth orb — bottom-left */}
+        <div className="absolute bottom-[-120px] left-[-200px] w-[950px] h-[950px] rounded-full bg-white opacity-[0.03] blur-[180px]" />
 
-        {/* CYAN — right side, backs the cubos and adds depth */}
-        <div className="absolute top-[8%] right-[-160px] w-[720px] h-[720px] rounded-full bg-[#00F5FF] opacity-[0.28] blur-[160px]" />
+        {/* Depth orb — right side */}
+        <div className="absolute top-[8%] right-[-160px] w-[720px] h-[720px] rounded-full bg-white opacity-[0.02] blur-[160px]" />
 
-        {/* BLUE — very subtle top-center, adds tonal richness */}
-        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[380px] rounded-full bg-[#007BFF] opacity-[0.10] blur-[130px]" />
+        {/* Depth orb — top-center */}
+        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[380px] rounded-full bg-white opacity-[0.02] blur-[130px]" />
 
         {/* fine dot-grid */}
         <div
@@ -40,8 +40,8 @@ export default function HeroSection() {
         />
 
         {/* edge fades — pure black so sections below blend cleanly */}
-        <div className="absolute top-0 inset-x-0 h-40 bg-linear-to-b from-black to-transparent" />
-        <div className="absolute bottom-0 inset-x-0 h-48 bg-linear-to-t from-black to-transparent" />
+        <div className="absolute top-0 inset-x-0 h-40 bg-linear-to-b from-[var(--background)] to-transparent" />
+        <div className="absolute bottom-0 inset-x-0 h-48 bg-linear-to-t from-[var(--background)] to-transparent" />
       </div>
 
       {/* ── Content ───────────────────────────────────────────── */}
@@ -60,7 +60,7 @@ export default function HeroSection() {
           {/* H1 */}
           <h1
             id="hero-heading"
-            className="font-clash animate-fade-up text-[clamp(2.6rem,5vw,4.5rem)] font-semibold leading-[1.06] tracking-tight text-[#F8F9FA]"
+            className="font-clash animate-fade-up text-[clamp(2.6rem,5vw,4.5rem)] font-semibold leading-[1.06] tracking-tight text-[var(--foreground)]"
             style={{ animationDelay: "80ms" }}
           >
             DIGITALIZA TU OPERACIÓN Y MULTIPLICA{" "}
@@ -83,7 +83,7 @@ export default function HeroSection() {
           >
             <Link
               href="#contacto"
-              className="btn-primary btn-light w-full sm:w-auto text-sm px-6 py-3"
+              className="btn-primary w-full sm:w-auto text-sm px-6 py-3"
             >
               Agendar una llamada
             </Link>
@@ -110,8 +110,8 @@ export default function HeroSection() {
           style={{ animationDelay: "200ms" }}
           aria-hidden="true"
         >
-          {/* cyan accent — moved to bottom-right corner, off the laptop chassis */}
-          <div className="absolute bottom-[5%] right-[5%] w-[100px] h-[100px] rounded-full bg-[#00F5FF] opacity-[0.08] blur-[55px] pointer-events-none" />
+          {/* subtle depth accent — bottom-right corner */}
+          <div className="absolute bottom-[5%] right-[5%] w-[100px] h-[100px] rounded-full bg-white opacity-[0.04] blur-[55px] pointer-events-none" />
 
           <Image
             src="/images/laptop.png"
@@ -119,7 +119,7 @@ export default function HeroSection() {
             width={600}
             height={600}
             priority
-            className="relative w-full max-w-[530px] lg:max-w-[600px] h-auto object-contain mix-blend-screen animate-float contrast-125 brightness-110 saturate-110"
+            className="hero-laptop relative w-full max-w-[530px] lg:max-w-[600px] h-auto object-contain animate-float"
             style={{
               WebkitMaskImage:
                 "radial-gradient(ellipse 85% 85% at 50% 50%, black 50%, transparent 100%)",
@@ -133,14 +133,14 @@ export default function HeroSection() {
       {/* ── Scroll indicator ──────────────────────────────────── */}
       <div
         aria-hidden="true"
-        className="hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 opacity-35 pointer-events-none select-none"
+        className="scroll-indicator flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 opacity-35 pointer-events-none select-none"
       >
         <div
           className="w-[18px] h-[28px] rounded-full flex items-start justify-center pt-[5px]"
-          style={{ border: "1.5px solid rgba(255,255,255,0.25)" }}
+          style={{ border: "1.5px solid var(--glass-border-highlight)" }}
         >
           <div
-            className="w-[3px] h-[7px] rounded-full bg-(--color-cyan) animate-bounce"
+            className="w-[3px] h-[7px] rounded-full bg-[var(--foreground)] animate-bounce"
             style={{ animationDuration: "1.8s" }}
           />
         </div>

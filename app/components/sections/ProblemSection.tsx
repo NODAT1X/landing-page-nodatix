@@ -15,6 +15,7 @@ import { FadeUp } from "../ui/FadeUp";
 
 interface PainPoint {
   icon: ReactNode;
+  iconColor: string;
   title: string;
   description: string;
 }
@@ -28,6 +29,7 @@ const PAIN_POINTS: PainPoint[] = [
         className="w-[26px] h-[26px]"
       />
     ),
+    iconColor: "#25D366",
     title: "Coordinación por WhatsApp",
     description:
       "Decisiones sin trazabilidad. El historial se pierde; el seguimiento, también.",
@@ -40,6 +42,7 @@ const PAIN_POINTS: PainPoint[] = [
         className="w-[26px] h-[26px]"
       />
     ),
+    iconColor: "#2563EB",
     title: "Datos en hojas de cálculo",
     description:
       "Versiones duplicadas, reportes lentos. Nadie trabaja con la misma verdad.",
@@ -52,6 +55,7 @@ const PAIN_POINTS: PainPoint[] = [
         className="w-[26px] h-[26px]"
       />
     ),
+    iconColor: "#F59E0B",
     title: "Procesos que no escalan",
     description:
       "Sin estándares ni automatización, escalar solo amplifica el caos.",
@@ -63,7 +67,7 @@ export default function ProblemSection() {
     <section
       id="problema"
       aria-labelledby="problem-heading"
-      className="section-padding bg-black"
+      className="section-padding bg-[var(--background)]"
     >
       <div className="section-container">
         <div className="grid grid-cols-1 gap-8 md:gap-12 lg:grid-cols-12 lg:gap-16">
@@ -90,13 +94,14 @@ export default function ProblemSection() {
             <div className="flex flex-col gap-5 md:gap-8 lg:gap-10" role="list">
               {PAIN_POINTS.map((point, i) => (
                 <FadeUp key={point.title} role="listitem" delay={i * 100}>
-                  <div className="flex items-start gap-6 rounded-xl p-5 md:p-6 transition-all duration-500 ease-out bg-[var(--color-glass-surface)] backdrop-blur-md border border-[var(--color-glass-border)] border-t-[var(--color-glass-border-highlight)] hover:-translate-y-1.5 hover:shadow-[0_12px_40px_-8px_rgba(0,123,255,0.15)]">
+                  <div className="flex items-start gap-6 rounded-xl p-5 md:p-6 transition-all duration-500 ease-out bg-[var(--color-glass-surface)] backdrop-blur-md border border-[var(--color-glass-border)] border-t-[var(--color-glass-border-highlight)] hover:-translate-y-1.5 hover:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.10)]">
                     {/* icon node */}
                     <div
-                      className="w-14 h-14 rounded-xl flex items-center justify-center shrink-0 text-[var(--color-primary-blue)]"
+                      className="w-14 h-14 rounded-xl flex items-center justify-center shrink-0"
                       style={{
-                        background: "rgba(0,123,255,0.08)",
-                        border: "1px solid rgba(0,123,255,0.16)",
+                        color: point.iconColor,
+                        background: `${point.iconColor}18`,
+                        border: `1px solid ${point.iconColor}40`,
                       }}
                     >
                       {point.icon}

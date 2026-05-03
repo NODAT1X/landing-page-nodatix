@@ -14,8 +14,8 @@ const QUICK_LINKS = [
 ];
 
 const LEGAL_LINKS = [
-  { label: "Política de privacidad", href: "/privacidad" },
-  { label: "Términos de uso", href: "/terminos" },
+  { label: "Política de privacidad", href: "/privacy-policy" },
+  { label: "Términos de uso", href: "/terms-of-use" },
 ];
 
 /* ── Inline social icons ──────────────────────────────────────── */
@@ -152,7 +152,10 @@ export default function Footer() {
                 className="glow-dot shrink-0 transition-transform duration-300 group-hover:scale-125"
                 aria-hidden="true"
               />
-              <span className="text-[1.1rem] font-bold tracking-tight leading-none text-[var(--color-text-primary)]">
+              <span
+                className="text-[1.1rem] font-bold tracking-tight leading-none"
+                style={{ color: "var(--foreground)" }}
+              >
                 Nodatix
               </span>
             </Link>

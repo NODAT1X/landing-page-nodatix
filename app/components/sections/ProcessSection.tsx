@@ -17,6 +17,7 @@ import { FadeUp } from "../ui/FadeUp";
 
 interface Step {
   number: string;
+  numberColor: string;
   icon: IconDefinition;
   title: string;
   description: string;
@@ -26,6 +27,7 @@ interface Step {
 const STEPS: Step[] = [
   {
     number: "01",
+    numberColor: "#64748B",
     icon: faMagnifyingGlass,
     title: "Diagnóstico",
     description:
@@ -34,6 +36,7 @@ const STEPS: Step[] = [
   },
   {
     number: "02",
+    numberColor: "#2563EB",
     icon: faFileContract,
     title: "Definición",
     description:
@@ -46,6 +49,7 @@ const STEPS: Step[] = [
   },
   {
     number: "03",
+    numberColor: "#7C3AED",
     icon: faCode,
     title: "Desarrollo",
     description:
@@ -54,6 +58,7 @@ const STEPS: Step[] = [
   },
   {
     number: "04",
+    numberColor: "#F59E0B",
     icon: faRocket,
     title: "Lanzamiento",
     description:
@@ -62,6 +67,7 @@ const STEPS: Step[] = [
   },
   {
     number: "05",
+    numberColor: "#16A34A",
     icon: faArrowsRotate,
     title: "Iteración",
     description:
@@ -72,8 +78,9 @@ const STEPS: Step[] = [
 
 /* ── Step card ────────────────────────────────────────────────── */
 function StepCard({ step, isLast }: { step: Step; isLast: boolean }) {
+  const { numberColor } = step;
   return (
-    <div className="relative flex h-full gap-5 md:gap-6 p-6 md:p-8 lg:flex-col lg:gap-6 lg:p-8 xl:p-5 transition-all duration-500 ease-out hover:-translate-y-1.5 hover:shadow-[0_12px_40px_-8px_rgba(0,123,255,0.15)] bg-[var(--color-glass-surface-subtle)] border border-[var(--color-glass-border-subtle)] rounded-xl backdrop-blur-sm">
+    <div className="relative flex h-full gap-5 md:gap-6 p-6 md:p-8 lg:flex-col lg:gap-6 lg:p-8 xl:p-5 transition-all duration-500 ease-out hover:-translate-y-1.5 hover:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.10)] bg-[var(--color-glass-surface-subtle)] border border-[var(--color-glass-border-subtle)] rounded-xl backdrop-blur-sm">
       {/* ── Timeline connector (mobile/tablet only) ────────────── */}
       {!isLast && (
         <div
@@ -81,7 +88,7 @@ function StepCard({ step, isLast }: { step: Step; isLast: boolean }) {
           className="lg:hidden absolute left-[39px] md:left-[43px] top-10 bottom-0 w-px"
           style={{
             background:
-              "linear-gradient(180deg, rgba(0,123,255,0.35) 0%, rgba(0,123,255,0.06) 100%)",
+              "linear-gradient(180deg, var(--glass-border-highlight) 0%, var(--glass-surface) 100%)",
           }}
         />
       )}
@@ -89,10 +96,10 @@ function StepCard({ step, isLast }: { step: Step; isLast: boolean }) {
       {/* ── Icon node ─────────────────────────────────────────── */}
       <div className="relative shrink-0 flex flex-col items-center lg:flex-row lg:items-start">
         <div
-          className="w-10 h-10 rounded-xl flex items-center justify-center text-[var(--color-primary-blue)] z-10 shrink-0"
+          className="w-10 h-10 rounded-xl flex items-center justify-center text-[var(--color-text-primary)] z-10 shrink-0"
           style={{
-            background: "rgba(0,123,255,0.10)",
-            border: "1px solid rgba(0,123,255,0.20)",
+            background: "var(--glass-surface)",
+            border: "1px solid var(--glass-border)",
           }}
         >
           <FontAwesomeIcon
@@ -114,8 +121,8 @@ function StepCard({ step, isLast }: { step: Step; isLast: boolean }) {
             Paso
           </span>
           <span
-            className="text-7xl xl:text-5xl font-light leading-none tracking-tight text-white/[0.08]"
-            style={{ fontFamily: "var(--font-display, var(--font-sans))" }}
+            className="text-7xl xl:text-5xl font-light leading-none tracking-tight"
+            style={{ fontFamily: "var(--font-display, var(--font-sans))", color: numberColor }}
           >
             {step.number}
           </span>
@@ -124,7 +131,7 @@ function StepCard({ step, isLast }: { step: Step; isLast: boolean }) {
         {/* title */}
         <h3
           className="font-clash text-xl md:text-2xl xl:text-lg font-normal leading-tight tracking-tight"
-          style={{ color: "#F8F9FA" }}
+          style={{ color: "var(--foreground)" }}
         >
           {step.title}
         </h3>
@@ -148,7 +155,7 @@ function StepCard({ step, isLast }: { step: Step; isLast: boolean }) {
               <span
                 aria-hidden="true"
                 className="w-1 h-1 rounded-full shrink-0"
-                style={{ background: "var(--color-cyan)" }}
+                style={{ background: "var(--color-text-secondary)" }}
               />
               <span className="min-w-0 break-words">{item}</span>
             </li>
@@ -165,7 +172,7 @@ export default function ProcessSection() {
     <section
       id="proceso"
       aria-labelledby="process-heading"
-      className="section-padding bg-black relative overflow-hidden"
+      className="section-padding bg-[var(--background)] relative overflow-hidden"
     >
       <div className="section-container flex flex-col gap-16 md:gap-20">
         {/* ── Header ────────────────────────────────────────────── */}
@@ -179,7 +186,7 @@ export default function ProcessSection() {
             <h2
               id="process-heading"
               className="font-clash text-3xl md:text-4xl lg:text-5xl font-normal leading-tight tracking-tight"
-              style={{ color: "#F8F9FA" }}
+              style={{ color: "var(--foreground)" }}
             >
               Cinco fases.{" "}
               <span className="text-tech-gradient">Sin sorpresas.</span>
@@ -197,7 +204,7 @@ export default function ProcessSection() {
           {/* directional violet→cyan glow behind the step timeline */}
           <div
             aria-hidden="true"
-            className="absolute left-1/2 -translate-x-1/2 top-0 w-[150px] h-[80%] bg-gradient-to-b from-[#8A2BE2]/10 to-[#00F5FF]/10 blur-[100px] pointer-events-none"
+            className="absolute left-1/2 -translate-x-1/2 top-0 w-[150px] h-[80%] bg-gradient-to-b from-[var(--glass-surface)] to-transparent blur-[100px] pointer-events-none"
           />
 
           {/* Desktop connector rail */}
@@ -206,8 +213,8 @@ export default function ProcessSection() {
             className="hidden lg:block absolute top-5 left-5 right-5 h-[1.5px] pointer-events-none"
             style={{
               background:
-                "linear-gradient(90deg, rgba(0,123,255,0.65) 0%, rgba(0,245,255,0.45) 50%, rgba(0,123,255,0.2) 100%)",
-              boxShadow: "0 0 8px 0 rgba(0,123,255,0.25)",
+                "linear-gradient(90deg, var(--glass-border-highlight) 0%, var(--glass-border) 50%, var(--glass-surface) 100%)",
+              boxShadow: "0 0 8px 0 var(--glass-surface)",
             }}
           />
           {STEPS.map((step, i) => (
@@ -222,14 +229,14 @@ export default function ProcessSection() {
           <div
             className="flex flex-col items-stretch justify-between gap-6 rounded-2xl p-6 md:p-10 lg:p-12 sm:flex-row sm:items-center"
             style={{
-              background: "rgba(0,123,255,0.05)",
-              border: "1px solid rgba(0,123,255,0.12)",
+              background: "var(--glass-surface)",
+              border: "1px solid var(--glass-border-subtle)",
             }}
           >
             <div className="min-w-0 flex flex-col gap-1">
               <p
                 className="font-clash text-xl md:text-3xl font-normal"
-                style={{ color: "#F8F9FA" }}
+                style={{ color: "var(--foreground)" }}
               >
                 Agenda tu sesión de diagnóstico
               </p>
@@ -239,7 +246,7 @@ export default function ProcessSection() {
             </div>
             <a
               href="#contacto"
-              className="btn-primary btn-light text-sm px-5 py-2.5 sm:w-auto"
+              className="btn-primary text-sm px-5 py-2.5 sm:w-auto"
             >
               Agendar diagnóstico
             </a>

@@ -5,6 +5,7 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
+import { ThemeProvider } from "./components/ThemeProvider";
 
 /* ── Fonts ──────────────────────────────────────────────────────── */
 const geistSans = Geist({
@@ -106,15 +107,24 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="es" className="dark" suppressHydrationWarning>
+    <html lang="es" data-theme="light" suppressHydrationWarning>
+      <head>
+        {/* Anti-flash: read localStorage before first paint and apply saved theme */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme');document.documentElement.setAttribute('data-theme',t==='dark'?'dark':'light');}catch(e){}})();`,
+          }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${syne.variable} ${clashDisplay.variable} antialiased`}
       >
-        <Navbar />
-
-        <main>{children}</main>
-        <Footer />
-        <WhatsAppButton />
+        <ThemeProvider>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+          <WhatsAppButton />
+        </ThemeProvider>
       </body>
     </html>
   );

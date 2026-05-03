@@ -21,7 +21,15 @@ interface Service {
   description: string;
   tags: string[];
   accent: ServiceAccent;
+  tagColor: string;
 }
+
+const MONO_ACCENT: ServiceAccent = {
+  color: "var(--foreground)",
+  muted: "var(--glass-surface)",
+  border: "var(--glass-border)",
+  glow: "var(--glass-surface)",
+};
 
 const SERVICES: Service[] = [
   {
@@ -30,12 +38,8 @@ const SERVICES: Service[] = [
     description:
       "Escala tu operación con plataformas web e internas. Arquitectura sólida, UX orientada a productividad.",
     tags: ["Web Apps", "Portales internos", "Escalabilidad"],
-    accent: {
-      color: "#007BFF",
-      muted: "rgba(0,123,255,0.08)",
-      border: "rgba(0,123,255,0.18)",
-      glow: "rgba(0,123,255,0.05)",
-    },
+    accent: MONO_ACCENT,
+    tagColor: "#2563EB",
   },
   {
     icon: <FontAwesomeIcon icon={faUsers} aria-hidden={true} className="w-[22px] h-[22px]" />,
@@ -43,12 +47,8 @@ const SERVICES: Service[] = [
     description:
       "Centraliza clientes, ventas y seguimientos en un sistema adaptado a tu ciclo comercial.",
     tags: ["Pipeline", "Seguimiento", "Reportes"],
-    accent: {
-      color: "#8A2BE2",
-      muted: "rgba(138,43,226,0.08)",
-      border: "rgba(138,43,226,0.18)",
-      glow: "rgba(138,43,226,0.05)",
-    },
+    accent: MONO_ACCENT,
+    tagColor: "#7C3AED",
   },
   {
     icon: <FontAwesomeIcon icon={faBolt} aria-hidden={true} className="w-[22px] h-[22px]" />,
@@ -56,12 +56,8 @@ const SERVICES: Service[] = [
     description:
       "Flujos digitales que eliminan tareas manuales. Menos fricción operativa, más tiempo estratégico.",
     tags: ["Integraciones", "Workflows", "Eficiencia"],
-    accent: {
-      color: "#00F5FF",
-      muted: "rgba(0,245,255,0.07)",
-      border: "rgba(0,245,255,0.14)",
-      glow: "rgba(0,245,255,0.05)",
-    },
+    accent: MONO_ACCENT,
+    tagColor: "#F59E0B",
   },
 ];
 
@@ -70,15 +66,15 @@ interface ServiceCardProps extends Service {
 }
 
 /* ── Single card ──────────────────────────────────────────────── */
-function ServiceCard({ icon, title, description, tags, accent, featured }: ServiceCardProps) {
+function ServiceCard({ icon, title, description, tags, accent, tagColor, featured }: ServiceCardProps) {
   return (
     <article
       className={[
         "group relative flex flex-col rounded-xl",
         "bg-[var(--color-glass-surface-subtle)] backdrop-blur-sm border border-[var(--color-glass-border-subtle)]",
         "transition-all duration-300 ease-out",
-        "hover:-translate-y-1 hover:border-[#00F5FF]/30",
-        "hover:shadow-[0_8px_32px_-8px_rgba(0,245,255,0.10)]",
+        "hover:-translate-y-1 hover:border-[var(--glass-border-highlight)]",
+        "hover:shadow-[0_8px_32px_-8px_rgba(0,0,0,0.10)]",
         featured
           ? "gap-6 p-6 md:h-full md:gap-7 md:rounded-2xl md:p-8 lg:p-10"
           : "gap-5 h-full p-6 md:gap-6 md:rounded-2xl md:p-8",
@@ -145,10 +141,11 @@ function ServiceCard({ icon, title, description, tags, accent, featured }: Servi
         {tags.map((tag) => (
           <span
             key={tag}
-            className="px-2.5 py-1 rounded-md text-[11px] font-semibold tracking-wide text-[var(--color-text-disabled)]"
+            className="px-2.5 py-1 rounded-md text-[11px] font-semibold tracking-wide"
             style={{
-              background: "var(--color-glass-surface-subtle)",
-              border: "1px solid var(--color-glass-border-subtle)",
+              background: `${tagColor}14`,
+              border: `1px solid ${tagColor}40`,
+              color: tagColor,
             }}
           >
             {tag}
@@ -169,7 +166,7 @@ export default function ServicesSection() {
     >
       {/* ambient violet glow — centered behind card grid */}
       <div aria-hidden="true" className="absolute inset-0 z-0 pointer-events-none flex justify-center items-center">
-        <div className="w-[80%] h-[300px] bg-[#8A2BE2]/10 blur-[120px] rounded-[100%]" />
+        <div className="w-[80%] h-[300px] bg-[var(--glass-surface)] blur-[120px] rounded-[100%]" />
       </div>
 
       <div className="section-container relative z-10 flex flex-col gap-10 md:gap-14">

@@ -1,14 +1,14 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useSyncExternalStore } from "react";
 
 type FormState = { name: string; email: string; details: string };
 
 const inputCls = [
-  "w-full rounded-lg border border-[var(--color-glass-border)] bg-[#060810] px-4 py-3 text-sm",
+  "w-full rounded-lg border border-[var(--color-glass-border)] bg-[var(--surface-raised)] px-4 py-3 text-sm",
   "text-(--color-text-primary) placeholder-(--color-text-disabled) outline-none",
   "transition-all duration-200",
-  "focus:border-[var(--color-glass-border-highlight)] focus:bg-[#060810] focus:shadow-[0_0_0_2px_rgba(255,255,255,0.04)]",
+  "focus:border-[var(--color-glass-border-highlight)] focus:bg-[var(--surface-raised)] focus:shadow-[0_0_0_2px_var(--glass-surface)]",
 ].join(" ");
 
 const labelCls =
@@ -79,7 +79,7 @@ function FormBody({
 
       <button
         type="submit"
-        className="btn-primary btn-light text-sm font-semibold tracking-wide"
+        className="btn-primary text-sm font-semibold tracking-wide"
         style={{
           boxShadow: "0 2px 12px rgba(0,0,0,0.5)",
         }}
@@ -109,7 +109,7 @@ function FormBody({
 export default function ContactCTASection() {
   const [form, setForm] = useState<FormState>({ name: "", email: "", details: "" });
   const [isSheetOpen, setIsSheetOpen] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
+  const isMounted = useSyncExternalStore(() => () => {}, () => true, () => false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -119,10 +119,6 @@ export default function ContactCTASection() {
     e.preventDefault();
     // TODO: connect backend / form service
   };
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   useEffect(() => {
     document.body.style.overflow = isSheetOpen ? "hidden" : "";
@@ -136,7 +132,7 @@ export default function ContactCTASection() {
       id="contacto"
       aria-labelledby="contact-cta-heading"
       className="relative overflow-hidden py-24 md:py-32"
-      style={{ background: "#0C0C10" }}
+      style={{ background: "var(--background)" }}
     >
       {/* ── Subtle vignette only — no color glow ────────────────────── */}
       <div
@@ -155,9 +151,9 @@ export default function ContactCTASection() {
         <div
           className="relative isolate hidden overflow-hidden rounded-2xl border border-[var(--color-glass-border)] px-6 py-12 md:block md:px-14 md:py-16"
           style={{
-            background: "#13151C",
+            background: "var(--surface)",
             boxShadow:
-              "0 0 0 1px rgba(255,255,255,0.05) inset, 0 8px 48px rgba(0,0,0,0.65)",
+              "0 0 0 1px var(--glass-border-subtle) inset, 0 8px 48px rgba(0,0,0,0.25)",
           }}
         >
           {/* Top hairline */}
@@ -177,7 +173,7 @@ export default function ContactCTASection() {
               <div className="flex flex-col gap-4">
                 <h2
                   id="contact-cta-heading"
-                  className="font-clash text-[clamp(1.9rem,3.5vw,3.1rem)] font-bold leading-tight tracking-tight text-[#F8F9FA]"
+                  className="font-clash text-[clamp(1.9rem,3.5vw,3.1rem)] font-bold leading-tight tracking-tight text-[var(--foreground)]"
                 >
                   Convierte tu proceso en{" "}
                   <span className="text-tech-gradient">un sistema real</span>
@@ -200,13 +196,13 @@ export default function ContactCTASection() {
                     <span
                       aria-hidden="true"
                       className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full"
-                      style={{ background: "var(--color-glass-border-subtle)" }}
+                      style={{ background: "rgba(22,163,74,0.12)" }}
                     >
                       <svg
                         viewBox="0 0 12 12"
                         className="h-3 w-3"
                         fill="none"
-                        stroke="var(--color-primary-blue)"
+                        stroke="#16A34A"
                         strokeWidth="1.8"
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -225,9 +221,9 @@ export default function ContactCTASection() {
             <div
               className="rounded-xl border border-[var(--color-glass-border-subtle)] p-6 md:p-8"
               style={{
-                background: "#080A0F",
+                background: "var(--surface-raised)",
                 boxShadow:
-                  "inset 0 0 0 1px rgba(255,255,255,0.07)",
+                  "inset 0 0 0 1px var(--glass-border-subtle)",
               }}
             >
               <FormBody
@@ -246,7 +242,7 @@ export default function ContactCTASection() {
             Consulta sin costo
           </span>
 
-          <h2 className="font-clash text-[clamp(1.7rem,7vw,2.4rem)] font-bold leading-tight tracking-tight text-[#F8F9FA]">
+          <h2 className="font-clash text-[clamp(1.7rem,7vw,2.4rem)] font-bold leading-tight tracking-tight text-[var(--foreground)]">
             Convierte tu proceso en{" "}
             <span className="text-tech-gradient">un sistema real</span>
           </h2>
@@ -258,7 +254,7 @@ export default function ContactCTASection() {
           <button
             type="button"
             onClick={() => setIsSheetOpen(true)}
-            className="btn-primary btn-light w-full max-w-xs py-4 text-sm font-semibold tracking-wide"
+            className="btn-primary w-full max-w-xs py-4 text-sm font-semibold tracking-wide"
             style={{
               boxShadow: "0 2px 8px rgba(0,0,0,0.4)",
             }}
@@ -311,12 +307,12 @@ export default function ContactCTASection() {
               "fixed bottom-0 left-0 right-0 z-[61] md:hidden",
               "max-h-[88vh] overflow-y-auto overscroll-contain",
               "rounded-t-2xl border-t border-x border-[var(--color-glass-border)]",
-              "transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]",
+              "transition-transform duration-300 ease-in-out",
               isSheetOpen ? "translate-y-0" : "translate-y-full",
             ].join(" ")}
             style={{
-              background: "linear-gradient(180deg, #161622 0%, #111118 100%)",
-              boxShadow: "0 -8px 40px -4px rgba(0,0,0,0.75)",
+              background: "var(--surface)",
+              boxShadow: "0 -8px 40px -4px rgba(0,0,0,0.30)",
             }}
           >
             {/* Sheet header */}
@@ -324,7 +320,7 @@ export default function ContactCTASection() {
               className="sticky top-0 z-10 flex items-start justify-between gap-4 px-6 pb-4 pt-5"
               style={{
                 background:
-                  "linear-gradient(180deg, #161622 80%, transparent 100%)",
+                  "linear-gradient(180deg, var(--surface) 80%, transparent 100%)",
               }}
             >
               <div className="flex flex-col gap-1">
@@ -339,7 +335,7 @@ export default function ContactCTASection() {
                 type="button"
                 onClick={() => setIsSheetOpen(false)}
                 aria-label="Cerrar formulario"
-                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-(--color-text-secondary) transition-colors duration-200 hover:bg-white/6 hover:text-(--color-text-primary)"
+                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-(--color-text-secondary) transition-colors duration-200 hover:bg-[var(--glass-surface)] hover:text-(--color-text-primary)"
               >
                 <svg
                   viewBox="0 0 16 16"

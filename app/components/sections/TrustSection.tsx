@@ -30,20 +30,26 @@ const FOUNDERS: Founder[] = [
   },
 ];
 
-const TECH_TAGS = ["React", "Node.js", "TypeScript", "MySQL", "Tailwind CSS"];
+const TECH_TAGS: { name: string; color: string }[] = [
+  { name: "React", color: "#61DAFB" },
+  { name: "Node.js", color: "#68A063" },
+  { name: "TypeScript", color: "#3178C6" },
+  { name: "MySQL", color: "#4479A1" },
+  { name: "Tailwind CSS", color: "#38BDF8" },
+];
 
 /* ── KPI cards data ───────────────────────────────────────────── */
 const KPIS = [
-  { value: "248", label: "Miembros activos", color: "#007BFF" },
-  { value: "+18", label: "Nuevos esta semana", color: "#00F5FF" },
-  { value: "$12.4k", label: "Ingresos / mes", color: "#8A2BE2" },
+  { value: "248", label: "Miembros activos", color: "#FFFFFF" },
+  { value: "+18", label: "Nuevos esta semana", color: "#E5E7EB" },
+  { value: "$12.4k", label: "Ingresos / mes", color: "#A6A6A6" },
 ];
 
 /* ── Membership distribution ──────────────────────────────────── */
 const MEMBERSHIP_TYPES = [
-  { label: "Premium", pct: 68, color: "#007BFF" },
-  { label: "Básico", pct: 24, color: "#8A2BE2" },
-  { label: "Prueba libre", pct: 8, color: "#00F5FF" },
+  { label: "Premium", pct: 68, color: "rgba(255,255,255,0.80)" },
+  { label: "Básico", pct: 24, color: "rgba(255,255,255,0.45)" },
+  { label: "Prueba libre", pct: 8, color: "rgba(255,255,255,0.22)" },
 ];
 
 /* ── Weekly attendance bars ───────────────────────────────────── */
@@ -52,9 +58,9 @@ const DAYS = ["L", "M", "Mi", "J", "V", "S", "D"];
 
 /* ── Check-ins ────────────────────────────────────────────────── */
 const CHECKINS = [
-  { w1: "w-16", w2: "w-10", time: "Hace 2 min", dot: "#00C48C" },
-  { w1: "w-20", w2: "w-12", time: "Hace 7 min", dot: "#007BFF" },
-  { w1: "w-14", w2: "w-8", time: "Hace 15 min", dot: "#8A2BE2" },
+  { w1: "w-16", w2: "w-10", time: "Hace 2 min", dot: "rgba(255,255,255,0.90)" },
+  { w1: "w-20", w2: "w-12", time: "Hace 7 min", dot: "rgba(255,255,255,0.55)" },
+  { w1: "w-14", w2: "w-8", time: "Hace 15 min", dot: "rgba(255,255,255,0.30)" },
 ];
 
 /* ─────────────────────────────────────────────────────────────────
@@ -69,7 +75,7 @@ function GymDashboardMockup() {
           "linear-gradient(160deg, #1E1E24 0%, #17171D 60%, #121218 100%)",
         border: "1px solid rgba(255,255,255,0.07)",
         boxShadow:
-          "0 0 0 1px rgba(255,255,255,0.03), 0 24px 60px -12px rgba(0,0,0,0.65), 0 0 40px -15px rgba(0,123,255,0.10)",
+          "0 0 0 1px rgba(255,255,255,0.03), 0 24px 60px -12px rgba(0,0,0,0.65)",
       }}
     >
       {/* Browser chrome */}
@@ -86,7 +92,7 @@ function GymDashboardMockup() {
 
         {/* URL bar */}
         <div className="mx-3 flex flex-1 max-w-[220px] items-center gap-1.5 rounded-md border border-white/[0.06] bg-white/[0.04] px-3 py-1">
-          <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#00C48C]" />
+          <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-white/70" />
           <span className="truncate font-mono text-[10px] text-white/40">
             app.nodatix.io/dashboard
           </span>
@@ -128,7 +134,7 @@ function GymDashboardMockup() {
                 className="flex-1"
                 style={{
                   height: `${val}%`,
-                  background: index === 2 ? "#00F5FF" : "rgba(0,123,255,0.3)",
+                  background: index === 2 ? "rgba(255,255,255,0.90)" : "rgba(255,255,255,0.20)",
                   borderRadius: "2px",
                 }}
               />
@@ -205,7 +211,7 @@ export default function TrustSection() {
     <section
       id="confianza"
       aria-labelledby="trust-heading"
-      className="relative overflow-hidden bg-black px-6 py-24 text-white sm:px-8 lg:px-12"
+      className="relative overflow-hidden bg-[var(--background)] px-6 py-24 text-[var(--foreground)] sm:px-8 lg:px-12"
     >
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-10">
@@ -213,13 +219,13 @@ export default function TrustSection() {
           {/* ── Left: SaaS case mockup ──────────────────────────── */}
           <div className="lg:col-span-7">
             <div className="mb-8 md:mb-16 lg:mb-20">
-              <span className="inline-flex rounded-full border border-[#00F5FF]/20 bg-[#00F5FF]/10 px-3 py-1 text-xs font-semibold text-[#00F5FF]">
+              <span className="inline-flex rounded-full border border-[var(--color-glass-border)] bg-[var(--color-glass-surface)] px-3 py-1 text-xs font-semibold text-[var(--color-text-primary)]">
                 Caso representativo
               </span>
 
               <h2
                 id="trust-heading"
-                className="font-clash mt-5 max-w-2xl text-3xl font-normal tracking-tight text-white md:text-5xl"
+                className="font-clash mt-5 max-w-2xl text-3xl font-normal tracking-tight text-[var(--foreground)] md:text-5xl"
               >
                 Un panel. Toda tu operación.
               </h2>
@@ -234,11 +240,11 @@ export default function TrustSection() {
 
           {/* ── Right: Team trust ───────────────────────────────── */}
           <div className="lg:col-span-5">
-            <span className="inline-flex rounded-full border border-[#007BFF]/20 bg-[#007BFF]/10 px-3 py-1 text-xs font-semibold text-[#00F5FF]">
+            <span className="inline-flex rounded-full border border-[var(--color-glass-border)] bg-[var(--color-glass-surface)] px-3 py-1 text-xs font-semibold text-[var(--color-text-primary)]">
               Equipo fundador
             </span>
 
-            <h3 className="font-clash mt-5 text-2xl font-normal tracking-tight text-white md:text-3xl">
+            <h3 className="font-clash mt-5 text-2xl font-normal tracking-tight text-[var(--foreground)] md:text-3xl">
               Técnica sólida. Visión de negocio.
             </h3>
 
@@ -250,7 +256,7 @@ export default function TrustSection() {
               {FOUNDERS.map((founder) => (
                 <div
                   key={founder.initials}
-                  className="group rounded-2xl border border-[var(--color-glass-border)] bg-[var(--color-glass-surface-subtle)] p-6 md:p-8 backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--color-glass-border-highlight)] hover:bg-[var(--color-glass-surface)] hover:shadow-[0_8px_24px_-4px_rgba(255,255,255,0.06)]"
+                  className="group rounded-2xl border border-[var(--color-glass-border)] bg-[var(--color-glass-surface-subtle)] p-6 md:p-8 backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--color-glass-border-highlight)] hover:bg-[var(--color-glass-surface)] hover:shadow-[0_8px_24px_-4px_rgba(0,0,0,0.08)]"
                 >
                   <div className="flex items-start gap-4">
                     {/*
@@ -261,13 +267,13 @@ export default function TrustSection() {
                            width={48} height={48}
                            className="h-12 w-12 shrink-0 rounded-full object-cover" />
                     */}
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#007BFF] to-[#8A2BE2] text-sm font-bold text-white shadow-lg shadow-[#007BFF]/20">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[var(--glass-surface)] border border-[var(--glass-border)] text-sm font-bold text-[var(--foreground)] shadow-lg shadow-black/40">
                       {founder.initials}
                     </div>
 
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between gap-2">
-                        <h4 className="text-base md:text-lg font-semibold text-white">
+                        <h4 className="text-base md:text-lg font-semibold text-[var(--foreground)]">
                           {founder.role}
                         </h4>
                         {/* LinkedIn icon — renders only when linkedIn is set in FOUNDERS */}
@@ -277,7 +283,7 @@ export default function TrustSection() {
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label={`LinkedIn de ${founder.role}`}
-                            className="shrink-0 text-white/30 transition-colors duration-200 hover:text-[#0A66C2]"
+                            className="shrink-0 text-white/30 transition-colors duration-200 hover:text-(--color-text-primary)"
                           >
                             <svg
                               width="14"
@@ -311,10 +317,15 @@ export default function TrustSection() {
               <div className="flex flex-wrap gap-2">
                 {TECH_TAGS.map((tag) => (
                   <span
-                    key={tag}
-                    className="rounded-full border border-[var(--color-glass-border)] bg-[var(--color-glass-surface-subtle)] px-3 py-1 text-xs text-(--color-text-secondary)"
+                    key={tag.name}
+                    className="rounded-full border px-3 py-1 text-xs font-medium"
+                    style={{
+                      borderColor: `${tag.color}40`,
+                      background: `${tag.color}12`,
+                      color: tag.color,
+                    }}
                   >
-                    {tag}
+                    {tag.name}
                   </span>
                 ))}
               </div>
@@ -328,7 +339,7 @@ export default function TrustSection() {
           style={{
             background: "var(--color-glass-surface-subtle)",
             boxShadow:
-              "0 0 0 1px rgba(255,255,255,0.04) inset, 0 0 60px -20px rgba(0,245,255,0.07)",
+              "0 0 0 1px var(--glass-border-subtle) inset",
           }}
         >
           <p className="mx-auto max-w-2xl text-lg leading-relaxed text-(--color-text-secondary) md:text-xl">

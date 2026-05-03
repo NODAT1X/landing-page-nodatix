@@ -13,7 +13,7 @@ interface Tech {
 const TECHS: Tech[] = [
   {
     name: "Next.js",
-    hoverColor: "#F8F9FA",
+    hoverColor: "var(--foreground)",
     svg: (
       <svg viewBox="0 0 180 180" fill="currentColor" aria-hidden="true">
         <mask id="nxt-mask" style={{ maskType: "alpha" }}>
@@ -120,7 +120,7 @@ const TECHS: Tech[] = [
   },
   {
     name: "Node.js",
-    hoverColor: "#68A063",
+    hoverColor: "#339933",
     svg: (
       <svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
         <path
@@ -150,7 +150,7 @@ const TECHS: Tech[] = [
   },
   {
     name: "MySQL",
-    hoverColor: "#007BFF",
+    hoverColor: "#4479A1",
     svg: (
       <svg viewBox="0 0 100 100" fill="none" aria-hidden="true">
         <ellipse
@@ -178,7 +178,7 @@ const TECHS: Tech[] = [
   },
   {
     name: "Tailwind CSS",
-    hoverColor: "#38BDF8",
+    hoverColor: "#06B6D4",
     svg: (
       <svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
         <path d="M25 37.5 C30.6 18.8 43.1 9.4 62.5 12.5 C50 25 51.9 35.9 62.5 37.5 C76.6 39.5 83.1 30 87.5 25 C81.9 43.8 69.4 53.1 50 50 C37.5 47.8 33.6 56.6 37.5 62.5 Z" />
@@ -188,7 +188,7 @@ const TECHS: Tech[] = [
   },
   {
     name: "PostgreSQL",
-    hoverColor: "#8A2BE2",
+    hoverColor: "#4169E1",
     svg: (
       <svg viewBox="0 0 100 100" fill="none" aria-hidden="true">
         <ellipse
@@ -289,11 +289,11 @@ function TechPill({ tech }: { tech: Tech }) {
       title={tech.name}
     >
       {/* icon */}
-      <span className="tech-icon w-6 h-6 shrink-0 text-white/35 transition-colors duration-300 group-hover:text-[var(--hover-color)]">
+      <span className="tech-icon w-6 h-6 shrink-0 text-(--color-text-disabled) transition-colors duration-300 group-hover:text-[var(--hover-color)]">
         {tech.svg}
       </span>
       {/* name */}
-      <span className="text-[13px] font-semibold whitespace-nowrap text-[var(--color-text-disabled)] transition-colors duration-300 group-hover:text-[#F8F9FA]">
+      <span className="text-[13px] font-semibold whitespace-nowrap text-[var(--color-text-disabled)] transition-colors duration-300 group-hover:text-[var(--foreground)]">
         {tech.name}
       </span>
     </div>
@@ -306,11 +306,11 @@ export default function TechStackSection() {
     <section
       id="tecnologias"
       aria-labelledby="tech-heading"
-      className="section-padding overflow-hidden bg-black relative"
+      className="section-padding overflow-hidden bg-[var(--background)] relative"
     >
       {/* lateral cyan glow — left edge, emanates from tech stack */}
       <div aria-hidden="true" className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        <div className="absolute -left-[150px] top-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-[#00F5FF]/15 blur-[120px] rounded-full" />
+        <div className="absolute -left-[150px] top-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-[var(--glass-surface)] blur-[120px] rounded-full" />
       </div>
 
       <div className="relative z-10 flex flex-col gap-8 md:gap-16 lg:gap-20">
@@ -324,7 +324,7 @@ export default function TechStackSection() {
           <h2
             id="tech-heading"
             className="font-clash text-[clamp(1.75rem,3.5vw,2.6rem)] font-normal leading-tight tracking-tight"
-            style={{ color: "#F8F9FA" }}
+            style={{ color: "var(--foreground)" }}
           >
             Tecnología que{" "}
             <span className="text-tech-gradient">ya conoces</span>
@@ -352,7 +352,7 @@ export default function TechStackSection() {
             className="pointer-events-none absolute inset-y-0 left-0 w-12 z-10 md:w-32"
             style={{
               background:
-                "linear-gradient(90deg, #000000 0%, transparent 100%)",
+                "linear-gradient(90deg, var(--background) 0%, transparent 100%)",
             }}
           />
           <div
@@ -360,7 +360,7 @@ export default function TechStackSection() {
             className="pointer-events-none absolute inset-y-0 right-0 w-12 z-10 md:w-32"
             style={{
               background:
-                "linear-gradient(270deg, #000000 0%, transparent 100%)",
+                "linear-gradient(270deg, var(--background) 0%, transparent 100%)",
             }}
           />
 
