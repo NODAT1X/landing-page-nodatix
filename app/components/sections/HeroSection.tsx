@@ -114,7 +114,7 @@ export default function HeroSection() {
           <div className="absolute bottom-[5%] right-[5%] w-[100px] h-[100px] rounded-full bg-white opacity-[0.04] blur-[55px] pointer-events-none" />
 
           <Image
-            src="/images/laptop.png"
+            src="/images/laptopII.png"
             alt=""
             width={600}
             height={600}
