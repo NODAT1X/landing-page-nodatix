@@ -134,9 +134,9 @@ export default function PrivacidadPage() {
                 <Body>
                   De conformidad con lo establecido en la Ley Federal de Protección de Datos
                   Personales en Posesión de los Particulares (LFPDPPP), su Reglamento y
-                  lineamientos aplicables, Nodatix (en adelante, &ldquo;Nodatix&rdquo;), con
-                  domicilio en Domicilio pendiente de definir, declara ser el responsable del uso,
-                  tratamiento y protección de sus datos personales.
+                  lineamientos aplicables, Nodatix, con domicilio en Tehuacán, Puebla, México,
+                  declara ser el responsable del uso, tratamiento y protección de sus datos
+                  personales.
                 </Body>
               </section>
 
@@ -287,12 +287,12 @@ export default function PrivacidadPage() {
               <section className="flex flex-col gap-4">
                 <SectionTitle>9. Cambios al Aviso de Privacidad</SectionTitle>
                 <Body>
-                  El presente Aviso de Privacidad puede sufrir modificaciones, cambios o
+                  El presente Aviso de Privacidad puede ser objeto de modificaciones o
                   actualizaciones derivadas de nuevos requerimientos legales, de nuestras propias
                   necesidades por los servicios que ofrecemos, o por nuestras prácticas de
-                  privacidad. Nodatix se compromete a mantenerlo informado sobre los cambios que
-                  pueda sufrir el presente aviso, publicando la versión actualizada en este mismo
-                  Sitio web, indicando la fecha de última modificación.
+                  privacidad. Nodatix se compromete a mantenerlo informado sobre las modificaciones
+                  al presente aviso, publicando la versión actualizada en este mismo Sitio web,
+                  indicando la fecha de última modificación.
                 </Body>
               </section>
 
@@ -301,7 +301,7 @@ export default function PrivacidadPage() {
                 <BulletList
                   items={[
                     "Responsable de Privacidad de Datos: Equipo Legal / Administrativo de Nodatix.",
-                    "Domicilio: Domicilio pendiente de definir, Tehuacán, Puebla.",
+                    "Domicilio: Tehuacán, Puebla, México.",
                     "Correo Electrónico: contact.nodatix@gmail.com",
                     "Fecha de última actualización: 03 de mayo de 2026",
                   ]}

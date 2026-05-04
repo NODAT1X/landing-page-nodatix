@@ -109,9 +109,8 @@ export default function TerminosPage() {
               <section className="flex flex-col gap-4">
                 <SectionTitle>1. Introducción</SectionTitle>
                 <Body>
-                  Bienvenido al sitio web de Nodatix (en adelante, el &ldquo;Sitio&rdquo;). Los
-                  presentes Términos de Uso rigen el acceso y uso de este Sitio, operado por
-                  Nodatix (en adelante, &ldquo;Nodatix&rdquo;). Al acceder, navegar o utilizar
+                  Bienvenido al sitio web de Nodatix. Los
+                  presentes Términos de Uso rigen el acceso y uso de este Sitio. Al acceder, navegar o utilizar
                   este Sitio, usted reconoce que ha leído, comprendido y acepta estar sujeto a
                   estos términos. Si no está de acuerdo con alguna parte de estos términos, le
                   rogamos que no utilice nuestro Sitio.
@@ -151,7 +150,7 @@ export default function TerminosPage() {
                 <SectionTitle>4. Solicitudes de Contacto o Cotización</SectionTitle>
                 <Body>
                   El Sitio permite a los Usuarios enviar información para solicitar cotizaciones,
-                  agendar llamadas o pedir detalles sobre nuestros servicios. Al enviar un
+                  contactarnos o pedir detalles sobre nuestros servicios. Al enviar un
                   formulario, el Usuario garantiza que la información proporcionada es veraz y
                   legítima.
                 </Body>
@@ -245,7 +244,7 @@ export default function TerminosPage() {
                 <BulletList
                   items={[
                     "Correo electrónico: contact.nodatix@gmail.com",
-                    "Domicilio: Domicilio pendiente de definir",
+                    "Domicilio: Tehuacán, Puebla, México",
                   ]}
                 />
               </section>
