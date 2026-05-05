@@ -68,6 +68,7 @@ export default function HeroSection() {
           </h1>
 
           {/* subtitle */}
+          
           <p
             className="animate-fade-up max-w-[48ch] text-[clamp(1rem,1.8vw,1.15rem)] leading-relaxed text-(--color-text-secondary)"
             style={{ animationDelay: "160ms" }}
@@ -85,10 +86,10 @@ export default function HeroSection() {
               href="#contacto"
               className="btn-primary w-full sm:w-auto text-sm px-6 py-3"
             >
-              Agendar una llamada
+              Contáctanos 
             </Link>
             <Link
-              href="#contacto"
+              href="/cotizar-proyecto"
               className="btn-secondary w-full sm:w-auto text-sm px-6 py-3"
             >
               Cotizar mi proyecto

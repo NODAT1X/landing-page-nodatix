@@ -144,7 +144,7 @@ export default function Navbar() {
             </button>
 
             <Link href="#contacto" className="btn-primary btn-light text-sm px-5 py-2">
-              Agendar llamada
+             Contáctanos 
             </Link>
           </div>
 
