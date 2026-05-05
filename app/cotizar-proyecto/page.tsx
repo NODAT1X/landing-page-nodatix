@@ -122,18 +122,18 @@ export default function CotizarProyectoPage() {
   };
 
   const inputCls = [
-    "w-full rounded-lg border border-[var(--color-glass-border)] bg-[var(--surface-raised)] px-4 py-3 text-sm",
+    "font-clash w-full rounded-lg border border-[var(--color-glass-border)] bg-[var(--surface-raised)] px-4 py-3 text-sm",
     "text-(--color-text-primary) placeholder-(--color-text-disabled) outline-none",
     "transition-all duration-200",
     "focus:border-[var(--color-glass-border-highlight)] focus:bg-[var(--surface-raised)] focus:shadow-[0_0_0_2px_var(--glass-surface)]",
   ].join(" ");
 
   const labelCls =
-    "text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-(--color-text-secondary)";
+    "font-clash text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-(--color-text-secondary)";
 
   return (
     <main
-      className="min-h-dvh py-20 md:py-28"
+      className="font-clash min-h-dvh py-20 md:py-28"
       style={{
         background: "var(--background)",
         color: "var(--foreground)",
@@ -318,44 +318,43 @@ export default function CotizarProyectoPage() {
             <div className="mt-8">
               <label className={labelCls}>¿En qué podemos ayudarte?</label>
 
-    // Selector responsive de servicios: móvil en columna, desktop como chips.
-    <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:flex lg:flex-row lg:flex-wrap">
-    {serviceOptions.map((service) => {
-    const isSelected = formData.services.includes(service);
+              <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:flex lg:flex-row lg:flex-wrap">
+                {serviceOptions.map((service) => {
+                  const isSelected = formData.services.includes(service);
 
-    return (
-      <button
-        key={service}
-        type="button"
-        aria-pressed={isSelected}
-        onClick={() => handleServiceChange(service)}
-        className="inline-flex min-h-12 w-full items-center gap-3 rounded-lg border px-4 py-3 text-left text-sm font-medium transition-all duration-200 sm:w-auto"
-        style={{
-          background: isSelected
-            ? "var(--foreground)"
-            : "var(--surface-raised)",
-          borderColor: "var(--color-glass-border)",
-          color: isSelected
-            ? "var(--background)"
-            : "var(--foreground)",
-        }}
-      >
-        <span
-          className="flex h-4 w-4 shrink-0 items-center justify-center rounded-sm border text-[10px]"
-          style={{
-            borderColor: isSelected
-              ? "var(--background)"
-              : "var(--color-glass-border)",
-          }}
-        >
-          {isSelected ? "✓" : ""}
-        </span>
+                  return (
+                    <button
+                      key={service}
+                      type="button"
+                      aria-pressed={isSelected}
+                      onClick={() => handleServiceChange(service)}
+                      className="inline-flex min-h-12 w-full items-center gap-3 rounded-lg border px-4 py-3 text-left text-sm font-medium transition-all duration-200 sm:w-auto"
+                      style={{
+                        background: isSelected
+                          ? "var(--foreground)"
+                          : "var(--surface-raised)",
+                        borderColor: "var(--color-glass-border)",
+                        color: isSelected
+                          ? "var(--background)"
+                          : "var(--foreground)",
+                      }}
+                    >
+                      <span
+                        className="flex h-4 w-4 shrink-0 items-center justify-center rounded-sm border text-[10px]"
+                        style={{
+                          borderColor: isSelected
+                            ? "var(--background)"
+                            : "var(--color-glass-border)",
+                        }}
+                      >
+                        {isSelected ? "✓" : ""}
+                      </span>
 
-        <span className="leading-5 sm:whitespace-nowrap">{service}</span>
-      </button>
-    );
-  })}
-</div>
+                      <span className="leading-5 sm:whitespace-nowrap">{service}</span>
+                    </button>
+                  );
+                })}
+              </div>
             </div>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">

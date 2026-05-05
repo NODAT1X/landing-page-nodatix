@@ -10,7 +10,7 @@ import Link from "next/link";
 export default function HeroSection() {
   return (
     <section
-      className="relative isolate min-h-dvh bg-[var(--background)] flex flex-col items-center justify-center overflow-hidden"
+      className="font-clash relative isolate min-h-dvh bg-[var(--background)] flex flex-col items-center justify-center overflow-hidden"
       aria-labelledby="hero-heading"
     >
       {/* ── Mesh gradient layer ───────────────────────────────── */}
@@ -68,7 +68,7 @@ export default function HeroSection() {
           </h1>
 
           {/* subtitle */}
-          
+
           <p
             className="animate-fade-up max-w-[48ch] text-[clamp(1rem,1.8vw,1.15rem)] leading-relaxed text-(--color-text-secondary)"
             style={{ animationDelay: "160ms" }}
@@ -83,16 +83,10 @@ export default function HeroSection() {
             style={{ animationDelay: "240ms" }}
           >
             <Link
-              href="#contacto"
+              href="../cotizar-proyecto"
               className="btn-primary w-full sm:w-auto text-sm px-6 py-3"
             >
-              Contáctanos 
-            </Link>
-            <Link
-              href="/cotizar-proyecto"
-              className="btn-secondary w-full sm:w-auto text-sm px-6 py-3"
-            >
-              Cotizar mi proyecto
+              Contáctanos
             </Link>
           </div>
 

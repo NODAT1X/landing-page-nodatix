@@ -122,7 +122,10 @@ function StepCard({ step, isLast }: { step: Step; isLast: boolean }) {
           </span>
           <span
             className="text-7xl xl:text-5xl font-light leading-none tracking-tight"
-            style={{ fontFamily: "var(--font-display, var(--font-sans))", color: numberColor }}
+            style={{
+              fontFamily: "var(--font-display, var(--font-sans))",
+              color: numberColor,
+            }}
           >
             {step.number}
           </span>
@@ -224,8 +227,8 @@ export default function ProcessSection() {
           ))}
         </div>
 
-        {/* ── Bottom CTA strip ──────────────────────────────────── */}
-        <FadeUp delay={STEPS.length * 120 + 60}>
+        {/* ── Bottom CTA strip IMPLEMENT TO FUTURE──────────────────────────────────── */}
+        {/* <FadeUp delay={STEPS.length * 120 + 60}>
           <div
             className="flex flex-col items-stretch justify-between gap-6 rounded-2xl p-6 md:p-10 lg:p-12 sm:flex-row sm:items-center"
             style={{
@@ -251,7 +254,7 @@ export default function ProcessSection() {
               Agendar diagnóstico
             </a>
           </div>
-        </FadeUp>
+        </FadeUp> */}
 
         <div className="divider-glow-line" aria-hidden="true" />
       </div>

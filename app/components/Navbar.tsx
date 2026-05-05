@@ -7,7 +7,17 @@ import { useTheme } from "./ThemeProvider";
 
 function SunIcon() {
   return (
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <svg
+      width="15"
+      height="15"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
       <circle cx="12" cy="12" r="5" />
       <line x1="12" y1="2" x2="12" y2="4" />
       <line x1="12" y1="20" x2="12" y2="22" />
@@ -23,7 +33,17 @@ function SunIcon() {
 
 function MoonIcon() {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
       <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
     </svg>
   );
@@ -59,12 +79,14 @@ export default function Navbar() {
     <>
       <header
         className="fixed top-0 inset-x-0 z-50 flex justify-center px-4 sm:px-6 pt-4"
-        style={{ animation: "navbar-enter 0.7s cubic-bezier(0.22,1,0.36,1) both" }}
+        style={{
+          animation: "navbar-enter 0.7s cubic-bezier(0.22,1,0.36,1) both",
+        }}
       >
         {/* Floating pill container */}
         <div
           className={[
-            "navbar-pill relative",
+            "navbar-pill relative font-clash",
             "flex items-center justify-between gap-3 sm:gap-4",
             "w-full max-w-[280px] sm:max-w-[880px] px-4 sm:px-5 py-2.5 rounded-2xl",
             "transition-all duration-500 ease-in-out",
@@ -132,7 +154,11 @@ export default function Navbar() {
             <button
               type="button"
               onClick={toggleTheme}
-              aria-label={theme === "dark" ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
+              aria-label={
+                theme === "dark"
+                  ? "Cambiar a modo claro"
+                  : "Cambiar a modo oscuro"
+              }
               className={[
                 "flex items-center justify-center w-7 h-7 rounded-md",
                 "text-white/45",
@@ -143,8 +169,11 @@ export default function Navbar() {
               {theme === "dark" ? <SunIcon /> : <MoonIcon />}
             </button>
 
-            <Link href="#contacto" className="btn-primary btn-light text-sm px-5 py-2">
-             Contáctanos 
+            <Link
+              href="../cotizar-proyecto"
+              className="btn-primary btn-light text-sm px-5 py-2"
+            >
+              Contáctanos
             </Link>
           </div>
 
@@ -168,7 +197,9 @@ export default function Navbar() {
               className={[
                 "block w-5 h-px rounded-full bg-white",
                 "transition-all duration-300 origin-center",
-                menuOpen ? "translate-y-1.5 rotate-45" : "translate-y-0 rotate-0",
+                menuOpen
+                  ? "translate-y-1.5 rotate-45"
+                  : "translate-y-0 rotate-0",
               ].join(" ")}
             />
             <span
@@ -182,7 +213,9 @@ export default function Navbar() {
               className={[
                 "block w-5 h-px rounded-full bg-white",
                 "transition-all duration-300 origin-center",
-                menuOpen ? "-translate-y-1.5 -rotate-45" : "translate-y-0 rotate-0",
+                menuOpen
+                  ? "-translate-y-1.5 -rotate-45"
+                  : "translate-y-0 rotate-0",
               ].join(" ")}
             />
           </button>
@@ -245,7 +278,11 @@ export default function Navbar() {
               <button
                 type="button"
                 onClick={toggleTheme}
-                aria-label={theme === "dark" ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
+                aria-label={
+                  theme === "dark"
+                    ? "Cambiar a modo claro"
+                    : "Cambiar a modo oscuro"
+                }
                 className={[
                   "flex items-center justify-between",
                   "px-4 py-3 rounded-xl text-sm font-medium",
@@ -264,11 +301,11 @@ export default function Navbar() {
               <div className="divider-glow-line my-2" aria-hidden="true" />
 
               <Link
-                href="#contacto"
+                href="../cotizar-proyecto"
                 onClick={closeMenu}
                 className="btn-primary btn-light text-center text-sm py-2.5"
               >
-                Agendar llamada
+                Contactanos
               </Link>
             </nav>
           </div>

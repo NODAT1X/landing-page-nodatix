@@ -31,7 +31,7 @@ export default function ContactCTASection() {
     <section
       id="contacto"
       aria-labelledby="contact-cta-heading"
-      className="relative overflow-hidden py-24 md:py-32"
+      className="font-clash relative overflow-hidden py-24 md:py-32"
       style={{ background: "var(--background)" }}
     >
       {/* Subtle background only */}
@@ -61,8 +61,8 @@ export default function ContactCTASection() {
           </h2>
 
           <p className="mt-6 max-w-[56ch] text-sm leading-relaxed text-(--color-text-secondary) md:text-base">
-            Operaciones en Excel, tareas manuales, datos dispersos. Diseñamos
-            el sistema que lo centraliza todo.
+            Operaciones en Excel, tareas manuales, datos dispersos. Diseñamos el
+            sistema que lo centraliza todo.
           </p>
 
           <ul
@@ -98,7 +98,6 @@ export default function ContactCTASection() {
           </ul>
 
           <div className="mt-10 flex flex-col items-center gap-3">
-            // Redirige al formulario completo de cotización. 
             <Link
               href="/cotizar-proyecto"
               className="btn-primary px-8 py-4 text-sm font-semibold tracking-wide"
