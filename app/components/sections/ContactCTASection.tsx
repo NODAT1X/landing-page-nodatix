@@ -1,51 +1,117 @@
+"use client";
+
+import Link from "next/link";
+
+const benefits = [
+  "Centraliza datos y elimina silos",
+  "Automatiza tareas de alto volumen",
+  "Visibilidad operativa en tiempo real",
+];
+
+function ArrowIcon() {
+  return (
+    <svg
+      viewBox="0 0 16 16"
+      className="h-4 w-4"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M3 8h10M9 4l4 4-4 4" />
+    </svg>
+  );
+}
+
+// CTA de contacto del home. Redirige al formulario completo de cotización.
 export default function ContactCTASection() {
   return (
     <section
       id="contacto"
       aria-labelledby="contact-cta-heading"
-      className="relative overflow-hidden py-24 md:py-28"
-      style={{ background: "#121212" }}
+      className="font-clash relative overflow-hidden py-24 md:py-32"
+      style={{ background: "var(--background)" }}
     >
+      {/* Subtle background only */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10"
+        style={{
+          background:
+            "radial-gradient(ellipse 80% 60% at 50% 100%, rgba(255,255,255,0.02) 0%, transparent 70%)",
+        }}
+      />
+
       <div className="section-container">
-        <div className="relative isolate overflow-hidden rounded-2xl border border-white/[0.08] px-6 py-12 text-center shadow-[0_24px_80px_-32px_rgba(0,123,255,0.55)] md:px-12 md:py-16">
-          <div
-            aria-hidden="true"
-            className="bg-tech-gradient absolute inset-0 -z-10 opacity-15"
-          />
-          <div
-            aria-hidden="true"
-            className="absolute inset-px -z-10 rounded-2xl bg-[#121212]/90"
-          />
-          <div
-            aria-hidden="true"
-            className="bg-tech-gradient absolute inset-x-6 top-0 h-px opacity-80 md:inset-x-12"
-          />
+        <div className="divider-glow-line mb-16 md:mb-20" aria-hidden="true" />
 
-          <div className="mx-auto flex max-w-3xl flex-col items-center gap-6">
-            <span className="badge badge-cyan">
-              <span className="glow-dot w-1.5 h-1.5" aria-hidden="true" />
-              Agenda tu diagnóstico
-            </span>
+        <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
+          <span className="inline-flex items-center rounded-full border border-[var(--color-glass-border)] bg-[var(--color-glass-surface)] px-3 py-1 text-xs font-medium text-(--color-text-secondary)">
+            Consulta sin costo
+          </span>
 
-            <div className="flex flex-col items-center gap-4">
-              <h2
-                id="contact-cta-heading"
-                className="text-[clamp(2rem,4vw,3.4rem)] font-bold leading-tight tracking-tight text-[#F8F9FA]"
+          <h2
+            id="contact-cta-heading"
+            className="font-clash mt-7 text-[clamp(2rem,4vw,3.5rem)] font-bold leading-tight tracking-tight text-[var(--foreground)]"
+          >
+            Convierte tu proceso en{" "}
+            <span className="text-tech-gradient">un sistema real</span>
+          </h2>
+
+          <p className="mt-6 max-w-[56ch] text-sm leading-relaxed text-(--color-text-secondary) md:text-base">
+            Operaciones en Excel, tareas manuales, datos dispersos. Diseñamos el
+            sistema que lo centraliza todo.
+          </p>
+
+          <ul
+            className="mt-8 flex flex-col items-start gap-3 text-left"
+            aria-label="Qué resolvemos"
+          >
+            {benefits.map((item) => (
+              <li
+                key={item}
+                className="flex items-center gap-3 text-sm text-(--color-text-secondary)"
               >
-                ¿Listo para escalar tu operación?
-              </h2>
-              <p className="max-w-[56ch] text-sm leading-relaxed text-[var(--color-text-secondary)] md:text-base">
-                Convirtamos tus procesos críticos en una plataforma robusta,
-                clara y lista para crecer.
-              </p>
-            </div>
+                <span
+                  aria-hidden="true"
+                  className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full"
+                  style={{ background: "rgba(22,163,74,0.12)" }}
+                >
+                  <svg
+                    viewBox="0 0 12 12"
+                    className="h-3 w-3"
+                    fill="none"
+                    stroke="#16A34A"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M2 6.5 4.5 9 10 3" />
+                  </svg>
+                </span>
+                {item}
+              </li>
+            ))}
+          </ul>
 
-            <a
-              href="mailto:hola@nodatix.com?subject=Quiero%20agendar%20una%20llamada%20con%20Nodatix"
-              className="btn-primary w-full px-6 py-3 text-sm sm:w-auto"
+          <div className="mt-10 flex flex-col items-center gap-3">
+            <Link
+              href="/cotizar-proyecto"
+              className="btn-primary px-8 py-4 text-sm font-semibold tracking-wide"
+              style={{
+                boxShadow: "0 2px 12px rgba(0,0,0,0.45)",
+              }}
             >
-              Agendar una llamada
-            </a>
+              Cotizar mi proyecto
+              <ArrowIcon />
+            </Link>
+
+            <p className="text-[0.7rem] text-(--color-text-disabled)">
+              Sin spam. Respuesta inicial en menos de 24 h.
+            </p>
           </div>
         </div>
       </div>

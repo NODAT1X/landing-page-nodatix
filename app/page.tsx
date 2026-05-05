@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import HeroSection from "./components/sections/HeroSection";
+import ProblemSection from "./components/sections/ProblemSection";
 import ServicesSection from "./components/sections/ServicesSection";
 import ProcessSection from "./components/sections/ProcessSection";
 import TechStackSection from "./components/sections/TechStackSection";
+import TrustSection from "./components/sections/TrustSection";
 import ContactCTASection from "./components/sections/ContactCTASection";
 
 const pageTitle = "Nodatix | Desarrollo de Software a Medida y Sistemas B2B";
@@ -34,12 +36,14 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <>
+    <div className="font-clash">
       <HeroSection />
+      <ProblemSection />
       <ServicesSection />
       <ProcessSection />
       <TechStackSection />
+      <TrustSection />
       <ContactCTASection />
-    </>
+    </div>
   );
 }

@@ -1,5 +1,13 @@
-import { Search, FileText, Code2, Rocket } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faMagnifyingGlass,
+  faFileContract,
+  faCode,
+  faRocket,
+  faArrowsRotate,
+} from "@fortawesome/free-solid-svg-icons";
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { FadeUp } from "../ui/FadeUp";
 
 /* ─────────────────────────────────────────────────────────────────
    ProcessSection — Nodatix
@@ -9,7 +17,8 @@ import type { LucideIcon } from "lucide-react";
 
 interface Step {
   number: string;
-  icon: LucideIcon;
+  numberColor: string;
+  icon: IconDefinition;
   title: string;
   description: string;
   detail: string[];
@@ -18,60 +27,68 @@ interface Step {
 const STEPS: Step[] = [
   {
     number: "01",
-    icon: Search,
+    numberColor: "#64748B",
+    icon: faMagnifyingGlass,
     title: "Diagnóstico",
     description:
-      "Analizamos tu operación actual, cuellos de botella y objetivos reales antes de escribir una sola línea de código.",
-    detail: [
-      "Entrevistas con stakeholders",
-      "Mapeo de procesos",
-      "Definición de KPIs",
-    ],
+      "Entendemos tu operación, objetivos y puntos críticos antes de proponer una solución.",
+    detail: ["Entrevistas clave", "Mapeo de procesos", "KPIs y prioridades"],
   },
   {
     number: "02",
-    icon: FileText,
-    title: "Propuesta",
+    numberColor: "#2563EB",
+    icon: faFileContract,
+    title: "Definición",
     description:
-      "Entregamos una propuesta técnica y funcional detallada: alcance, tiempos, tecnologías y costo fijo sin sorpresas.",
-    detail: ["Arquitectura técnica", "Roadmap de entregas", "Precio cerrado"],
+      "Aterrizamos alcance, arquitectura y roadmap para construir con claridad.",
+    detail: [
+      "Alcance funcional",
+      "Arquitectura técnica",
+      "Roadmap de entregas",
+    ],
   },
   {
     number: "03",
-    icon: Code2,
+    numberColor: "#7C3AED",
+    icon: faCode,
     title: "Desarrollo",
     description:
-      "Sprints cortos con entregables reales. Tienes visibilidad total del avance y acceso al staging en todo momento.",
-    detail: ["Sprints de 2 semanas", "Demo por sprint", "Staging continuo"],
+      "Construimos en ciclos cortos con avances visibles y validación continua.",
+    detail: ["Sprints de 2 semanas", "Demos por sprint", "Staging continuo"],
   },
   {
     number: "04",
-    icon: Rocket,
-    title: "Entrega",
+    numberColor: "#F59E0B",
+    icon: faRocket,
+    title: "Lanzamiento",
     description:
-      "Desplegamos en producción, capacitamos a tu equipo y permanecemos disponibles durante el periodo de estabilización.",
-    detail: [
-      "Deploy auditado",
-      "Capacitación incluida",
-      "Soporte post-lanzamiento",
-    ],
+      "Publicamos la solución con control, capacitación y soporte inicial.",
+    detail: ["Deploy auditado", "Capacitación incluida", "Soporte inicial"],
+  },
+  {
+    number: "05",
+    numberColor: "#16A34A",
+    icon: faArrowsRotate,
+    title: "Iteración",
+    description:
+      "Medimos el uso real y convertimos el aprendizaje en mejoras concretas.",
+    detail: ["Monitoreo de KPIs", "Backlog de mejoras", "Evolución continua"],
   },
 ];
 
 /* ── Step card ────────────────────────────────────────────────── */
 function StepCard({ step, isLast }: { step: Step; isLast: boolean }) {
-  const Icon = step.icon;
-
+  const { numberColor } = step;
   return (
-    <div className="relative flex gap-4 md:gap-5 lg:flex-col lg:gap-6">
+    <div className="relative flex h-full gap-5 md:gap-6 p-6 md:p-8 lg:flex-col lg:gap-6 lg:p-8 xl:p-5 transition-all duration-500 ease-out hover:-translate-y-1.5 hover:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.10)] bg-[var(--color-glass-surface-subtle)] border border-[var(--color-glass-border-subtle)] rounded-xl backdrop-blur-sm">
       {/* ── Timeline connector (mobile/tablet only) ────────────── */}
       {!isLast && (
         <div
           aria-hidden="true"
-          className="lg:hidden absolute left-[19px] top-10 bottom-0 w-px"
+          className="lg:hidden absolute left-[39px] md:left-[43px] top-10 bottom-0 w-px"
           style={{
             background:
-              "linear-gradient(180deg, rgba(0,123,255,0.35) 0%, rgba(0,123,255,0.06) 100%)",
+              "linear-gradient(180deg, var(--glass-border-highlight) 0%, var(--glass-surface) 100%)",
           }}
         />
       )}
@@ -79,49 +96,51 @@ function StepCard({ step, isLast }: { step: Step; isLast: boolean }) {
       {/* ── Icon node ─────────────────────────────────────────── */}
       <div className="relative shrink-0 flex flex-col items-center lg:flex-row lg:items-start">
         <div
-          className="w-10 h-10 rounded-xl flex items-center justify-center text-[var(--color-primary-blue)] z-10 shrink-0"
+          className="w-10 h-10 rounded-xl flex items-center justify-center text-[var(--color-text-primary)] z-10 shrink-0"
           style={{
-            background: "rgba(0,123,255,0.10)",
-            border: "1px solid rgba(0,123,255,0.20)",
+            background: "var(--glass-surface)",
+            border: "1px solid var(--glass-border)",
           }}
         >
-          <Icon size={17} strokeWidth={1.7} aria-hidden="true" />
-        </div>
-
-        {/* desktop horizontal connector */}
-        {!isLast && (
-          <div
-            aria-hidden="true"
-            className="hidden lg:block absolute left-10 top-1/2 -translate-y-1/2 h-px"
-            style={{
-              width: "calc(100% + 1rem + 40px)", // spans gap between cards
-              background:
-                "linear-gradient(90deg, rgba(0,123,255,0.35) 0%, rgba(0,123,255,0.06) 100%)",
-            }}
+          <FontAwesomeIcon
+            icon={step.icon}
+            aria-hidden={true}
+            className="w-[17px] h-[17px]"
           />
-        )}
+        </div>
       </div>
 
       {/* ── Text content ──────────────────────────────────────── */}
-      <div className="min-w-0 flex flex-col gap-3 pb-10 lg:pb-0">
+      <div className="min-w-0 flex flex-col gap-4 md:gap-5">
         {/* step number */}
-        <span
-          className="text-[11px] font-mono font-medium tracking-[0.12em] uppercase"
-          style={{ color: "var(--color-primary-blue)" }}
-        >
-          Paso {step.number}
-        </span>
+        <div className="flex flex-col gap-0.5">
+          <span
+            className="text-[10px] font-mono tracking-[0.14em] uppercase"
+            style={{ color: "var(--color-text-disabled)" }}
+          >
+            Paso
+          </span>
+          <span
+            className="text-7xl xl:text-5xl font-light leading-none tracking-tight"
+            style={{
+              fontFamily: "var(--font-display, var(--font-sans))",
+              color: numberColor,
+            }}
+          >
+            {step.number}
+          </span>
+        </div>
 
         {/* title */}
         <h3
-          className="text-[1.05rem] font-semibold leading-snug tracking-tight"
-          style={{ color: "#F8F9FA" }}
+          className="font-clash text-xl md:text-2xl xl:text-lg font-normal leading-tight tracking-tight"
+          style={{ color: "var(--foreground)" }}
         >
           {step.title}
         </h3>
 
         {/* description */}
-        <p className="text-sm leading-relaxed" style={{ color: "#A0A0A0" }}>
+        <p className="text-base md:text-lg xl:text-sm leading-relaxed text-(--color-text-secondary)">
           {step.description}
         </p>
 
@@ -133,13 +152,13 @@ function StepCard({ step, isLast }: { step: Step; isLast: boolean }) {
           {step.detail.map((item) => (
             <li
               key={item}
-              className="flex items-center gap-2 text-[12px]"
+              className="flex items-center gap-2 text-xs md:text-sm"
               style={{ color: "#A0A0A0" }}
             >
               <span
                 aria-hidden="true"
                 className="w-1 h-1 rounded-full shrink-0"
-                style={{ background: "var(--color-cyan)" }}
+                style={{ background: "var(--color-text-secondary)" }}
               />
               <span className="min-w-0 break-words">{item}</span>
             </li>
@@ -156,70 +175,86 @@ export default function ProcessSection() {
     <section
       id="proceso"
       aria-labelledby="process-heading"
-      className="section-padding"
-      style={{ background: "#121212" }}
+      className="section-padding bg-[var(--background)] relative overflow-hidden"
     >
-      <div className="section-container flex flex-col gap-10 md:gap-14">
+      <div className="section-container flex flex-col gap-16 md:gap-20">
         {/* ── Header ────────────────────────────────────────────── */}
-        <div className="flex flex-col gap-4 max-w-[42ch]">
-          <div className="badge-blue w-fit">
-            <span className="glow-dot w-1.5 h-1.5" aria-hidden="true" />
-            Nuestra metodología
+        <FadeUp>
+          <div className="flex flex-col gap-6 max-w-[52ch]">
+            <div className="badge badge-blue w-fit">
+              <span className="glow-dot w-1.5 h-1.5" aria-hidden="true" />
+              Metodología
+            </div>
+
+            <h2
+              id="process-heading"
+              className="font-clash text-3xl md:text-4xl lg:text-5xl font-normal leading-tight tracking-tight"
+              style={{ color: "var(--foreground)" }}
+            >
+              Cinco fases.{" "}
+              <span className="text-tech-gradient">Sin sorpresas.</span>
+            </h2>
+
+            <p className="text-lg md:text-xl leading-relaxed text-(--color-text-secondary)">
+              Visibilidad total en cada etapa. Sabes qué se entrega, cuándo y a
+              qué costo.
+            </p>
           </div>
-
-          <h2
-            id="process-heading"
-            className="text-[clamp(1.75rem,3.5vw,2.6rem)] font-bold leading-tight tracking-tight"
-            style={{ color: "#F8F9FA" }}
-          >
-            Un proceso{" "}
-            <span className="text-tech-gradient">claro y predecible</span>
-          </h2>
-
-          <p
-            className="text-sm leading-relaxed max-w-[52ch]"
-            style={{ color: "#A0A0A0" }}
-          >
-            Cada proyecto sigue cuatro fases bien definidas. Sin metodologías
-            opacas: sabes exactamente en qué etapa estamos y qué viene después.
-          </p>
-        </div>
+        </FadeUp>
 
         {/* ── Steps ─────────────────────────────────────────────── */}
-        {/* Mobile/tablet: vertical timeline | Desktop: 4-column grid */}
-        <div className="grid grid-cols-1 gap-0 lg:grid-cols-4 lg:gap-8">
+        <div className="relative grid grid-cols-1 gap-0 md:grid-cols-2 md:gap-6 xl:grid-cols-5 xl:gap-5">
+          {/* directional violet→cyan glow behind the step timeline */}
+          <div
+            aria-hidden="true"
+            className="absolute left-1/2 -translate-x-1/2 top-0 w-[150px] h-[80%] bg-gradient-to-b from-[var(--glass-surface)] to-transparent blur-[100px] pointer-events-none"
+          />
+
+          {/* Desktop connector rail */}
+          <div
+            aria-hidden="true"
+            className="hidden lg:block absolute top-5 left-5 right-5 h-[1.5px] pointer-events-none"
+            style={{
+              background:
+                "linear-gradient(90deg, var(--glass-border-highlight) 0%, var(--glass-border) 50%, var(--glass-surface) 100%)",
+              boxShadow: "0 0 8px 0 var(--glass-surface)",
+            }}
+          />
           {STEPS.map((step, i) => (
-            <StepCard
-              key={step.number}
-              step={step}
-              isLast={i === STEPS.length - 1}
-            />
+            <FadeUp key={step.number} delay={i * 120} className="h-full">
+              <StepCard step={step} isLast={i === STEPS.length - 1} />
+            </FadeUp>
           ))}
         </div>
 
-        {/* ── Bottom CTA strip ──────────────────────────────────── */}
-        <div
-          className="flex flex-col items-stretch justify-between gap-4 rounded-2xl px-5 py-5 sm:flex-row sm:items-center md:px-7"
-          style={{
-            background: "rgba(0,123,255,0.05)",
-            border: "1px solid rgba(0,123,255,0.12)",
-          }}
-        >
-          <div className="min-w-0 flex flex-col gap-1">
-            <p className="text-sm font-medium" style={{ color: "#F8F9FA" }}>
-              ¿Listo para empezar tu diagnóstico?
-            </p>
-            <p className="text-xs" style={{ color: "#A0A0A0" }}>
-              Primera sesión sin costo · 45 minutos · Sin compromiso
-            </p>
-          </div>
-          <a
-            href="#contacto"
-            className="btn-primary w-full shrink-0 text-sm px-5 py-2.5 sm:w-auto"
+        {/* ── Bottom CTA strip IMPLEMENT TO FUTURE──────────────────────────────────── */}
+        {/* <FadeUp delay={STEPS.length * 120 + 60}>
+          <div
+            className="flex flex-col items-stretch justify-between gap-6 rounded-2xl p-6 md:p-10 lg:p-12 sm:flex-row sm:items-center"
+            style={{
+              background: "var(--glass-surface)",
+              border: "1px solid var(--glass-border-subtle)",
+            }}
           >
-            Agendar diagnóstico
-          </a>
-        </div>
+            <div className="min-w-0 flex flex-col gap-1">
+              <p
+                className="font-clash text-xl md:text-3xl font-normal"
+                style={{ color: "var(--foreground)" }}
+              >
+                Agenda tu sesión de diagnóstico
+              </p>
+              <p className="text-base md:text-lg text-(--color-text-disabled)">
+                Sin costo · 45 minutos · Sin compromiso
+              </p>
+            </div>
+            <a
+              href="#contacto"
+              className="btn-primary text-sm px-5 py-2.5 sm:w-auto"
+            >
+              Agendar diagnóstico
+            </a>
+          </div>
+        </FadeUp> */}
 
         <div className="divider-glow-line" aria-hidden="true" />
       </div>

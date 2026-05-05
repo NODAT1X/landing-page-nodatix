@@ -13,7 +13,7 @@ interface Tech {
 const TECHS: Tech[] = [
   {
     name: "Next.js",
-    hoverColor: "#F8F9FA",
+    hoverColor: "var(--foreground)",
     svg: (
       <svg viewBox="0 0 180 180" fill="currentColor" aria-hidden="true">
         <mask id="nxt-mask" style={{ maskType: "alpha" }}>
@@ -120,7 +120,7 @@ const TECHS: Tech[] = [
   },
   {
     name: "Node.js",
-    hoverColor: "#68A063",
+    hoverColor: "#339933",
     svg: (
       <svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
         <path
@@ -150,7 +150,7 @@ const TECHS: Tech[] = [
   },
   {
     name: "MySQL",
-    hoverColor: "#007BFF",
+    hoverColor: "#4479A1",
     svg: (
       <svg viewBox="0 0 100 100" fill="none" aria-hidden="true">
         <ellipse
@@ -178,7 +178,7 @@ const TECHS: Tech[] = [
   },
   {
     name: "Tailwind CSS",
-    hoverColor: "#38BDF8",
+    hoverColor: "#06B6D4",
     svg: (
       <svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
         <path d="M25 37.5 C30.6 18.8 43.1 9.4 62.5 12.5 C50 25 51.9 35.9 62.5 37.5 C76.6 39.5 83.1 30 87.5 25 C81.9 43.8 69.4 53.1 50 50 C37.5 47.8 33.6 56.6 37.5 62.5 Z" />
@@ -188,7 +188,7 @@ const TECHS: Tech[] = [
   },
   {
     name: "PostgreSQL",
-    hoverColor: "#8A2BE2",
+    hoverColor: "#4169E1",
     svg: (
       <svg viewBox="0 0 100 100" fill="none" aria-hidden="true">
         <ellipse
@@ -289,11 +289,11 @@ function TechPill({ tech }: { tech: Tech }) {
       title={tech.name}
     >
       {/* icon */}
-      <span className="tech-icon w-6 h-6 shrink-0 text-[#3A3A45] transition-colors duration-300 group-hover:text-[var(--hover-color)]">
+      <span className="tech-icon w-6 h-6 shrink-0 text-(--color-text-disabled) transition-colors duration-300 group-hover:text-[var(--hover-color)]">
         {tech.svg}
       </span>
       {/* name */}
-      <span className="text-[13px] font-medium whitespace-nowrap text-[var(--color-text-disabled)] transition-colors duration-300 group-hover:text-[#F8F9FA]">
+      <span className="text-[13px] font-semibold whitespace-nowrap text-[var(--color-text-disabled)] transition-colors duration-300 group-hover:text-[var(--foreground)]">
         {tech.name}
       </span>
     </div>
@@ -306,29 +306,32 @@ export default function TechStackSection() {
     <section
       id="tecnologias"
       aria-labelledby="tech-heading"
-      className="section-padding overflow-hidden"
-      style={{ background: "#121212" }}
+      className="section-padding overflow-hidden bg-[var(--background)] relative"
     >
-      <div className="flex flex-col gap-10 md:gap-12">
+      {/* lateral cyan glow — left edge, emanates from tech stack */}
+      <div aria-hidden="true" className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        <div className="absolute -left-[150px] top-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-[var(--glass-surface)] blur-[120px] rounded-full" />
+      </div>
+
+      <div className="relative z-10 flex flex-col gap-8 md:gap-16 lg:gap-20">
         {/* header — constrained */}
-        <div className="section-container flex flex-col gap-4 max-w-[42ch]">
-          <div className="badge-violet w-fit">
+        <div className="section-container flex flex-col items-center text-center gap-6 max-w-[42ch]">
+          <div className="badge badge-violet w-fit">
             <span className="glow-dot w-1.5 h-1.5" aria-hidden="true" />
             Stack tecnológico
           </div>
 
           <h2
             id="tech-heading"
-            className="text-[clamp(1.75rem,3.5vw,2.6rem)] font-bold leading-tight tracking-tight"
-            style={{ color: "#F8F9FA" }}
+            className="font-clash text-[clamp(1.75rem,3.5vw,2.6rem)] font-normal leading-tight tracking-tight"
+            style={{ color: "var(--foreground)" }}
           >
             Tecnología que{" "}
             <span className="text-tech-gradient">ya conoces</span>
           </h2>
 
-          <p className="text-sm leading-relaxed" style={{ color: "#A0A0A0" }}>
-            Trabajamos con herramientas probadas en producción a escala. Sin
-            experimentos innecesarios, sin vendor lock-in.
+          <p className="text-center text-base md:text-xl lg:text-2xl leading-relaxed text-(--color-text-secondary)">
+            Producción a escala. Sin vendor lock-in.
           </p>
         </div>
 
@@ -339,7 +342,7 @@ export default function TechStackSection() {
           @keyframes marquee / marquee-reverse defined below.
         */}
         <div
-          className="relative"
+          className="relative overflow-hidden w-full"
           aria-label="Tecnologías que usamos"
           role="list"
         >
@@ -349,7 +352,7 @@ export default function TechStackSection() {
             className="pointer-events-none absolute inset-y-0 left-0 w-12 z-10 md:w-32"
             style={{
               background:
-                "linear-gradient(90deg, #121212 0%, transparent 100%)",
+                "linear-gradient(90deg, var(--background) 0%, transparent 100%)",
             }}
           />
           <div
@@ -357,7 +360,7 @@ export default function TechStackSection() {
             className="pointer-events-none absolute inset-y-0 right-0 w-12 z-10 md:w-32"
             style={{
               background:
-                "linear-gradient(270deg, #121212 0%, transparent 100%)",
+                "linear-gradient(270deg, var(--background) 0%, transparent 100%)",
             }}
           />
 
@@ -389,57 +392,6 @@ export default function TechStackSection() {
           <div className="divider-glow-line" aria-hidden="true" />
         </div>
       </div>
-
-      {/* ── Scoped keyframes & animation classes ──────────────── */}
-      <style>{`
-        .marquee-wrapper {
-          overflow: hidden;
-          width: 100%;
-        }
-
-        /* enough width so the duplicate creates a seamless loop */
-        .marquee-track {
-          width: max-content;
-          will-change: transform;
-        }
-
-        @keyframes marquee {
-          0%   { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-
-        @keyframes marquee-reverse {
-          0%   { transform: translateX(-50%); }
-          100% { transform: translateX(0); }
-        }
-
-        .animate-marquee {
-          animation: marquee 28s linear infinite;
-        }
-
-        .animate-marquee-reverse {
-          animation: marquee-reverse 32s linear infinite;
-        }
-
-        /* pause on hover for the entire section */
-        #tecnologias:hover .animate-marquee,
-        #tecnologias:hover .animate-marquee-reverse {
-          animation-play-state: paused;
-        }
-
-        /* respect user preference */
-        @media (prefers-reduced-motion: reduce) {
-          .animate-marquee,
-          .animate-marquee-reverse {
-            animation: none !important;
-          }
-          .marquee-track {
-            flex-wrap: wrap;
-            width: 100%;
-            justify-content: center;
-          }
-        }
-      `}</style>
     </section>
   );
 }
