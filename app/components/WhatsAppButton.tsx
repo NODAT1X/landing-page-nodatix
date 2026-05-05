@@ -1,7 +1,7 @@
 // Update WHATSAPP_NUMBER to your actual number (country code + digits, no + or spaces)
-const WHATSAPP_NUMBER = "5491100000000";
+const WHATSAPP_NUMBER = "525529357876";
 const WHATSAPP_MESSAGE = encodeURIComponent(
-  "Hola Nodatix, me interesa agendar un diagnóstico para mi proyecto.",
+  "Hola, me interesa agendar un diagnóstico para mi proyecto.",
 );
 
 export default function WhatsAppButton() {

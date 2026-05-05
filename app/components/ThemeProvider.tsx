@@ -19,7 +19,7 @@ import {
 type Theme = "dark" | "light";
 
 const STORAGE_KEY = "theme";
-const DEFAULT_THEME: Theme = "light";
+const DEFAULT_THEME: Theme = "dark";
 
 function getSnapshot(): Theme {
   const stored = localStorage.getItem(STORAGE_KEY);

@@ -98,7 +98,7 @@ export default function HeroSection() {
 
           {/* social proof */}
           <p
-            className="animate-fade-up text-xs text-(--color-text-disabled) tracking-wide"
+            className="animate-fade-up text-xs text-(--color-text-secondary) tracking-wide"
             style={{ animationDelay: "300ms" }}
           >
             Sin compromisos · Respuesta en menos de 24 h
