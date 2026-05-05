@@ -50,9 +50,9 @@ function MoonIcon() {
 }
 
 const NAV_LINKS = [
-  { label: "Servicios", href: "#servicios" },
-  { label: "Proceso", href: "#proceso" },
-  { label: "Tecnologías", href: "#tecnologias" },
+  { label: "Servicios", href: "/#servicios" },
+  { label: "Proceso", href: "/#proceso" },
+  { label: "Tecnologías", href: "/#tecnologias" },
 ];
 
 export default function Navbar() {

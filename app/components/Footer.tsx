@@ -7,10 +7,10 @@ import Link from "next/link";
 ───────────────────────────────────────────────────────────────── */
 
 const QUICK_LINKS = [
-  { label: "Servicios", href: "#servicios" },
-  { label: "Proceso", href: "#proceso" },
-  { label: "Tecnologías", href: "#tecnologias" },
-  { label: "Contacto", href: "#contacto" },
+  { label: "Servicios", href: "/#servicios" },
+  { label: "Proceso", href: "/#proceso" },
+  { label: "Tecnologías", href: "/#tecnologias" },
+  { label: "Contacto", href: "/#contacto" },
 ];
 
 const LEGAL_LINKS = [
@@ -85,10 +85,12 @@ function SocialLink({
   href,
   label,
   children,
+  color,
 }: {
   href: string;
   label: string;
   children: React.ReactNode;
+  color?: string;
 }) {
   return (
     <a
@@ -100,11 +102,11 @@ function SocialLink({
         "w-8 h-8 rounded-lg flex items-center justify-center",
         "text-(--color-text-disabled)",
         "transition-all duration-200",
-        "hover:text-(--color-text-primary) hover:bg-[var(--color-glass-border-subtle)]",
+        "hover:bg-[var(--color-glass-border-subtle)]",
       ].join(" ")}
       style={{ border: "1px solid var(--color-border-subtle)" }}
     >
-      {children}
+      {color ? <span style={{ color }}>{children}</span> : children}
     </a>
   );
 }
@@ -113,14 +115,13 @@ function SocialLink({
 function SocialRow({ className }: { className?: string }) {
   return (
     <div className={`flex items-center gap-2 ${className ?? ""}`}>
-      <SocialLink href="https://linkedin.com/company/nodatix" label="LinkedIn de Nodatix">
+      <SocialLink href="https://linkedin.com/company/nodatix" label="LinkedIn de Nodatix" color="#0A66C2">
         <LinkedInIcon />
       </SocialLink>
-      <SocialLink href="https://www.facebook.com/share/1DwYrUaL8p/" label="Facebook de Nodatix">
+      <SocialLink href="https://www.facebook.com/share/1DwYrUaL8p/" label="Facebook de Nodatix" color="#1877F2">
         <FacebookIcon />
       </SocialLink>
-      {/* Instagram URL pendiente — reemplaza href="#" con la URL real */}
-      <SocialLink href="#" label="Instagram de Nodatix">
+      <SocialLink href="https://www.instagram.com/nodat1x/" label="Instagram de Nodatix" color="#E1306C">
         <InstagramIcon />
       </SocialLink>
     </div>
@@ -209,7 +210,7 @@ export default function Footer() {
                   href="mailto:contact.nodatix@gmail.com"
                   className={`${linkClass} flex items-center gap-2`}
                 >
-                  <span className="text-(--color-text-disabled) shrink-0" aria-hidden="true">
+                  <span className="shrink-0" style={{ color: "#EA4335" }} aria-hidden="true">
                     <MailIcon />
                   </span>
                   contact.nodatix@gmail.com
@@ -217,12 +218,12 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="https://wa.me/+52 1 55 2935 7876"
+                  href="https://wa.me/5529357876?text=Hola%2C%20me%20interesa%20agendar%20un%20diagn%C3%B3stico%20para%20mi%20proyecto."
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`${linkClass} flex items-center gap-2`}
                 >
-                  <span className="text-(--color-text-disabled) shrink-0" aria-hidden="true">
+                  <span className="shrink-0" style={{ color: "#25D366" }} aria-hidden="true">
                     <WhatsAppIcon />
                   </span>
                   +52 1 5529357876
