@@ -19,6 +19,7 @@ function isValidEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
+// Sanitiza los valores antes de insertarlos en el HTML del correo.
 function escapeHtml(value?: string) {
   return (value || "")
     .replaceAll("&", "&amp;")
@@ -28,6 +29,7 @@ function escapeHtml(value?: string) {
     .replaceAll("'", "&#039;");
 }
 
+// Endpoint server-side para recibir el formulario de cotización y enviarlo por Resend.
 export async function POST(request: Request) {
   try {
     const data = (await request.json()) as CotizacionPayload;
@@ -197,6 +199,7 @@ Detalles del proyecto:
 ${data.projectDetails}
 `;
 
+     // Envío del correo al buzón configurado en CONTACT_EMAIL.
     const { error } = await resend.emails.send({
       from: "Nodatix Web <onboarding@resend.dev>",
       to: [process.env.CONTACT_EMAIL],

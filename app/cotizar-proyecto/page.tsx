@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ChangeEvent, FormEvent, useState } from "react";
 
+// Opciones de servicio mostradas en el formulario de cotización.
 const serviceOptions = [
   "Automatización de procesos",
   "CRM / ERP personalizado",
@@ -80,6 +81,7 @@ export default function CotizarProyectoPage() {
     });
   };
 
+  // Envía los datos del formulario al endpoint interno de cotización.
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsSubmitting(true);
@@ -316,6 +318,7 @@ export default function CotizarProyectoPage() {
             <div className="mt-8">
               <label className={labelCls}>¿En qué podemos ayudarte?</label>
 
+    // Selector responsive de servicios: móvil en columna, desktop como chips.
     <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:flex lg:flex-row lg:flex-wrap">
     {serviceOptions.map((service) => {
     const isSelected = formData.services.includes(service);

@@ -25,6 +25,7 @@ function ArrowIcon() {
   );
 }
 
+// CTA de contacto del home. Redirige al formulario completo de cotización.
 export default function ContactCTASection() {
   return (
     <section
@@ -97,6 +98,7 @@ export default function ContactCTASection() {
           </ul>
 
           <div className="mt-10 flex flex-col items-center gap-3">
+            // Redirige al formulario completo de cotización. 
             <Link
               href="/cotizar-proyecto"
               className="btn-primary px-8 py-4 text-sm font-semibold tracking-wide"
