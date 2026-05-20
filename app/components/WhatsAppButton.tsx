@@ -1,15 +1,9 @@
-// Update WHATSAPP_NUMBER to your actual number (country code + digits, no + or spaces)
-const WHATSAPP_NUMBER = "525529357876";
-const WHATSAPP_MESSAGE = encodeURIComponent(
-  "Hola, me interesa agendar un diagnóstico para mi proyecto.",
-);
+import { WHATSAPP_URL } from "@/app/lib/whatsapp";
 
 export default function WhatsAppButton() {
-  const href = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`;
-
   return (
     <a
-      href={href}
+      href={WHATSAPP_URL}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Contactar por WhatsApp"

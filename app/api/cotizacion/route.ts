@@ -13,8 +13,6 @@ type CotizacionPayload = {
   services?: string[];
 };
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 function isValidEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
@@ -34,40 +32,46 @@ export async function POST(request: Request) {
   try {
     const data = (await request.json()) as CotizacionPayload;
 
-    if (
-      !data.firstName?.trim() ||
-      !data.lastName?.trim() ||
-      !data.email?.trim() ||
-      !data.source?.trim() ||
-      !data.projectDetails?.trim()
-    ) {
+    const firstName = data.firstName?.trim();
+    const lastName = data.lastName?.trim();
+    const email = data.email?.trim();
+    const source = data.source?.trim();
+    const projectDetails = data.projectDetails?.trim();
+
+    if (!firstName || !lastName || !email || !source || !projectDetails) {
       return NextResponse.json(
         { message: "Faltan campos obligatorios." },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
-    if (!isValidEmail(data.email)) {
+    if (!isValidEmail(email)) {
       return NextResponse.json(
         { message: "El correo no tiene un formato válido." },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
-    if (!process.env.RESEND_API_KEY || !process.env.CONTACT_EMAIL) {
+    const resendApiKey = process.env.RESEND_API_KEY;
+    const contactEmail = process.env.CONTACT_EMAIL;
+
+    if (!resendApiKey || !contactEmail) {
       return NextResponse.json(
         { message: "Configuración de correo incompleta." },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
-    const fullName = `${data.firstName.trim()} ${data.lastName.trim()}`;
+    const resend = new Resend(resendApiKey);
+
+    const fullName = `${firstName} ${lastName}`;
 
     const services =
       data.services && data.services.length > 0
         ? data.services.map((service) => escapeHtml(service)).join(", ")
         : "No especificado";
-const html = `
+
+    const html = `
   <div style="margin:0; padding:0; background:#f5f5f5; font-family:Arial, Helvetica, sans-serif; color:#111111;">
     <div style="max-width:680px; margin:0 auto; padding:32px 20px;">
       
@@ -106,8 +110,8 @@ const html = `
                 Correo
               </td>
               <td style="padding:12px 0; border-bottom:1px solid #eeeeee; color:#111111; font-size:14px; font-weight:600;">
-                <a href="mailto:${escapeHtml(data.email)}" style="color:#111111; text-decoration:underline;">
-                  ${escapeHtml(data.email)}
+                <a href="mailto:${escapeHtml(email)}" style="color:#111111; text-decoration:underline;">
+                  ${escapeHtml(email)}
                 </a>
               </td>
             </tr>
@@ -135,7 +139,7 @@ const html = `
                 ¿Cómo nos conoció?
               </td>
               <td style="padding:12px 0; border-bottom:1px solid #eeeeee; color:#111111; font-size:14px; font-weight:600;">
-                ${escapeHtml(data.source)}
+                ${escapeHtml(source)}
               </td>
             </tr>
 
@@ -166,7 +170,7 @@ const html = `
           </h2>
 
           <div style="background:#f7f7f7; border:1px solid #eeeeee; border-radius:14px; padding:18px; color:#222222; font-size:14px; line-height:1.7; white-space:pre-line;">
-            ${escapeHtml(data.projectDetails)}
+            ${escapeHtml(projectDetails)}
           </div>
         </div>
 
@@ -184,10 +188,10 @@ const html = `
 Nueva solicitud de proyecto - Nodatix
 
 Nombre: ${fullName}
-Correo: ${data.email}
+Correo: ${email}
 Número de contacto: ${data.phone || "No especificado"}
 Empresa: ${data.company || "No especificado"}
-¿Cómo nos conoció?: ${data.source}
+¿Cómo nos conoció?: ${source}
 ¿Necesita acuerdo de confidencialidad?: ${data.needsNda || "No especificado"}
 Servicios de interés: ${
       data.services && data.services.length > 0
@@ -196,14 +200,14 @@ Servicios de interés: ${
     }
 
 Detalles del proyecto:
-${data.projectDetails}
+${projectDetails}
 `;
 
-     // Envío del correo al buzón configurado en CONTACT_EMAIL.
+    // Envío del correo al buzón configurado en CONTACT_EMAIL.
     const { error } = await resend.emails.send({
       from: "Nodatix Web <onboarding@resend.dev>",
-      to: [process.env.CONTACT_EMAIL],
-      replyTo: data.email,
+      to: [contactEmail],
+      replyTo: email,
       subject: "Nueva solicitud de proyecto - Nodatix",
       html,
       text,
@@ -214,20 +218,20 @@ ${data.projectDetails}
 
       return NextResponse.json(
         { message: "No se pudo enviar la solicitud." },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
     return NextResponse.json(
       { message: "Solicitud enviada correctamente." },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (error) {
     console.error("Error al enviar solicitud de cotización:", error);
 
     return NextResponse.json(
       { message: "No se pudo enviar la solicitud." },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

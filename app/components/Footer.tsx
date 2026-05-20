@@ -1,5 +1,5 @@
 import Link from "next/link";
-
+import { WHATSAPP_URL } from "@/app/lib/whatsapp";
 /* ─────────────────────────────────────────────────────────────────
    Footer — Nodatix
    4-column grid: brand · navegación · legal · contacto
@@ -218,7 +218,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="https://wa.me/5529357876?text=Hola%2C%20me%20interesa%20agendar%20un%20diagn%C3%B3stico%20para%20mi%20proyecto."
+                  href={WHATSAPP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`${linkClass} flex items-center gap-2`}
@@ -226,7 +226,7 @@ export default function Footer() {
                   <span className="shrink-0" style={{ color: "#25D366" }} aria-hidden="true">
                     <WhatsAppIcon />
                   </span>
-                  +52 1 5529357876
+                  +52 222 337 8232
                 </a>
               </li>
             </ul>
